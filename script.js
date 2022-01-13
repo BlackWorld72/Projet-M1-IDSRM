@@ -20,4 +20,9 @@ function get_liste_projets_user(user){
     return get_from_php("liste_projets_user", user);
 }
 
+class Projet{
+    constructor(projet){
+
+    }
+}
 
