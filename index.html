@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Projet</title>
+        <script src="./three.min.js"></script>
+        <script src="./STLLoader.js"></script>
+        <script src="./OrbitControls.js"></script>
+        <script src="./script.js"></script>
+    </head>
+    <body>
+        <form name="form" id="form" method="" action="">
+            <input type="text" name="lastname" placeholder="Nom" required/><br/>
+            <input type="text" name="firstname" placeholder="Prénom" required/><br/>
+            <input type="email" name="email" placeholder="mail@univ-lemans.fr" required/><br/>
+            <input type="text" name="projectname" placeholder="Intitulé du projet" required/><br/>
+            <textarea name="description" placeholder="Description du projet" required></textarea>
+            <input type="file" name="file" onchange="createSelectingFiles(this.files)" accept=".png, .jpeg, .jpg, .stl, .pdf" multiple="true">
+            <input type="date" name="finaldate" placeholder=""/><br/>
+        </form>
+        <div id="divselectfile"></div>
+        <embed class="vizualizing" id="visuembed" style="display: none; background-color: #333; width: 50%;" height="500" src="">
+        <div id="model" style="display: none; width: 50%; height: 500px;"> </div>
+        <img class="vizualizing" id="visuimg" style="background-color: #333; width: 50%;" height="500" scr="">
+        <input type="submit" onclick="return validateForm()"/>
+    </body>
+</html>
