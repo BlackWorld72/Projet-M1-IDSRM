@@ -1,5 +1,5 @@
 <?php
-  $user = 'idrm';
+  $user = 'root';
   $database = 'idrm';
   $pwd = '8HLT88eGT6rM!&4q';
   $server = 'localhost';
