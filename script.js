@@ -3,8 +3,8 @@ actual_index = -1
 
 /**
  * Render SDL model
- * @param {Model file} model 
- * @param {Div ID} elementID 
+ * @param {file} model 
+ * @param {string} elementID 
  */
 function STLViewer(model, elementID) {
     var elem = document.getElementById(elementID)
@@ -24,11 +24,11 @@ function STLViewer(model, elementID) {
 
     var controls = new THREE.OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
-    controls.rotateSpeed = 0.05;
+    controls.rotateSpeed = 0.5;
     controls.dampingFactor = 0.1;
     controls.enableZoom = true;
     controls.autoRotate = true;
-    controls.autoRotateSpeed = .75;
+    controls.autoRotateSpeed = 0;
 
     var scene = new THREE.Scene();
     scene.add(new THREE.HemisphereLight(0xffffff, 1.5));
@@ -97,7 +97,7 @@ function validateForm() {
 
 /**
  * Check email value
- * @param {Email value} email 
+ * @param {email} email 
  * @returns 
  */
 function validateEmail(email) {
@@ -106,7 +106,7 @@ function validateEmail(email) {
 
 /**
  * Check if file is an image
- * @param {File} file 
+ * @param {file} file 
  * @returns 
  */
 function isImage(file) {
@@ -116,7 +116,7 @@ function isImage(file) {
 
 /**
  * Create / Update the select file
- * @param {Files list} files 
+ * @param {file list} files 
  * @returns 
  */
 function createSelectingFiles(files) { 
@@ -154,6 +154,9 @@ function createSelectingFiles(files) {
 function onChangeSelectFiles() {
     let inp = document.getElementById("selectFiles")
     actual_index = inp.selectedIndex
+    document.getElementById("model").innerHTML = "";
+    document.getElementById("visuimg").innerHTML = "";
+    document.getElementById("visuembed").innerHTML = "";
     reader = new FileReader()
     reader.readAsDataURL(all_files[actual_index])
     reader.onload = function(e) {
@@ -173,12 +176,11 @@ function onChangeSelectFiles() {
             document.getElementById("model").setAttribute("style", "display: none;")
         }  
         else { // STL
-            document.getElementById("model").innerHTML = "";
             document.getElementById("model").setAttribute("style", "display: block; width: 50%; height: 500px")
             STLViewer(this.result, "model")
             document.getElementById("visuembed").setAttribute("style", "display: none;")
             document.getElementById("visuimg").setAttribute("style", "display: none;")
-        }            
+        }          
     }
 }
 
