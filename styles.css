@@ -1,0 +1,113 @@
+body {
+    font-family: 'Yantramanav',sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+
+section {
+    display: block;
+}
+
+@font-face {
+    font-family: "Yantramanav";
+    src: url("/fonts/Yantramanav/Yantramanav-Regular.ttf") format("truetype");
+}
+
+.titrePage {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+h1 {
+    color: #6185ef;
+}
+
+.logoLeMansUniversite {
+    margin-top: 10%;
+    width: 70%;
+    margin-left: 14%;
+    margin-bottom: 10%;
+}
+
+ul.navbar {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    /*top: 9em;*/
+    left: 2em;
+}
+
+ul.navbar li {
+    margin-bottom: 5%;
+}
+
+ul.navbar a {
+    text-decoration: none;
+}
+
+ul.navbar a:link {
+    color: #fff;
+    font-size: 22px;
+}
+
+ul.navbar a:visited {
+    color: #fff;
+}
+
+ul.navbar a:focus {
+    color: #2a3978;
+}
+
+ul.navbar a:hover {
+    color: #2a3978;
+}
+
+ul.navbar a.active {
+    color: #2a3978;
+}
+
+.formulaire {
+    --bs-gutter-x: 0 !important;
+}
+.menu {
+    background-color: #db4c3b;
+    width: 330px;
+    height: 100%;
+    position: fixed;
+    z-index: 999;
+    overflow: visible !important;
+    color: #fff;
+    top: 0;
+    left: 0;
+}
+
+.pageDroite {
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+}
+
+.contenuPageDroite {
+    margin-left: 330px;
+}
+
+.container {
+    padding: 5px 20px 15px 20px;
+}
+
+input, textarea {
+    margin-bottom: 20px;
+}
+
+.formulaire label,
+.formulaire input,
+.formulaire textarea {
+    font-size: 20px;
+}
