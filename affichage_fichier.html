@@ -1,0 +1,15 @@
+
+            <script src="JS/STL/three.min.js"></script>
+        <script src="JS/STL/STLLoader.js"></script>
+        <script src="JS/STL/OrbitControls.js"></script>
+        <script src="JS/verif_form.js"></script>
+        <script src="JS/visualiser_fichier.js"></script>
+        <form name="form" id="form" method="" action="">
+            <input type="file" name="file" onchange="createSelectingFiles(this.files)" accept=".png, .jpeg, .jpg, .stl, .pdf" multiple="true">
+        </form>
+        <div id="divselectfile"></div>
+        <embed class="vizualizing" id="visuembed" style="display: none; background-color: #333; width: 50%;" height="500" src="">
+        <div id="model" style="display: none; width: 50%; height: 500px;"> </div>
+        <img class="vizualizing" id="visuimg" style="background-color: #333; width: 50%;" height="500" scr="">
+        <input type="submit" onclick="return validateForm()"/>
+
