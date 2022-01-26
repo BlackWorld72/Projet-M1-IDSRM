@@ -12,7 +12,7 @@ section {
 
 @font-face {
     font-family: "Yantramanav";
-    src: url("/fonts/Yantramanav/Yantramanav-Regular.ttf") format("truetype");
+    src: url("./fonts/Yantramanav/Yantramanav-Regular.ttf") format("truetype");
 }
 
 .titrePage {
