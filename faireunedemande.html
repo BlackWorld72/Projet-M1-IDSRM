@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="CSS/styles.css">
     <title>Faire une demande</title>
     <script src="JS/include_html.js"></script>
-                            
+
 			
 </head>
 <body>
@@ -31,27 +31,28 @@
                 <div class="row formulaire">
                     <div class="col-sm-6">
                         <div class="container">
-                            <form action="/ma-page-de-traitement" method="post">
+                            <form id="form" action="/ma-page-de-traitement" method="post">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label for="nom"  class="form-label">Nom</label>
-                                        <input type="text" readonly disabled class="form-control" id="nom" name="user_nom" placeholder="Doe">
+                                        <input type="text" readonly disabled class="form-control" id="nom" name="user_nom" value="Doe" required>
                                     </div>
                                     <div class="col-sm-6">
                                         <label for="prenom" class="form-label">Prénom</label>
-                                        <input type="text" readonly disabled class="form-control" id="prenom" name="user_prenom" placeholder="John">
+                                        <input type="text" readonly disabled class="form-control" id="prenom" name="user_prenom" value="John" required>
                                     </div>
                                     <div class="col-sm-12" >
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="email" readonly disabled class="form-control" id="email" name="user_mail" placeholder="john.doe@univ-lemans.fr">
+                                        <input type="email" readonly disabled class="form-control" id="email" name="user_mail" value="john.doe@univ-lemans.fr" required>
                                     </div>
-                                    <div class="col-sm-12">
+                                    <div class="form-group col-sm-12">
                                         <label for="intitule" class="form-label">Intitulé du projet</label>
-                                        <input type="text" required class="form-control" id="intitule" name="projet_intitule" placeholder="Intitulé du projet">
+                                        <input type="text" required class="form-control" id="intitule" name="projet_intitule"  required>
+                                        <div class="invalid-tooltip">Please fill out this field.</div>
                                     </div>
                                     <div class="col-sm-12">
                                         <label for="description" class="form-label">Description du projet</label>
-                                        <textarea class="form-control" id="description" name="projet_description" placeholder="Description du projet"></textarea>
+                                        <textarea class="form-control" id="description" name="projet_description" placeholder="Description du projet" required></textarea>
                                     </div>
                                     <div class="col-sm-12">
                                         <label for="fichiers" class="form-label">Plan(s)</label>
@@ -60,19 +61,19 @@
                                     <div class="row col-sm-8">
                                         <label for="datelimite" class="col-sm-3 col-form-label">Date limite</label>
                                         <div class="col-sm-5">
-                                            <input type="date" required class="form-control" id="datelimite" name="projet_datelimite">
+                                            <input type="date" required class="form-control" id="datelimite" name="projet_datelimite" required>
                                         </div>
                                     </div>
                                     <div class="row col-sm-10">
                                         <label for="equipe_recherche" class="col-sm-6 col-form-label">Nom de l’équipe de recherche</label>
                                         <div class="col-sm-6">
-                                            <input type="text" required class="form-control" id="equipe_recherche" name="projet_equipe_recherche" placeholder="Nom de l'équipe de recherche">
+                                            <input type="text" required class="form-control" id="equipe_recherche" name="projet_equipe_recherche" placeholder="Nom de l'équipe de recherche" required>
                                         </div>
                                     </div>
                                     <div class="row col-sm-10">
                                         <label for="prisedeRDV" class="col-sm-6 col-form-label">Souhaitez-vous un rendez-vous ?</label>
                                         <div class="col-sm-4">
-                                            <select class="form-select" id="prisedeRDV">
+                                            <select class="form-select" id="prisedeRDV" required>
                                                 <option selected></option>
                                                 <option value="O">Oui</option>
                                                 <option value="N">Non</option>
@@ -80,7 +81,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </form>
+                           
                         </div>
                     </div>
                     <div class="col-sm-6">
@@ -91,6 +92,7 @@
                             includeHTML();
                             </script>
                         <button class="btn btn-primary btn-lg" type="submit" onclick="return validateForm()">Envoyer</button>
+                        </form>
                     </div>
                 </div>
                 
@@ -98,4 +100,5 @@
         </main>
     </section>
 </body>
+<script src="JS/verif_form.js"></script>
 </html>

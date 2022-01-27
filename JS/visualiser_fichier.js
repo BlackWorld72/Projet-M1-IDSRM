@@ -1,3 +1,6 @@
+var all_files = []
+actual_index = -1
+
 /**
  * Check if file is an image
  * @param {file} file 
