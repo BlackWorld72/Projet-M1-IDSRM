@@ -60,7 +60,7 @@ function onChangeSelectFiles() {
         if (isImage(all_files[actual_index])) { // Image
             let f = document.getElementById("visuimg")
             f.setAttribute("src", this.result)
-            f.setAttribute("style", "display: block; background-color: #333; width: 50%;")
+            f.setAttribute("style", "display: block; background-color: #333; width: 95%;")
             document.getElementById("visuembed").setAttribute("style", "display: none;")
             document.getElementById("model").setAttribute("style", "display: none;")
             
@@ -68,12 +68,12 @@ function onChangeSelectFiles() {
         else if (all_files[actual_index].type == "application/pdf") { // PDF
             let f = document.getElementById("visuembed")
             f.setAttribute("src", this.result)
-            f.setAttribute("style", "display: block; background-color: #333; width: 50%;")
+            f.setAttribute("style", "display: block; background-color: #333; width: 95%;")
             document.getElementById("visuimg").setAttribute("style", "display: none;")
             document.getElementById("model").setAttribute("style", "display: none;")
         }  
         else { // STL
-            document.getElementById("model").setAttribute("style", "display: block; width: 50%; height: 500px")
+            document.getElementById("model").setAttribute("style", "display: block; width: 95%; height: 500px")
             STLViewer(this.result, "model")
             document.getElementById("visuembed").setAttribute("style", "display: none;")
             document.getElementById("visuimg").setAttribute("style", "display: none;")

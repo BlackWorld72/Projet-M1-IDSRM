@@ -7,6 +7,10 @@
     <link rel="stylesheet" href="CSS/styles.css">
     <title>Faire une demande</title>
     <script src="JS/include_html.js"></script>
+    <script src="JS/STL/three.min.js"></script>
+        <script src="JS/STL/STLLoader.js"></script>
+        <script src="JS/STL/OrbitControls.js"></script>
+        <script src="JS/visualiser_fichier.js"></script>
 
 			
 </head>
@@ -31,23 +35,25 @@
                 <div class="row formulaire">
                     <div class="col-sm-6">
                         <div class="container">
-                            <form id="form" action="/ma-page-de-traitement" method="post">
+                            <form id="form" action="./PHP/send_demande_html.php" method="POST">
+                                <input type="hidden" readonly id="login_cas" name="login_cas" value="s172746" required>
+                                <input type="hidden" readonly id="ufr" name="ufr" value="Sciences et Techniques" required>
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label for="nom"  class="form-label">Nom</label>
-                                        <input type="text" readonly disabled class="form-control" id="nom" name="user_nom" value="Doe" required>
+                                        <input type="text" readonly class="form-control" id="nom" name="user_nom" value="Doe" required>
                                     </div>
                                     <div class="col-sm-6">
                                         <label for="prenom" class="form-label">Prénom</label>
-                                        <input type="text" readonly disabled class="form-control" id="prenom" name="user_prenom" value="John" required>
+                                        <input type="text" readonly class="form-control" id="prenom" name="user_prenom" value="John" required>
                                     </div>
                                     <div class="col-sm-12" >
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="email" readonly disabled class="form-control" id="email" name="user_mail" value="john.doe@univ-lemans.fr" required>
+                                        <input type="email" readonly class="form-control" id="email" name="user_mail" value="john.doe@univ-lemans.fr" required>
                                     </div>
                                     <div class="form-group col-sm-12">
                                         <label for="intitule" class="form-label">Intitulé du projet</label>
-                                        <input type="text" required class="form-control" id="intitule" name="projet_intitule"  required>
+                                        <input type="text" class="form-control" id="intitule" name="projet_intitule"  required>
                                     </div>
                                     <div class="col-sm-12">
                                         <label for="description" class="form-label">Description du projet</label>
@@ -60,13 +66,13 @@
                                     <div class="row col-sm-12">
                                         <label for="datelimite" class="col-sm-4 col-form-label">Date limite</label>
                                         <div class="col-sm-6">
-                                            <input type="date" required class="form-control" id="datelimite" name="projet_datelimite" required>
+                                            <input type="date" class="form-control" id="datelimite" name="projet_datelimite" required>
                                         </div>
                                     </div>
                                     <div class="row col-sm-10">
                                         <label for="equipe_recherche" class="col-sm-6 col-form-label">Nom de l’équipe de recherche</label>
                                         <div class="col-sm-6">
-                                            <input type="text" required class="form-control" id="equipe_recherche" name="projet_equipe_recherche" placeholder="Nom de l'équipe de recherche" required>
+                                            <input type="text" class="form-control" id="equipe_recherche" name="projet_equipe_recherche" placeholder="Nom de l'équipe de recherche" required>
                                         </div>
                                     </div>
                                     <div class="row col-sm-10">
@@ -90,7 +96,7 @@
                         <script>
                             includeHTML();
                             </script>
-                        <button class="btn btn-primary btn-lg" type="submit" onclick="return validateForm()">Envoyer</button>
+                        <button class="btn btn-primary btn-lg" type="submit", name="submit" value="Submit">Envoyer</button>
                         </form>
                     </div>
                 </div>
