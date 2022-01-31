@@ -24,7 +24,7 @@
             <li><a class="active" href="faireunedemande.html">Faire une demande</a>
             <li><a href="prendrerendezvous.html">Prendre un rendez-vous</a>
             <li><a href="mesdemandes.html">Consulter mes demandes</a>
-            <li><a href="deconnexion.html">Déconnexion</a>
+            <li><a href="?logout=">Déconnexion</a>
         </ul>
     </section>
     <section>
