@@ -1,1 +1,1 @@
-<meta http-equiv="refresh" content="time; URL=http://altea.univ-lemans.fr/projet/faireunedemande.html" />
+<meta http-equiv="refresh" content="time; URL=http://altea.univ-lemans.fr/projet/faireunedemande.php" />

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <!-- Bootstrap CSS -->
+    <?php require_once 'phpCas/connect_cas.php' ?>;
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="./CSS/styles.css">
     <title>Faire une demande</title>
@@ -12,7 +13,7 @@
         <script src="./JS/STL/OrbitControls.js"></script>
         <script src="./JS/visualiser_fichier.js"></script>
 
-			
+		
 </head>
 <body>
     <section class="menu">

@@ -49,6 +49,7 @@ if (isset($_REQUEST['logout'])) {
 
 // for this test, simply print that the authentication was successfull
 ?>
+<!-- 
 <html>
   <head>
     <title>phpCAS simple client</title>
@@ -61,3 +62,4 @@ if (isset($_REQUEST['logout'])) {
     <p><a href="?logout=">Logout</a></p>
   </body>
 </html>
+-->
