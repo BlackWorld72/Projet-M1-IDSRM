@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <?php require_once 'phpCAS/connect_cas.php' ?>
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="./CSS/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./CSS/styles.css">
     <title>Faire une demande</title>
     <script src="./JS/include_html.js"></script>
@@ -32,10 +32,12 @@
                     <h1><b>IDSRM</b></h1>
                 </div>
                 <div class="row formulaire">
-                    <form id="form" action="./PHP/send_demande_html.php" method="POST">
+                 
                     <div class="col-sm-6">
                         <div class="container">
-                                <input type="hidden" id="login_cas" name="login_cas" value="s172746">
+		<form id="form" action="./PHP/send_demande_html.php" method="POST">
+                 
+               <input type="hidden" id="login_cas" name="login_cas" value="s172746">
                                 <input type="hidden" id="ufr" name="ufr" value="Sciences et Techniques">
                                 <div class="row">
                                     <div class="col-sm-6">
@@ -77,22 +79,24 @@
                                     <div class="row col-sm-10">
                                         <label for="prisedeRDV" class="col-sm-6 col-form-label">Souhaitez-vous un rendez-vous ?</label>
                                         <div class="col-sm-4">
-                                            <select class="form-select" id="prisedeRDV" size=2 required>
-						<option selected value="N">Non</option>
+                                            <select class="form-select" id="prisedeRDV" size=1 required>
+						<option value="N">Non</option>
 						<option value="O">Oui</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
+			   </form>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <h2>Visualisation des fichiers</h2>
 			<div include-html="./affichage_fichier.html"></div>
                         <script> includeHTML(); </script>
-                    </div>
-                    <button class="btn btn-primary btn-lg" type="submit" name="submit" value="Submit">Envoyer</button>
-                    </form>
+                    	<button class="btn btn-primary btn-lg" type="submit" name="submit" value="Submit">Envoyer</button>
+		   	
+			</div>
+                    
                 </div>
             </div>
         </div>
