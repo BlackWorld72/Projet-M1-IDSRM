@@ -9,9 +9,9 @@
     <title>Faire une demande</title>
     <script src="./JS/include_html.js"></script>
     <script src="./JS/STL/three.min.js"></script>
-        <script src="./JS/STL/STLLoader.js"></script>
-        <script src="./JS/STL/OrbitControls.js"></script>
-        <script src="./JS/visualiser_fichier.js"></script>
+    <script src="./JS/STL/STLLoader.js"></script>
+    <script src="./JS/STL/OrbitControls.js"></script>
+    <script src="./JS/visualiser_fichier.js"></script>
 </head>
 <body>
     <section class="menu">
@@ -26,15 +26,16 @@
         </ul>
     </section>
     <section>
-        <main class="pageDroite">
+        <div class="pageDroite">
             <div class="contenuPageDroite">
                 <div class="titrePage">
                     <h1><b>IDSRM</b></h1>
                 </div>
                 <div class="row formulaire">
+                    <form id="form" action="./PHP/send_demande_html.php" method="POST">
                     <div class="col-sm-6">
                         <div class="container">
-                            <form id="form" action="./PHP/send_demande_html.php" method="POST">
+                            
                                 <input type="hidden" readonly id="login_cas" name="login_cas" value="s172746" required>
                                 <input type="hidden" readonly id="ufr" name="ufr" value="Sciences et Techniques" required>
                                 <div class="row">
@@ -92,16 +93,14 @@
                         <h2>Visualisation des fichiers</h2>
 
 						<div include-html="./affichage_fichier.html"></div>
-                        <script>
-                            includeHTML();
-                            </script>
-                        <button class="btn btn-primary btn-lg" type="submit", name="submit" value="Submit">Envoyer</button>
-                        </form>
+                        <script> includeHTML(); </script>
+                        
                     </div>
-                </div>
-                
+                    <button class="btn btn-primary btn-lg" type="submit", name="submit" value="Submit">Envoyer</button>
+                    </form>
+                </div>            
             </div>
-        </main>
+        </div>
     </section>
 </body>
 <script src="JS/verif_form.js"></script>
