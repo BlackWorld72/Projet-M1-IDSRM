@@ -95,7 +95,7 @@
                         <script> includeHTML(); </script>
                         
                     </div>
-                    <button class="btn btn-primary btn-lg" type="submit", name="submit" value="Submit">Envoyer</button>
+                    <button class="btn btn-primary btn-lg" type="submit" name="submit" value="Submit">Envoyer</button>
                     </form>
                 </div>            
             </div>
