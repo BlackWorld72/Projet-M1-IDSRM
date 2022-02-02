@@ -76,8 +76,25 @@ function envoie_nouveau_projet(projet){
 
 projets = [];
 
+
+/**
+ * fonction qui récupère et range dans le tableau la liste des projets de tous les utilisateurs
+ * Utile pour les admins et les operateurs
+ */
 function init_variable_liste_projets(){
     var les_propro = get_liste_projets();
+    for(var projet in les_propro){
+        console.log(JSON.stringify(les_propro[projet]));
+        projets[les_propro[projet].id_demande] = new Projet(les_propro[projet]);
+    }
+}
+
+/**
+ * fonction qui récupère et range dans le tableau la liste des projets d'un seul utilisateur
+ * Utile pour les demandeurs
+ */
+ function init_variable_liste_projets(user){
+    var les_propro = get_liste_projets_user(user);
     for(var projet in les_propro){
         console.log(JSON.stringify(les_propro[projet]));
         projets[les_propro[projet].id_demande] = new Projet(les_propro[projet]);
