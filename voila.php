@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <?php require_once 'phpCas/connect_cas.php' ?>;
+    <?php //require_once 'phpCas/connect_cas.php' ?>;
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="CSS/styles.css">
@@ -136,17 +136,7 @@
     </style>
 </head>
 <body>
-    <section class="menu">
-        <img class="logoLeMansUniversite"
-            src="res/logo-le-mans-universite.png"
-            alt="Logo Le Mans Université">
-        <ul class="navbar">
-            <li><a class="active" href="faireunedemande.html">Faire une demande</a>
-            <li><a href="prendrerendezvous.html">Prendre un rendez-vous</a>
-            <li><a href="mesdemandes.html">Consulter mes demandes</a>
-            <li><a href="deconnexion.html">Déconnexion</a>
-        </ul>
-    </section>
+    <?php include("HTML/nav-bar.php") ?>
     <section class="validate">
         <div class="main-container">
             <h1>Votre demande a bien été enregistrée</h1>
