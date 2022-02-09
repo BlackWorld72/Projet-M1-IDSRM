@@ -3,7 +3,7 @@
 <head>
     <?php //require_once 'phpCas/connect_cas.php' ?>;
     <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="./CSS/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="CSS/styles.css">
     <style>
 
@@ -156,7 +156,7 @@
 function countdown() {
     var i = document.getElementById('counter');
     if (parseInt(i.innerHTML)<=0) {
-        location.href = 'mesdemandes.html';
+        location.href = 'mesdemandes.php';
     }
 if (parseInt(i.innerHTML)!=0) {
     i.innerHTML = parseInt(i.innerHTML)-1;
