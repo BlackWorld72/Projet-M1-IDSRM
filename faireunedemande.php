@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <?php require_once 'phpCAS/connect_cas.php' ?>
+    <?php //require_once 'phpCAS/connect_cas.php' ?>
     <!-- Bootstrap CSS -->
     <link href="./CSS/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./CSS/styles.css">
@@ -42,15 +42,15 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <label for="nom"  class="form-label">Nom</label>
-                                        <input type="text" readonly class="form-control" id="nom" name="user_nom" value="<?php echo  explode(".", phpCAS::getAttributes()['mail'])[1] ?>">
+                                        <input type="text" readonly class="form-control" id="nom" name="user_nom" value="<?php //echo  explode(".", phpCAS::getAttributes()['mail'])[1] ?>">
                                     </div>
                                     <div class="col-sm-6">
                                         <label for="prenom" class="form-label">Prénom</label>
-                                        <input type="text" readonly class="form-control" id="prenom" name="user_prenom" value="<?php echo explode(".", phpCAS::getAttributes()['mail'])[0] ?>">
+                                        <input type="text" readonly class="form-control" id="prenom" name="user_prenom" value="<?php //echo explode(".", phpCAS::getAttributes()['mail'])[0] ?>">
                                     </div>
                                     <div class="col-sm-12" >
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="email" readonly class="form-control" id="email" name="user_mail" value="<?php echo phpCAS::getAttributes()['mail'] ?>">
+                                        <input type="email" readonly class="form-control" id="email" name="user_mail" value="<?php //echo phpCAS::getAttributes()['mail'] ?>">
                                     </div>
                                     <div class="form-group col-sm-12">
                                         <label for="intitule" class="form-label">Intitulé du projet</label>
