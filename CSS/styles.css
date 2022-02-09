@@ -39,16 +39,21 @@ section {
     margin-left: 20px;
 }
 
+.contenuFormulaire {
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
 h1 {
     color: #6185ef;
 }
 
 .logoLeMansUniversite {
-    margin-top: 10%;
-    width: 70%;
-    margin-left: 14%;
-    margin-bottom: 10%;
+    width: 75%;
+    margin-left: 12%;
 }
+
+/* Barre de navigation */
 
 ul.navbar {
     list-style-type: none;
@@ -88,9 +93,92 @@ ul.navbar a.active {
     color: #2a3978;
 }
 
-.formulaire {
-    --bs-gutter-x: 0 !important;
+a.icon-params {
+    margin-top: 40px;
+    display: none;
+    margin-right: 30px;
 }
+
+p.icon-params-bar {
+    background-color: white;
+    width: 35px;
+    height: 3px;
+    margin-bottom: 8px;
+}
+
+@media screen and (max-width: 800px) {
+    .logoLeMansUniversite {
+        width: 150px;
+        margin-left: 15px;
+    }
+
+    section.menu {
+        width: 100%;
+        height: auto;
+        /*position: relative;*/
+    }
+}
+@media screen and (max-width: 800px) {
+    section.menu li {
+        display: none;
+        margin-bottom: 0;
+    }
+
+    section.menu a.icon-params {
+        float: right;
+        display: block;
+    }
+
+    section.menu.responsive a.icon-params p{
+        display: none;
+    }
+
+    section.menu .nav-bar-header a.icon-params i {
+        display: none;
+    }
+
+    section.menu.responsive .nav-bar-header a.icon-params i {
+        color: white;
+        display: inline-block;
+    }
+
+    section.menu.responsive ul.navbar > li > a {
+        padding: 20px 0 15px 50px;
+        /*border-bottom: 1px solid #69739f;
+        line-height: 20px;*/
+        display: block;
+        position: relative;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    section.menu.responsive {position: relative;}
+    section.menu.responsive .icon-params {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    section.menu.responsive li {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+    section.menu.responsive ul.navbar {
+        background-color: #db4c3b;
+        width: 100%;
+        display: block;
+        left: 0;
+    }
+
+    .contenuPageDroite {
+        margin-left: 0 !important;
+        margin-top: 125px;
+    }
+}
+.formulaire {
+    --bs-gutter-x: -1.6em !important;
+}
+
 .menu {
     background-color: #db4c3b;
     width: 330px;
@@ -129,4 +217,28 @@ input, textarea {
 .formulaire input,
 .formulaire textarea {
     font-size: 20px;
+}
+
+.formulaire textarea {
+    resize: none;
+}
+
+#visualisationFichierTitre {
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+button {
+    display: inline-block;
+    width: 230px;
+    padding: 13px 0;
+    background: #6185ef;
+    color: #fff;
+    font-size: 28px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.formulaire .bouton-formulaire {
+    margin-top: 100px;
 }

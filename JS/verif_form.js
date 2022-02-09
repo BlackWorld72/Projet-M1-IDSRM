@@ -1,7 +1,4 @@
-
-
-
- (function() {
+(function() {
     form = document.getElementById("form");
     elements = form.elements;
     for(elem in elements) {

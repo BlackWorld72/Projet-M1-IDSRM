@@ -1,5 +1,3 @@
-
-
 /**
  * Send something to a given php file with POST method
  * @param {string} thing_to_get - The name of the php file to get the data from, without "send_" and ".php".
