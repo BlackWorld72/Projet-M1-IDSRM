@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="../../CSS/styles.css">
         <title>Mes Demandes</title>
         <script src="../JS/include_html.js"></script>
-        <?php require_once '../../phpCAS/connect_cas.php' ?>
+        <?php //require_once '../../phpCAS/connect_cas.php' ?>
     </head>
     <body>
         <?php include("../nav-bar.php"); ?>
