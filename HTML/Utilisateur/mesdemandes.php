@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <?php require_once 'phpCAS/connect_cas.php' ?>
+        <?php require_once '../../phpCAS/connect_cas.php' ?>
         <meta charset="UTF-8">
         <!-- Bootstrap CSS -->    
-        <link href="../CSS/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="../CSS/styles.css">
+        <link href="../../CSS/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../CSS/styles.css">
         <title>Mes Demandes</title>
         <script src="../JS/include_html.js"></script>
     </head>
     <body>
-        <?php include("./nav-bar.php"); ?>
+        <?php include("../nav-bar.php"); ?>
         <section>
             <div class="pageDroite">
                 <div class="contenuPageDroite">

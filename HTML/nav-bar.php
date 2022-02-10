@@ -9,9 +9,9 @@
         </a>
     </div>
     <ul class="navbar">
-        <li><a class="active" href="Utilisateur/faireunedemande.php">Faire une demande</a>
+        <li><a class="active" href="./faireunedemande.php">Faire une demande</a>
         <li><a href="prendrerendezvous.html">Prendre un rendez-vous</a>
-        <li><a href="mesdemandes.html">Consulter mes demandes</a>
+        <li><a href="./mesdemandes.php">Consulter mes demandes</a>
         <li><a href="?logout=">Déconnexion</a>
     </ul>
 </section>
