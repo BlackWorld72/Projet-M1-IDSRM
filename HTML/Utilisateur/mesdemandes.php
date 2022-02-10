@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <?php require_once '../../phpCAS/connect_cas.php' ?>
         <meta charset="UTF-8">
         <!-- Bootstrap CSS -->    
         <link href="../../CSS/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="../../CSS/styles.css">
         <title>Mes Demandes</title>
         <script src="../JS/include_html.js"></script>
+        <?php require_once '../../phpCAS/connect_cas.php' ?>
     </head>
     <body>
         <?php include("../nav-bar.php"); ?>
