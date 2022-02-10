@@ -9,9 +9,9 @@
         </a>
     </div>
     <ul class="navbar">
-        <li><a class="active" href="./faireunedemande.php">Faire une demande</a>
+        <li><a href="/Projet-M1-IDSRM/HTML/Utilisateur/faireunedemande.php">Faire une demande</a>
         <li><a href="prendrerendezvous.html">Prendre un rendez-vous</a>
-        <li><a href="./mesdemandes.php">Consulter mes demandes</a>
+        <li><a href="/Projet-M1-IDSRM/HTML/Utilisateur/mesdemandes.php">Consulter mes demandes</a>
         <li><a href="?logout=">Déconnexion</a>
     </ul>
 </section>
@@ -24,4 +24,13 @@
             x.className = "menu";
         }
     }
+
+    var path = window.location.pathname;
+    var page = path.split("/").pop();
+    for(elem of document.querySelector(".navbar").getElementsByTagName('a')){
+        if(elem.href.includes(page) && !elem.href.includes("logout")){
+            elem.className = "active";
+        }
+    }
+    
 </script>

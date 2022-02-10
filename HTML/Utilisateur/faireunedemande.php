@@ -3,21 +3,15 @@
 <head>
     <meta charset="UTF-8">
 
-    <!-- Connexion CAS -->
-    <?php //require_once '../../phpCAS/connect_cas.php' ?>
-    <!-- Bootstrap CSS -->
-    <link href="../../CSS/bootstrap.min.css" rel="stylesheet">
-    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    -->
-    <link rel="stylesheet" href="../../CSS/styles.css">
+    <?php require_once $_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/HTML/header.php' ?>
     <title>Faire une demande</title>
-    <script src="../../JS/STL/three.min.js"></script>
-    <script src="../../JS/STL/STLLoader.js"></script>
-    <script src="../../JS/STL/OrbitControls.js"></script>
-    <script src="../../JS/visualiser_fichier.js"></script>
+    <script src="/Projet-M1-IDSRM/JS/STL/three.min.js"></script>
+    <script src="/Projet-M1-IDSRM/JS/STL/STLLoader.js"></script>
+    <script src="/Projet-M1-IDSRM/JS/STL/OrbitControls.js"></script>
+    <script src="/Projet-M1-IDSRM/JS/visualiser_fichier.js"></script>
 </head>
 <body>
-    <?php include("../nav-bar.php"); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] ."/Projet-M1-IDSRM/HTML/nav-bar.php"); ?>
     <section>
         <div class="pageDroite">
             <div class="contenuPageDroite">
@@ -28,7 +22,7 @@
                 <div class="row formulaire">
                     <div class="col-sm-12">
                         <div class="contenuFormulaire">
-                            <form id="form" action="../../PHP/send_demande_html.php" method="POST">
+                            <form id="form" action="/Projet-M1-IDSRM/PHP/send_demande_html.php" method="POST">
                                 <input type="hidden" readonly id="login_cas" name="login_cas" value="s172746" required>
                                 <input type="hidden" readonly id="ufr" name="ufr" value="Sciences et Techniques" required>
                                 <div class="row">
@@ -85,11 +79,11 @@
 
                                     <div class="col-sm-6">
                                         <h2 id="visualisationFichierTitre">Visualisation des fichiers</h2>
-                                        <?php include("../affichage_fichier.html") ?>
+                                        <?php include($_SERVER['DOCUMENT_ROOT'] ."/Projet-M1-IDSRM/HTML/affichage_fichier.html") ?>
                                         <div class="text-center bouton-formulaire">
                                             <button type="submit" name="submit" value="Submit">Envoyer</button>
                                         </div>
-                                        <script src="../../JS/verif_form.js"></script>
+                                        <script src="/Projet-M1-IDSRM/JS/verif_form.js"></script>
                                     </div>
                                 </div>
                             </form>

@@ -7,6 +7,6 @@
     echo $query_projets;
     $projets = $connect->query($query_projets);
     mysqli_close($connect);
-    header('Location: ../voila.html');
+    header('Location: '.require_once $_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/HTML/voila.html');
     exit;
 ?>

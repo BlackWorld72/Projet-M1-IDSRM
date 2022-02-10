@@ -17,7 +17,7 @@
  * @link     https://wiki.jasig.org/display/CASC/phpCAS
  */
 
-$phpcas_path = 'phpCAS/source/';
+$phpcas_path = $_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/phpCAS/source/';
 
 ///////////////////////////////////////
 // Basic Config of the phpCAS client //

@@ -2,15 +2,12 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <!-- Bootstrap CSS -->    
-        <link href="../../CSS/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="../../CSS/styles.css">
+        <?php require_once $_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/HTML/header.php' ?>
+
         <title>Mes Demandes</title>
-        <script src="../JS/include_html.js"></script>
-        <?php //require_once '../../phpCAS/connect_cas.php' ?>
-    </head>
+   </head>
     <body>
-        <?php include("../nav-bar.php"); ?>
+        <?php include($_SERVER['DOCUMENT_ROOT'] ."/Projet-M1-IDSRM/HTML/nav-bar.php"); ?>
         <section>
             <div class="pageDroite">
                 <div class="contenuPageDroite">
@@ -26,8 +23,8 @@
                                 </nav>
 
                                 <div id="liste_demandes" class="d-grid gap-2 ">
-                                    <button class="btn btn-primary" type="button">Pièce de remorque très grande</button>
-                                    <button class="btn btn-primary" type="button">Pièce de remorque</button>
+                                    <button class="w-100 btn btn-primary" type="button">Pièce de remorque très grande</button>
+                                    <button class="w-100 btn btn-primary" type="button">Pièce de remorque</button>
                                 
                                 </div>
                         </div>
@@ -63,9 +60,5 @@
                 </div>
             </div>
         </section>
-        <div class="d-grid gap-2">
-  <button class="btn btn-primary" type="button">Button</button>
-  <button class="btn btn-primary" type="button">Button</button>
-</div>
     </body>
 </html>
