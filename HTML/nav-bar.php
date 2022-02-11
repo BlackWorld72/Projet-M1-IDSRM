@@ -1,7 +1,7 @@
 <section class="menu" id="menu-nav-bar">
     <div class="nav-bar-header">
         <?php include("logoUniversiteLeMans.html"); ?>
-        <a href="javascript:void(0);" class="icon-params" onclick="openNavBar()">
+        <a href="javascript:void(0);" class="icon-params" onclick="document.getElementById('menu-nav-bar').classList.toggle('responsive')">
             <i aria-hidden="true" class="fa fa-times fa-3x"></i>
             <p class="icon-params-bar"></p>
             <p class="icon-params-bar"></p>
@@ -16,15 +16,6 @@
     </ul>
 </section>
 <script>
-    function openNavBar() {
-        var x = document.getElementById("menu-nav-bar");
-        if (x.className === "menu") {
-            x.className += " responsive";
-        } else {
-            x.className = "menu";
-        }
-    }
-
     var path = window.location.pathname;
     var page = path.split("/").pop();
     for(elem of document.querySelector(".navbar").getElementsByTagName('a')){
@@ -32,5 +23,4 @@
             elem.className = "active";
         }
     }
-    
 </script>
