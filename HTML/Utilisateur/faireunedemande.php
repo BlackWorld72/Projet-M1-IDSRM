@@ -30,15 +30,15 @@
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <label for="nom"  class="form-label">Nom</label>
-                                                <input type="text" readonly class="form-control" id="nom" name="user_nom" value="<?php //echo explode(".", phpCAS::getAttributes()['mail'])[1] ?>" required>
+                                                <input type="text" readonly class="form-control" id="nom" name="user_nom" value="<?php echo explode(".", phpCAS::getAttributes()['mail'])[1] ?>" required>
                                             </div>
                                             <div class="col-sm-6">
                                                 <label for="prenom" class="form-label">Prénom</label>
-                                                <input type="text" readonly class="form-control" id="prenom" name="user_prenom" value="<?php //echo explode(".", phpCAS::getAttributes()['mail'])[0] ?>" required>
+                                                <input type="text" readonly class="form-control" id="prenom" name="user_prenom" value="<?php echo explode(".", phpCAS::getAttributes()['mail'])[0] ?>" required>
                                             </div>
                                             <div class="col-sm-12" >
                                                 <label for="email" class="form-label">Email</label>
-                                                <input type="email" readonly class="form-control" id="email" name="user_mail" value="<?php //echo phpCAS::getAttributes()['mail'] ?>" required>
+                                                <input type="email" readonly class="form-control" id="email" name="user_mail" value="<?php echo phpCAS::getAttributes()['mail'] ?>" required>
                                             </div>
                                             <div class="form-group col-sm-12">
                                                 <label for="intitule" class="form-label">Intitulé du projet</label>

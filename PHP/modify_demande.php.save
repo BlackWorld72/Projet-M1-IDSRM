@@ -1,0 +1,31 @@
+<?php
+    include('connect_bdd.php');
+    $action = $_POST['action']
+    if ($action == 'Update') {
+        $query_projets = 'UPDATE demande SET nom_projet="test" WHERE id_demande=1;'
+        echo "SALUT";
+    } else if ($action == 'Delete') {
+        $query_projets = 'DELETE FROM demande WHERE id_demande=1;';
+        echo "BONJOUR";
+    }
+    else {
+	function console_log( $data ){
+  echo '<script>';
+  echo 'console.log('. json_encode( $data ) .')';
+  echo '</script>';
+}
+        mysqli_close($connect);
+        header('Location: ../fezfzef.html');
+    }
+    console_log($query_projets)
+    $projets = $connect->query($query_projets);
+    mysqli_close($connect);
+    header('Location: ../voila.html');
+    exit;
+
+function console_log( $data ){
+  echo '<script>';
+  echo 'console.log('. json_encode( $data ) .')';
+  echo '</script>';
+}
+?>
