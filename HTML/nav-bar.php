@@ -11,7 +11,7 @@
     <ul class="navbar">
         <li><a href="/Projet-M1-IDSRM/HTML/Utilisateur/faireunedemande.php">Faire une demande</a>
         <li><a href="prendrerendezvous.html">Prendre un rendez-vous</a>
-        <li><a href="/Projet-M1-IDSRM/HTML/Utilisateur/mesdemandes.php">Consulter mes demandes</a>
+        <li><a href="/Projet-M1-IDSRM/HTML/Utilisateur/consultermesdemandes.php">Consulter mes demandes</a>
         <li><a href="?logout=">Déconnexion</a>
     </ul>
 </section>
