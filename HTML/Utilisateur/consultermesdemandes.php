@@ -23,8 +23,8 @@
                                 </nav>
 
                                 <div id="liste_demandes" class="d-grid gap-2 ">
-                                    <button class="w-100 btn btn-primary" type="button">Pièce de remorque très grande</button>
-                                    <button class="w-100 btn btn-primary" type="button">Pièce de remorque</button>
+                                    <button class="bouton_liste_demandes w-100 btn btn-outline-primary" type="button">Pièce de remorque très grande</button>
+                                    <button class="bouton_liste_demandes w-100 btn btn-primary" type="button">Pièce de remorque</button>
                                 
                                 </div>
                         </div>
@@ -49,10 +49,10 @@
                                         <span class="btn-label"><i class="fa fa-download"></i></span> Télécharger les fichiers</button>
                                     </div>
                                     <div class="col align-self-end">
-                                        <p class="fs-5">Date limite: <a id="date_limite">22/02/2022</a></p>
+                                        <p class="fs-5">Date limite : <a id="date_limite">22/02/2022</a></p>
                                     </div>
                                 </div>
-                                <p class="fs-5">Suivi de la pièce: <a id="suivis">Étude et conception</a></p>
+                                <p class="fs-5">Suivi de la pièce : <a id="suivis">Étude et conception</a></p>
                             </div>
                         </div>
                     </div>
