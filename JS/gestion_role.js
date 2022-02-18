@@ -1,3 +1,6 @@
+/**
+ * Classe représentant un role
+ */
 class Role {
     constructor(personne){
         this.nom = personne.nom
@@ -7,6 +10,9 @@ class Role {
     }
 }
 
+/**
+ * Permet d'afficher le panel de droite pour ajouter un nouvel utilisateur 
+ */
 function renderAddRole() {
     activeRole = -1
 
@@ -40,16 +46,29 @@ function renderAddRole() {
 
 var activeRole = -1
 
+/**
+ * Permet de récupéré le prénom et le nom d'une personne via son email de l'université
+ * @param email 
+ * @returns 
+ */
 function getFirstNameLastNameFromEmail(email) {
     let tmp = email.split('@')
     tmp = tmp.split('.')
     return [tmp[0],tmp[1]]
 }
 
+/**
+ * Permet d'obtenir tout les rôles via la BDD
+ * A MODIFIER QUAND REQUETES FAITES
+ * @returns 
+ */
 function getAllRoles() {
     return [new Role(JSON.parse('{"nom": "HENRY", "prenom": "ALLAN", "email": "allan.henry.etu@univ-lemans.fr", "role":"Opérateur"}')),new Role(JSON.parse('{"nom": "GIROD", "prenom": "Valentin", "email": "valentin.girod.etu@univ-lemans.fr", "role":"Administrateur"}'))]
 }
 
+/**
+ * Permet d'afficher les rôles que de la catégorie souhaiter (Admin, Opérateur, Tous)
+ */
 function initRoles(id) {
     let div = document.getElementById("liste_demandes")
     updateBar(id)
@@ -63,6 +82,10 @@ function initRoles(id) {
     }
 }
 
+/**
+ * Permet de mettre à jour la bar de navigation
+ * @param {*} id 
+ */
 function updateBar(id) {
     document.getElementById("all").setAttribute("class","flex-sm-fill text-sm-center nav-link")
     document.getElementById("ope").setAttribute("class","flex-sm-fill text-sm-center nav-link")
@@ -71,6 +94,11 @@ function updateBar(id) {
     document.getElementById(id).setAttribute("class","flex-sm-fill text-sm-center nav-link active")
 }
 
+/**
+ * Permet d'afficher toutes les personnes attribué à un rôle spécifique
+ * @param {*} spe 
+ * @param {*} id 
+ */
 function getSpeRole(spe, id) {
     let div = document.getElementById("liste_demandes")
     updateBar(id)
@@ -86,18 +114,30 @@ function getSpeRole(spe, id) {
     }
 }
 
+/**
+ * Action effectuer après avoir cliquer sur le bouton modifier un role
+ */
 function modifyrole() {
     console.log("modif")
 }
 
+/**
+ * Action effectuer après avoir cliquer sur le bouton supprimer un role
+ */
 function deleterole() {
     console.log("delete")
 }
 
+/**
+ * Action effectuer après avoir cliquer sur le bouton ajouter un role
+ */
 function addRole() {
     console.log("add")
 }
 
+/**
+ * Permet d'afficher les boutons modifier et supprimer
+ */
 function msbuttons() {
     div = document.getElementById("subform")
     div.textContent = ""
@@ -125,6 +165,9 @@ function msbuttons() {
     }                         
 }
 
+/**
+ * Permet d'afficher les valeurs du rôle d'une personne
+ */
 function setValues(id) {
     activeRole = id
     document.getElementById("nom").value = roles[id].nom
@@ -144,6 +187,7 @@ function setValues(id) {
     msbuttons()
 }
 
+/**** Initialisation ****/
 var roles = getAllRoles() 
 initRoles("all")
 renderAddRole()
