@@ -17,9 +17,9 @@
                     <div class="row formulaire">
                         <div id="partie_gauche_demande" class="container col-sm-6">
                                 <nav id="menu_demandes" class="navbar navbar-expand-lg nav nav-pills flex-column flex-sm-row">
-                                    <a class="flex-sm-fill text-sm-center nav-link active" href="#">En attente</a>
-                                    <a class="flex-sm-fill text-sm-center nav-link" href="#">En cours</a>
-                                    <a class="flex-sm-fill text-sm-center nav-link" href="#">Terminé</a>
+                                    <a class="flex-sm-fill text-sm-center nav-link active">En attente</a>
+                                    <a class="flex-sm-fill text-sm-center nav-link">En cours</a>
+                                    <a class="flex-sm-fill text-sm-center nav-link">Terminé</a>
                                 </nav>
 
                                 <div id="liste_demandes" class="d-grid gap-2 ">
