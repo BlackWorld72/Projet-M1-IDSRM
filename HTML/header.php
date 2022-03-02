@@ -13,7 +13,7 @@
             $_SESSION["user_type"] = "utilisateur";
         }
         $url = "$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-        if(!strpos($url, ucfirst($_SESSION["user_type"]))){
+        if(!strpos($url, ucfirst($_SESSION["user_type"])) && !strpos($url, "validation.php")){
             header('Location: /Projet-M1-IDSRM/index.php');
         }
     ?>
