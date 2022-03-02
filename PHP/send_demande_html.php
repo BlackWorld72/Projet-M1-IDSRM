@@ -7,6 +7,6 @@
     echo $query_projets;
     $projets = $connect->query($query_projets);
     mysqli_close($connect);
-    header('Location: /Projet-M1-IDSRM/HTML/validation.php');
+    //header('Location: /Projet-M1-IDSRM/HTML/validation.php');
     exit;
 ?>
