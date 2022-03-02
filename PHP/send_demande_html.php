@@ -37,7 +37,7 @@
         securiser($_POST["projet_description"]),
         securiser($_POST["projet_datelimite"]),
         $suivi,
-        date("d/m/Y"),
+        date("Y-m-d"),
         $etat
     );
 
