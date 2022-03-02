@@ -82,7 +82,6 @@ projets = [];
 function init_variable_liste_projets(){
     var les_propro = get_liste_projets();
     for(var projet in les_propro){
-        console.log(JSON.stringify(les_propro[projet]));
         projets[les_propro[projet].id_demande] = new Projet(les_propro[projet]);
     }
 }
@@ -94,7 +93,6 @@ function init_variable_liste_projets(){
  function init_variable_liste_projets(user){
     var les_propro = get_liste_projets_user(user);
     for(var projet in les_propro){
-        console.log(JSON.stringify(les_propro[projet]));
         projets[les_propro[projet].id_demande] = new Projet(les_propro[projet]);
     }
 }
