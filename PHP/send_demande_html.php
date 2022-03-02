@@ -21,21 +21,29 @@
         $val = escape_sql_wild(strip_tags(trim($value)));
         return $val;
     }
-    
+    $login = securiser($_POST['login_cas']);
+    $nom = securiser($_POST["user_nom"]);
+    $prenom = securiser($_POST["user_prenom"]);
+    $mail = securiser($_POST["user_mail"]);
+    $equipe_rech = securiser($_POST["projet_equipe_recherche"]);
+    $ufr = securiser($_POST["ufr"]);
+    $titre = securiser($_POST["projet_intitule"]);
+    $description =  securiser($_POST["projet_description"]);
+    $date_lim = securiser($_POST["projet_datelimite"]);
     $suivi = "en attente de validation";
     $etat = "En attente";
     $date_debut = date("Y-m-d"); //aujourd'hui
     $query_projets = $connect->prepare("INSERT INTO demande VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, DEFAULT, ?, ?)");
     $query_projets->bind_param('ssssssssssss', 
-        securiser($_POST['login_cas']),
-        securiser($_POST["user_nom"]),
-        securiser($_POST["user_prenom"]),
-        securiser($_POST["user_mail"]),
-        securiser($_POST["projet_equipe_recherche"]),
-        securiser($_POST["ufr"]),
-        securiser($_POST["projet_intitule"]),
-        securiser($_POST["projet_description"]),
-        securiser($_POST["projet_datelimite"]),
+        $login,
+        $nom,
+        $prenom,
+        $mail,
+        $equipe_rech,
+        $ufr,
+        $titre,
+        $description,
+        $date_lim,
         $suivi,
         $date_debut,
         $etat
