@@ -41,8 +41,7 @@
         $etat
     );
 
-    echo $query_projets;
-    $projets = $connect->query($query_projets);
+    $query_projets->execute();
     mysqli_close($connect);
     //header('Location: /Projet-M1-IDSRM/HTML/validation.php');
     exit;
