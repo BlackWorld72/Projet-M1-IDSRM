@@ -1,9 +1,26 @@
 <?php
     include('connect_bdd.php');
 
-
+    function securiser($value){
+        return mysql_real_escape_string(strip_tags(trim($value)));
+    }
     
-    $query_projets = "INSERT INTO demande VALUES (DEFAULT, \"".$_POST['login_cas']."\", \"".$_POST["user_nom"]."\", \"".$_POST["user_prenom"]."\", \"".$_POST["user_mail"]."\", \"".$_POST["projet_equipe_recherche"]."\", \"".$_POST["ufr"]."\", \"".$_POST["projet_intitule"]."\", \"".$_POST["projet_description"]."\", \"".$_POST["projet_datelimite"]."\", \"en attente de validation\", DEFAULT, \"".date("Y-m-d")."\");";
+    $query_projets = $connect->prepare("INSERT INTO demande VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, DEFAULT, ?, ?)");
+    $query_projets->bind_param(ssssssssssssss, 
+        securiser($_POST['login_cas']),
+        securiser($_POST["user_nom"]),
+        securiser($_POST["user_prenom"]),
+        securiser($_POST["user_mail"]),
+        securiser($_POST["projet_equipe_recherche"]),
+        securiser($_POST["ufr"]),
+        securiser($_POST["projet_intitule"]),
+        securiser($_POST["projet_description"]),
+        securiser($_POST["projet_datelimite"]),
+        "en attente de validation",
+        date("d/m/Y"),
+        "En attente"
+    );
+
     echo $query_projets;
     $projets = $connect->query($query_projets);
     mysqli_close($connect);
