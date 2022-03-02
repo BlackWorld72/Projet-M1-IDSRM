@@ -2,7 +2,7 @@
     include('connect_bdd.php');
 
     function securiser($value){
-        return mysql_real_escape_string(strip_tags(trim($value)));
+        return mysqli_real_escape_string(strip_tags(trim($value)));
     }
     
     $query_projets = $connect->prepare("INSERT INTO demande VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, DEFAULT, ?, ?)");
