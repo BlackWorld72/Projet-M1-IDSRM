@@ -22,6 +22,9 @@
         return $val;
     }
     
+    $suivi = "en attente de validation";
+    $etat = "En attente";
+
     $query_projets = $connect->prepare("INSERT INTO demande VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, DEFAULT, ?, ?)");
     $query_projets->bind_param(ssssssssssssss, 
         securiser($_POST['login_cas']),
@@ -33,9 +36,9 @@
         securiser($_POST["projet_intitule"]),
         securiser($_POST["projet_description"]),
         securiser($_POST["projet_datelimite"]),
-        "en attente de validation",
+        $suivi,
         date("d/m/Y"),
-        "En attente"
+        $etat
     );
 
     echo $query_projets;
