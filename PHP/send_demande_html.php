@@ -26,7 +26,7 @@
     $etat = "En attente";
 
     $query_projets = $connect->prepare("INSERT INTO demande VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, DEFAULT, ?, ?)");
-    $query_projets->bind_param(ssssssssssssss, 
+    $query_projets->bind_param('ssssssssssss', 
         securiser($_POST['login_cas']),
         securiser($_POST["user_nom"]),
         securiser($_POST["user_prenom"]),
