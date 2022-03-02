@@ -1,8 +1,24 @@
 <?php
     include('connect_bdd.php');
 
+    function escape_sql_wild($s)
+    /* escapes SQL pattern wildcards in s. */
+    {
+      $result = array();
+      foreach(str_split($s) as $ch)
+        {
+          if ($ch == "\\" || $ch == "%" || $ch == "_")
+            {
+              $result[] = "\\";
+            } /*if*/
+          $result[] = $ch;
+        } /*foreach*/
+      return
+          implode("", $result);
+    }
+
     function securiser($value){
-        $val = mysqli_real_escape_string(strip_tags(trim($value)));
+        $val = escape_sql_wild(strip_tags(trim($value)));
         return $val;
     }
     
