@@ -8,11 +8,12 @@
         $mail = phpCAS::getAttributes()['mail'];
         $query_role = 'SELECT role FROM role WHERE email="'.$mail.'"';
         $result = mysqli_fetch_array($connect->query($query_role));
-        $_SESSION["user_type"] = $result[0];
-        mysqli_close($connect);
-        if(!isset($_SESSION["user_type"])){
+        if(isset($result[0])){
+            $_SESSION["user_type"] = $result[0];
+        }else{
             $_SESSION["user_type"] = "utilisateur";
         }
+        mysqli_close($connect);
         $url = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
         if(!strpos($url, ucfirst($_SESSION["user_type"])) && !strpos($url, "validation.php")){
             header('Location: /Projet-M1-IDSRM/index.php');
