@@ -30,7 +30,7 @@
     $titre = securiser($_POST["projet_intitule"]);
     $description =  securiser($_POST["projet_description"]);
     $date_lim = securiser($_POST["projet_datelimite"]);
-    $suivi = "en attente de validation";
+    $suivi = "En attente de validation";
     $etat = "En attente";
     $date_debut = date("Y-m-d"); //aujourd'hui
     $query_projets = $connect->prepare("INSERT INTO demande VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, DEFAULT, ?, ?)");
