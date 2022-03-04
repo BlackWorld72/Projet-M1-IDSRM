@@ -170,11 +170,8 @@ function lister_projets(etat){
 function afficher_infos_projet(index_projet, etat){
     projets2 = get_liste_projets_etat(etat);
     projet = projets2[index_projet];
-    document.querySelector('#descrition').innerHTML=projet.description_projet;
+    document.querySelector('#description').innerHTML=projet.description_projet;
     document.querySelector('#date_limite').innerHTML=projet.date_limite;
 }
-
-//juste un exemple pour l'appli
-ex_demande = new Projet(JSON.parse('{"0":"1","1":"s172746","2":"valentin","3":"Girod","4":"valentin@girod.fr","5":"etu","6":"science et technique","7":"idrm","8":"Interface de demande de réalisation mécaniqueBon là cest du dev, pas de la mécanique, donc projet à ignorer","9":"2022-01-17","10":"en attente de validation","11":null,"12":"0000-00-00","id_demande":"1","login_cas":"s172746","nom":"valentin","prenom":"Girod","mail":"valentin@girod.fr","groupe":"etu","UFR":"science et technique","nom_projet":"idrm","description_projet":"Interface de demande de réalisation mécaniqueBon là cest du dev, pas de la mécanique, donc projet à ignorer","date_limite":"2022-01-17","etat":"en attente de validation","date_fin":null,"date_debut":"0000-00-00"}'));
 
 
