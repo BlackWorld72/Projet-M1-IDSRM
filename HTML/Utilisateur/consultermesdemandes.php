@@ -62,7 +62,7 @@
         
     </body>
     <script>
-        login = <?php echo phpCAS::getUser(); ?>
+        login = "<?php echo phpCAS::getUser(); ?>";
         init_variable_liste_projets(login);
         lister_projets("En attente");
     </script>
