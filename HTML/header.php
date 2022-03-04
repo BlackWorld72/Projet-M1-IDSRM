@@ -1,19 +1,7 @@
     <meta name="viewport" content="width=device-width"/>
     <!-- Connexion CAS -->
     <?php 
-        session_start();
-        require_once $_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/phpCAS/connect_cas.php'; 
-        //gestion du type d'utilisateur
-        include($_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/PHP/connect_bdd.php');
-        $mail = phpCAS::getAttributes()['mail'];
-        $query_role = 'SELECT role FROM role WHERE email="'.$mail.'"';
-        $result = mysqli_fetch_array($connect->query($query_role));
-        if(isset($result[0])){
-            $_SESSION["user_type"] = $result[0];
-        }else{
-            $_SESSION["user_type"] = "utilisateur";
-        }
-        mysqli_close($connect);
+        require_once($_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/PHP/detection_utilisateur.php');
         $url = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
         if(!strpos($url, ucfirst($_SESSION["user_type"])) && !strpos($url, "validation.php")){
             header('Location: /Projet-M1-IDSRM/index.php');
