@@ -1,6 +1,6 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/phpCAS/connect_cas.php'; 
-session_start();
+//session_start();
 //gestion du type d'utilisateur
 require_once($_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/PHP/connect_bdd.php');
 $mail = phpCAS::getAttributes()['mail'];
