@@ -159,8 +159,9 @@ function lister_projets(etat){
     projets2 = get_liste_projets_etat(etat);
     liste_projets = document.querySelector('#liste_demandes');
     html_liste = "";
-    for(var index of projets2){
+    for(var index in projets2){
         projet = projets2[index];
+        console.log(projet);
         html_liste += '<button class="bouton_liste_demandes w-100 btn btn-outline-primary" type="button" onclick="afficher_infos_projet('+index+', \''+etat+'\')">'+projet.nom_projet+" - "+projet.date_debut+"</button>";
     }
     liste_projets.innerHTML = html_liste;
