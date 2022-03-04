@@ -42,7 +42,7 @@
                                         <p class="fs-5" id="demandeur_mail">Valentin@girod.fr</p>
                                     </div>
                                 </div>
-                                <textarea style="resize:none" rows="4" class="border-secondary rounded border border-4 form-control" readonly>Ceci est une description de projet super longue qui devrait permettre de mieux comprendre la pièece</textarea>
+                                <textarea id="description" style="resize:none" rows="4" class="border-secondary rounded border border-4 form-control" readonly>Ceci est une description de projet super longue qui devrait permettre de mieux comprendre la pièece</textarea>
                                 <div class="row">
                                     <div class="col align-self-start">
                                         <button type="button" class="btn btn-labeled btn-success">
@@ -61,4 +61,9 @@
         </section>
         
     </body>
+    <script>
+        login = <?php echo phpCAS::getUser(); ?>
+        init_variable_liste_projets(login);
+        lister_projets("En attente");
+    </script>
 </html>

@@ -146,11 +146,30 @@ class Projet{
         this.nom_projet = projet.nom_projet;
         this.description_projet = projet.description_projet;
         this.date_limite = projet.date_limite;
-        this.etat = projet.etat;
+        this.etat = projet.etat_demande;
         this.date_fin = projet.date_fin;
         this.date_debut = projet.date_debut;
+        this.suivi = projet.suivi_demande;
     }
 
+}
+
+function lister_projets(etat){
+    projets2 = get_liste_projets_etat(etat);
+    liste_projets = document.querySelector('#liste_demandes');
+    html_liste = "";
+    for(var index in projets2){
+        projet = projets2[index];
+        html_liste += '<button class="bouton_liste_demandes w-100 btn btn-outline-primary" type="button" onclick="afficher_infos_projet('+index+', \''+etat+'\')">'+projet.nom_projet+" - "+projet.date_debut+"</button>";
+    }
+    liste_projets.innerHTML = html_liste;
+}
+
+function afficher_infos_projet(index_projet, etat){
+    projets2 = get_liste_projets_etat(etat);
+    projet = projets2[index_projet];
+    document.querySelector('#descrition').innerHTML=projet.description_projet;
+    document.querySelector('#date_limite').innerHTML=projet.date_limite;
 }
 
 //juste un exemple pour l'appli
