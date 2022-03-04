@@ -5,7 +5,7 @@
  * @return nothing
  */
  function send_to_php(thing_to_send, extra = "null"){
-    fetch("send_"+thing_to_send+".php", {
+    fetch("/Projet-M1-IDSRM/PHP/send_"+thing_to_send+".php", {
         method: 'POST',
         headers: {'Content-Type':'application/x-www-form-urlencoded'},
         body: 'extra='+JSON.stringify(extra)
@@ -26,7 +26,7 @@
             result = xmlHttp.responseText;
         }
     }
-    xmlHttp.open("GET", "get_"+thing_to_get+".php?extra="+extra, false); // true for asynchronous 
+    xmlHttp.open("GET", "/Projet-M1-IDSRM/PHP/get_"+thing_to_get+".php?extra="+extra, false); // true for asynchronous 
     xmlHttp.send(null);
     return JSON.parse(result);
 }
