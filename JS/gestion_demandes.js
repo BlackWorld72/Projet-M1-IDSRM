@@ -106,9 +106,10 @@ function init_variable_liste_projets(){
 function get_liste_projets_etat(etat){
     var projets2 = [];
     var cpt = 0;
-    for(var projet of projets){
-        if(projets[projet].etat == etat) {
-            projets2[cpt++] = projets[projet];
+    for(var projet in projets){
+        projet = projets[projet];
+        if(projet.etat == etat) {
+            projets2[cpt++] = projet;
         }
     }
     return projets2;
@@ -158,7 +159,7 @@ function lister_projets(etat){
     projets2 = get_liste_projets_etat(etat);
     liste_projets = document.querySelector('#liste_demandes');
     html_liste = "";
-    for(var index in projets2){
+    for(var index of projets2){
         projet = projets2[index];
         html_liste += '<button class="bouton_liste_demandes w-100 btn btn-outline-primary" type="button" onclick="afficher_infos_projet('+index+', \''+etat+'\')">'+projet.nom_projet+" - "+projet.date_debut+"</button>";
     }
