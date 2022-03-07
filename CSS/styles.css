@@ -1,11 +1,29 @@
+body {
+    font-family: 'Yantramanav',sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+
+section {
+    display: block;
+}
+
+@font-face {
+    font-family: "Yantramanav";
+    src: url("./fonts/Yantramanav/Yantramanav-Regular.ttf") format("truetype");
+}
+
 #menu_demandes{
     flex-direction: unset !important;
 }
 
 #partie_gauche_demande{
     border-right: 1px solid #333;
+    height: 850px;
+    margin-bottom: 25px;
 }
-
 
 @media screen and (max-width: 800px) {
     #partie_gauche_demande{
@@ -28,24 +46,6 @@ margin-bottom: 15px;
     background-color: rgba(86,61,124,.15);
     border: 1px solid #ddd;
     border: 1px solid rgba(86,61,124,.2);
-}
-
-
-body {
-    font-family: 'Yantramanav',sans-serif;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #333;
-    background-color: #fff;
-}
-
-section {
-    display: block;
-}
-
-@font-face {
-    font-family: "Yantramanav";
-    src: url("./fonts/Yantramanav/Yantramanav-Regular.ttf") format("truetype");
 }
 
 .titrePage {
@@ -250,8 +250,96 @@ button {
     font-size: 28px;
     text-align: center;
     text-transform: uppercase;
+    border: none;
+}
+
+
+.smaller-btn {
+    font-size: 18px;
+    padding: 10px 0;
 }
 
 .formulaire .bouton-formulaire {
     margin-top: 100px;
+}
+
+/* Page Consulter mes demandes */
+
+.titre_cote_droit {
+    padding-bottom: 25px;
+    text-align: center;
+    color: #6f6f6e;
+    font-weight: bolder;
+}
+
+nav#menu_demandes > a{
+    font-size: 24px;
+}
+
+#description_demande {
+    position: relative;
+}
+
+#message_informatif {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 22px;
+}
+
+#message_erreur {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 22px;
+    color: red;
+}
+
+.boutons_gestion_demande {
+    padding: 50px 0 20px;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    background-color: #6185ef;
+}
+
+.nav-link {
+    color: #6185ef;
+}
+
+.nav-link:hover{
+    color: #2a3978;
+}
+
+.btn-outline-primary {
+    color: #6185ef;
+    border-color: #6185ef;
+    font-size: 20px;
+    padding: 12px 0;
+}
+
+button.bouton_demande:hover {
+    background-color: #6185ef;
+    border-color: #2a3978;
+}
+
+button.bouton_demande.active {
+    background-color: #6185ef;
+    border-color: #2a3978;
+}
+
+.info_demande {
+    padding-bottom: 10px;
+}
+
+.info_demande_importante {
+    font-weight: bolder;
+    color: #db4c3b;
+}
+
+a:not([href]):not([class]), a:not([href]):not([class]):hover {
+    color: #333;
+    font-weight: normal;
 }
