@@ -78,7 +78,7 @@
                                     </div>
 
                                     <div class="col-sm-6">
-                                        <h2 id="visualisationFichierTitre">Visualisation des fichiers</h2>
+                                        <h2 id="visualisationFichierTitre" class="titre_cote_droit">Visualisation des fichiers</h2>
                                         <?php include($_SERVER['DOCUMENT_ROOT'] ."/Projet-M1-IDSRM/HTML/affichage_fichier.html") ?>
                                         <div class="text-center bouton-formulaire">
                                             <button type="submit" name="submit" value="Submit">Envoyer</button>

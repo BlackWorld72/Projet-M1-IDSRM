@@ -26,7 +26,7 @@
             result = xmlHttp.responseText;
         }
     }
-    xmlHttp.open("GET", "get_"+thing_to_get+".php?extra="+extra, false); // true for asynchronous 
+    xmlHttp.open("GET", "get_"+thing_to_get+".php?extra="+extra, false); // true for asynchronous
     xmlHttp.send(null);
     return JSON.parse(result);
 }
@@ -72,19 +72,18 @@ function envoie_nouveau_projet(projet){
     send_to_php("demande", projet);
 }
 
-projets = [];
-
-
 /**
  * fonction qui récupère et range dans le tableau la liste des projets de tous les utilisateurs
  * Utile pour les admins et les operateurs
  */
 function init_variable_liste_projets(){
-    var les_propro = get_liste_projets();
-    for(var projet in les_propro){
+    var projets = get_liste_projets();
+    var liste_projets = [];
+    for(var projet in projets){
         console.log(JSON.stringify(les_propro[projet]));
-        projets[les_propro[projet].id_demande] = new Projet(les_propro[projet]);
+        liste_projets.push(new Projet(projets[projet]));
     }
+    return liste_projets;
 }
 
 /**
@@ -92,46 +91,67 @@ function init_variable_liste_projets(){
  * Utile pour les demandeurs
  */
  function init_variable_liste_projets(user){
-    var les_propro = get_liste_projets_user(user);
-    for(var projet in les_propro){
-        console.log(JSON.stringify(les_propro[projet]));
-        projets[les_propro[projet].id_demande] = new Projet(les_propro[projet]);
+    var projetsUser = get_liste_projets_user(user);
+    var liste_projets = [];
+
+    for(var projet in projetsUser){
+        console.log(JSON.stringify(projetsUser[projet]));
+        liste_projets.push(new Projet(projetsUser[projet]));
     }
+    return liste_projets;
 }
 
 /**
  * Récupère toutes les demandes qui ont un état donné
- * @param {Enum} etat - L'état de la demande. Valeurs possibles:
- * "en attente de validation", "validée, en attente de fabrication", "en cours de fabrication", "terminée"
+ * @param projets - la liste des demandes
+ * @param {Enum} etat - L'état de la demande. Valeurs possibles :
+ * "En attente", "En cours", "Terminée"
  * @returns La liste des demandes à l'état donné
  */
-function get_liste_projets_etat(etat){
-    var projets2 = [];
-    var cpt = 0;
+function get_liste_projets_etat(projets, etat){
+    var liste_projets_etat = [];
+    console.log(projets);
+
     for(var projet of projets){
-        if(projets[projet].etat == etat) {
-            projets2[cpt++] = projets[projet];
+        console.log(projet.etat);
+        if(projet.etat === etat) {
+            liste_projets_etat.push(projet);
         }
     }
-    return projets2;
+    return liste_projets_etat;
+}
+
+/**
+ * Renvoie la demande avec l'identifiant souhaité dans une liste de projets
+ * @param projets la liste de demandes
+ * @param id l'identifiant de la demande voulue
+ * @returns {null|*}  la demande ou null si elle n'a pas été trouvée
+ */
+function get_projet_id(projets, id){
+    for(var projet of projets){
+        if(parseInt(projet.id) === parseInt(id)) {
+            return projet;
+        }
+    }
+    return null;
 }
 
 
 /**
  * Récupère toutes les demandes qui ont un nom ou une personne donnée
- * @param {String} nom - Le nom ou une partie du nom d'un projet, d'une personne ou un login cas
+ * @param {String} nomDemandeur - Le nom ou une partie du nom d'un projet, d'une personne ou un login cas
  * @returns La liste des demandes contenant au moins une partie du nom donné
  */
- function get_liste_projets_nom(nom){
-    var projets2 = [];
-    var cpt = 0;
+ function get_liste_projets_nom(projets, nomDemandeur){
+    var liste_projets_nom = [];
+
     for(var projet in projets){
         projet = projets[projet];
         if(projet.nom_projet.includes(nom) || projet.prenom.includes(nom)|| projet.nom.includes(nom)|| projet.login_cas.includes(nom)) {
-            projets2[cpt++] = projet;
+            liste_projets_nom.push(projet);
         }
     }
-    return projets2;
+    return liste_projets_nom;
 }
 
 
@@ -148,7 +168,8 @@ class Projet{
         this.nom_projet = projet.nom_projet;
         this.description_projet = projet.description_projet;
         this.date_limite = projet.date_limite;
-        this.etat = projet.etat;
+        this.suivi = projet.suivi_demande;
+        this.etat = projet.etat_demande;
         this.date_fin = projet.date_fin;
         this.date_debut = projet.date_debut;
     }
