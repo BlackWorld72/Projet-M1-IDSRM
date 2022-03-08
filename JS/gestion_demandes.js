@@ -5,7 +5,7 @@
  * @return nothing
  */
  function send_to_php(thing_to_send, extra = "null"){
-    fetch("send_"+thing_to_send+".php", {
+    fetch("/Projet-M1-IDSRM/PHP/send_"+thing_to_send+".php", {
         method: 'POST',
         headers: {'Content-Type':'application/x-www-form-urlencoded'},
         body: 'extra='+JSON.stringify(extra)
@@ -26,7 +26,7 @@
             result = xmlHttp.responseText;
         }
     }
-    xmlHttp.open("GET", "get_"+thing_to_get+".php?extra="+extra, false); // true for asynchronous
+    xmlHttp.open("GET", "/Projet-M1-IDSRM/PHP/get_"+thing_to_get+".php?extra="+extra, false); // true for asynchronous 
     xmlHttp.send(null);
     return JSON.parse(result);
 }
@@ -53,7 +53,7 @@ function get_liste_projets(){
  * @return all projects from given user
  */
 function get_liste_projets_user(user){
-    return get_from_php("liste_projets_user", user);
+    return get_from_php("liste_projets_user", "s172746");
 }
 
 /*-----------------------------------------------------------
@@ -80,7 +80,6 @@ function init_variable_liste_projets(){
     var projets = get_liste_projets();
     var liste_projets = [];
     for(var projet in projets){
-        console.log(JSON.stringify(les_propro[projet]));
         liste_projets.push(new Projet(projets[projet]));
     }
     return liste_projets;
@@ -95,7 +94,6 @@ function init_variable_liste_projets(){
     var liste_projets = [];
 
     for(var projet in projetsUser){
-        console.log(JSON.stringify(projetsUser[projet]));
         liste_projets.push(new Projet(projetsUser[projet]));
     }
     return liste_projets;
@@ -110,10 +108,8 @@ function init_variable_liste_projets(){
  */
 function get_liste_projets_etat(projets, etat){
     var liste_projets_etat = [];
-    console.log(projets);
 
     for(var projet of projets){
-        console.log(projet.etat);
         if(projet.etat === etat) {
             liste_projets_etat.push(projet);
         }
