@@ -53,7 +53,7 @@ function get_liste_projets(){
  * @return all projects from given user
  */
 function get_liste_projets_user(user){
-    return get_from_php("liste_projets_user", "s172746");
+    return get_from_php("liste_projets_user", user);
 }
 
 /*-----------------------------------------------------------
@@ -173,23 +173,5 @@ class Projet{
 
 }
 
-function lister_projets(etat){
-    projets2 = get_liste_projets_etat(etat);
-    liste_projets = document.querySelector('#liste_demandes');
-    html_liste = "";
-    for(var index in projets2){
-        projet = projets2[index];
-        console.log(projet);
-        html_liste += '<button class="bouton_liste_demandes w-100 btn btn-outline-primary" type="button" onclick="afficher_infos_projet('+index+', \''+etat+'\')">'+projet.nom_projet+" - "+projet.date_debut+"</button>";
-    }
-    liste_projets.innerHTML = html_liste;
-}
-
-function afficher_infos_projet(index_projet, etat){
-    projets2 = get_liste_projets_etat(etat);
-    projet = projets2[index_projet];
-    document.querySelector('#description').innerHTML=projet.description_projet;
-    document.querySelector('#date_limite').innerHTML=projet.date_limite;
-}
 
 

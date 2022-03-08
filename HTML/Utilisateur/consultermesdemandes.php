@@ -93,16 +93,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <script type="text/javascript">initialiser_affichage_demandes(<?php //echo phpCAS::getUser(); ?>)</script>
+                            <script type="text/javascript">initialiser_affichage_demandes(<?php echo phpCAS::getUser(); ?>)</script>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
     </body>
-    <script>
-        login = "<?php echo phpCAS::getUser(); ?>";
-        init_variable_liste_projets(login);
-        lister_projets("En attente");
-    </script>
 </html>
