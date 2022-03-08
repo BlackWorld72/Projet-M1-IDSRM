@@ -3,11 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <?php require_once $_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/HTML/header.php' ?>
-
-        <title>Consulter mes demandes</title>
-
         <script src="/Projet-M1-IDSRM/JS/gestion_demandes.js"></script>
         <script src="/Projet-M1-IDSRM/JS/Utilisateur/afficher_demandes.js"></script>
+        <title>Consulter mes demandes</title>
     </head>
     <body>
         <?php include($_SERVER['DOCUMENT_ROOT'] ."/Projet-M1-IDSRM/HTML/nav-bar.php"); ?>
