@@ -9,30 +9,9 @@
         </a>
     </div>
     <ul class="navbar">
-        <?php
-            $user_type = ucfirst($_SESSION['user_type']);
-            switch($user_type){
-                case "Administrateur":
-                    $files = ["consulterlesdemandes.php", "consulterroles.php"];
-                    break;
-                case "Operateur":
-                    $files = ["consulterlesdemandes.php"];
-                    break;
-                case "Utilisateur":
-                    $files = ["faireunedemande.php", "prendreunrendezvous.php", "consultermesdemandes.php"];
-                    break;
-            }
-            function getTitle($url) {
-                $page = file_get_contents($url);
-                $title = preg_match('/<title[^>]*>(.*?)<\/title>/ims', $page, $match) ? $match[1] : null;
-                return $title;
-            }
-
-            foreach ($files as $page) {
-                $title = getTitle(__DIR__.'/'.$user_type.'/'.$page);
-                echo "<li><a href='/Projet-M1-IDSRM/HTML/$user_type/$page'>$title</a>";
-            }
-        ?>
+        <li><a href="/Projet-M1-IDSRM/HTML/Utilisateur/faireunedemande.php">Faire une demande</a>
+        <li><a href="prendrerendezvous.html">Prendre un rendez-vous</a>
+        <li><a href="/Projet-M1-IDSRM/HTML/Utilisateur/consultermesdemandes.php">Consulter mes demandes</a>
         <li><a href="?logout=">Déconnexion</a>
     </ul>
 </section>
