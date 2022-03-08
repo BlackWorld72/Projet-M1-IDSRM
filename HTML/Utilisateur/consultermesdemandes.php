@@ -5,7 +5,10 @@
         <?php require_once $_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/HTML/header.php' ?>
         <script src="/Projet-M1-IDSRM/JS/gestion_demandes.js"></script>
         <title>Consulter mes demandes</title>
-   </head>
+
+        <script src="/Projet-M1-IDSRM/JS/gestion_demandes.js"></script>
+        <script src="/Projet-M1-IDSRM/JS/Utilisateur/afficher_demandes.js"></script>
+    </head>
     <body>
         <?php include($_SERVER['DOCUMENT_ROOT'] ."/Projet-M1-IDSRM/HTML/nav-bar.php"); ?>
         <section>
@@ -17,49 +20,85 @@
                     <div class="row formulaire">
                         <div id="partie_gauche_demande" class="container col-sm-6">
                                 <nav id="menu_demandes" class="navbar navbar-expand-lg nav nav-pills flex-column flex-sm-row">
-                                    <a class="flex-sm-fill text-sm-center nav-link active">En attente</a>
-                                    <a class="flex-sm-fill text-sm-center nav-link">En cours</a>
-                                    <a class="flex-sm-fill text-sm-center nav-link">Terminé</a>
+                                    <a id="demande_EnAttente" class="flex-sm-fill text-sm-center nav-link active" onclick="getDemandesAvecEtat('En attente')">En attente</a>
+                                    <a id="demande_EnCours" class="flex-sm-fill text-sm-center nav-link" onclick="getDemandesAvecEtat('En cours')">En cours</a>
+                                    <a id="demande_Terminee" class="flex-sm-fill text-sm-center nav-link" onclick="getDemandesAvecEtat('Terminée')">Terminée</a>
                                 </nav>
-
                                 <div id="liste_demandes" class="d-grid gap-2 ">
-                                    <button class="bouton_liste_demandes w-100 btn btn-outline-primary" type="button">Pièce de remorque très grande</button>
-                                    <button class="bouton_liste_demandes w-100 btn btn-primary" type="button">Pièce de remorque</button>
-                                
+                                    <!-- La liste des demandes-->
                                 </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="container">
-                                <h2 id="titre_projet">Pièce de remorque</h2>
-                                <div class="row">
+                        <div id="description_demande" class="col-sm-6">
+                            <div id="message_informatif">
+                                <p class="text-center">Veuillez appuyer sur une demande de pièce pour voir sa description.</p>
+                            </div>
+                            <div id="message_erreur" hidden>
+                                <p class="text-center">Une erreur est survenue. Veuillez réessayer ultérieurement.</p>
+                            </div>
+                            <div id="informations_demande" class="container" hidden>
+                                <h2 id="titre_projet" class="titre_cote_droit">
+                                    <!-- Nom de la demande -->
+                                </h2>
+                                <!-- /!\ Garder temporairement pour les pages Admin et operateur-->
+                                <!--<div class="row">
                                     <div class="col align-self-start">
-                                        <p class="fs-5" id="demandeur_nom">GIROD</p>
+                                        <p class="fs-5 info_demande" id="nom_demandeur">
+                                            Nom du demandeur
+                                        </p>
                                     </div>
                                     <div class="col align-self-center">
-                                        <p class="fs-5" id="demandeur_prenom">Valentin</p>
+                                        <p class="fs-5 info_demande" id="prenom_demandeur">
+                                            Prénom du demandeur
+                                        </p>
                                     </div>
                                     <div class="col align-self-end">
-                                        <p class="fs-5" id="demandeur_mail">Valentin@girod.fr</p>
+                                        <p class="fs-5 info_demande" id="email_demandeur">
+                                            Email du demandeur
+                                        </p>
                                     </div>
+                                </div>-->
+                                <!-- Description de la demande -->
+                                <div class="info_demande">
+                                    <textarea id="description_projet" style="resize:none" rows="15" class="border-secondary rounded border border-4 form-control" readonly>
+                                    </textarea>
                                 </div>
-                                <textarea id="description" style="resize:none" rows="4" class="border-secondary rounded border border-4 form-control" readonly>Ceci est une description de projet super longue qui devrait permettre de mieux comprendre la pièece</textarea>
-                                <div class="row">
+                                <div class="row info_demande">
                                     <div class="col align-self-start">
-                                        <button type="button" class="btn btn-labeled btn-success">
+                                        <button type="button" class="smaller-btn">
                                         <span class="btn-label"><i class="fa fa-download"></i></span> Télécharger les fichiers</button>
                                     </div>
                                     <div class="col align-self-end">
-                                        <p class="fs-5">Date limite : <a id="date_limite">22/02/2022</a></p>
+                                        <p class="fs-5 info_demande_importante">Date de début :
+                                            <a id="date_debut"><!-- Date de début de la demande --></a>
+                                        </p>
+                                        <p id="date_limite_info" class="fs-5 info_demande_importante">Date limite :
+                                            <a id="date_limite"><!-- Date limite de la demande --></a>
+                                        </p>
+                                        <p id="date_fin_info" class="fs-5 info_demande_importante">Date de fin :
+                                            <a id="date_fin"><!-- Date de fin de la demande --></a>
+                                        </p>
                                     </div>
                                 </div>
-                                <p class="fs-5">Suivi de la pièce : <a id="suivis">Étude et conception</a></p>
+                                <p id="suivi_info" class="fs-5 info_demande_importante">Suivi de la pièce :
+                                    <a id="suivi"><!-- Suivi de la pièce en production --></a>
+                                </p>
+                                <div id="boutons_gestion_demande" class="row boutons_gestion_demande">
+                                    <div class="col-sm-6 text-center">
+                                        <button type="button" class="smaller-btn">
+                                            <span id="modifier_demande" class="btn-label"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span> Modifier la demande</button>
+                                    </div>
+                                    <div class="col-sm-6 text-center">
+                                        <button type="button" class="smaller-btn">
+                                            <span id="supprimer_demande" class="btn-label"><i class="fa fa-trash-o" aria-hidden="true"></i></span> Supprimer la demande</button>
+                                    </div>
+                                </div>
                             </div>
+                            <script type="text/javascript">initialiser_affichage_demandes(<?php //echo phpCAS::getUser(); ?>)</script>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        
     </body>
     <script>
         login = "<?php echo phpCAS::getUser(); ?>";
