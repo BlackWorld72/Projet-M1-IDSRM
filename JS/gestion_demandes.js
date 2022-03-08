@@ -168,7 +168,6 @@ class Projet{
         this.etat = projet.etat_demande;
         this.date_fin = projet.date_fin;
         this.date_debut = projet.date_debut;
-        this.suivi = projet.suivi_demande;
     }
 
 }

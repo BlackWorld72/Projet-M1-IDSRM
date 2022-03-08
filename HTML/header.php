@@ -1,5 +1,5 @@
     <meta name="viewport" content="width=device-width"/>
-    <!-- Connexion CAS -->
+    <!-- Connexion CAS et détection de l'utilisateur -> redirection si utilisateur sur age interdite -->
     <?php 
         require_once($_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/PHP/detection_utilisateur.php');
         $url = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);

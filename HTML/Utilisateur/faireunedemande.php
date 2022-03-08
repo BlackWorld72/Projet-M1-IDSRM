@@ -23,11 +23,12 @@
                     <div class="col-sm-12">
                         <div class="contenuFormulaire">
                             <form id="form" action="/Projet-M1-IDSRM/PHP/send_demande_html.php" method="POST">
-                                 <div class="row">
+                                <div class="row">
                                     <div class="col-sm-6">
                                         <div class="row">
                                             <input type="hidden" readonly id="login_cas" name="login_cas" value="<?php echo phpCAS::getUser(); ?>" required>
                                             <input type="hidden" readonly id="ufr" name="ufr" value="inconnue<?php //echo phpCAS::getAttributes()['webCodeComposante']; ?>" required>
+ 
                                             <div class="col-sm-6">
                                                 <label for="nom"  class="form-label">Nom</label>
                                                 <input type="text" readonly class="form-control" id="nom" name="user_nom" value="<?php echo explode(".", phpCAS::getAttributes()['mail'])[1] ?>" required>
