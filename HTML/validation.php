@@ -135,7 +135,7 @@
     </style>
 </head>
 <body>
-    <?php include("HTML/nav-bar.php") ?>
+    <?php include("nav-bar.php") ?>
     <section class="validate">
         <div class="main-container">
             <h1>Votre demande a bien été enregistrée</h1>
