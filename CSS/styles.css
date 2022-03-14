@@ -320,12 +320,12 @@ nav#menu_demandes > a{
     padding: 12px 0;
 }
 
-button.bouton_demande:hover {
+button.bouton_liste:hover {
     background-color: #6185ef;
     border-color: #2a3978;
 }
 
-button.bouton_demande.active {
+button.bouton_liste.active {
     background-color: #6185ef;
     border-color: #2a3978;
 }
@@ -342,4 +342,15 @@ button.bouton_demande.active {
 a:not([href]):not([class]), a:not([href]):not([class]):hover {
     color: #333;
     font-weight: normal;
+}
+
+/* Page Consulter les roles */
+
+#btn_ajouter_role {
+    background: #6185ef;
+    border-color: #6185ef;
+}
+
+#description_role {
+    position: relative;
 }

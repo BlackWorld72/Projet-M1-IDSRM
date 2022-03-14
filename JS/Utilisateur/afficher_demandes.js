@@ -4,8 +4,8 @@ let demandes = [];
  * Initialisation de la page (récupération des demandes de l'utilisateur + affichage de la liste des demandes "En attente")
  */
 function initialiser_affichage_demandes(idDemandeur){
-    demandes = init_variable_liste_projets(idDemandeur);
-    //demandes = init_variable_liste_projets('s172746');       // test en local
+    //demandes = init_variable_liste_projets(idDemandeur);
+    demandes = init_variable_liste_projets('s172746');       // test en local
     getDemandesAvecEtat("En attente");
 }
 
@@ -23,7 +23,7 @@ function getDemandesAvecEtat(etat){
 
     // Affichage des boutons associés aux demandes
     for (let demande in demandesAvecEtat){
-        document.getElementById("liste_demandes").innerHTML += "<button id=\"" + demandesAvecEtat[demande].id + "\" class=\"bouton_demande w-100 btn btn-outline-primary\" type=\"button\" onclick=\"afficher_informations_demande('" + demandesAvecEtat[demande].id + "');\">" + demandesAvecEtat[demande].nom_projet + "</button>";
+        document.getElementById("liste_demandes").innerHTML += "<button id=\"" + demandesAvecEtat[demande].id + "\" class=\"bouton_liste w-100 btn btn-outline-primary\" type=\"button\" onclick=\"afficher_informations_demande('" + demandesAvecEtat[demande].id + "');\">" + demandesAvecEtat[demande].nom_projet + "</button>";
     }
 
     // Gestion des boutons "En attente", "En cours" et "Terminée"
@@ -85,12 +85,12 @@ function afficher_informations_demande(id_demande){
     }
 
     // Gestion des boutons "active" ou non
-    let boutons_demande = document.getElementsByClassName("bouton_demande");
+    let boutons_demande = document.getElementsByClassName("bouton_liste");
     for (let i = 0; i < boutons_demande.length ; i++){
         if (boutons_demande[i].id === demande.id){
-            boutons_demande[i].setAttribute("class","bouton_demande w-100 btn btn-outline-primary active");
+            boutons_demande[i].setAttribute("class","bouton_liste w-100 btn btn-outline-primary active");
         } else {
-            boutons_demande[i].setAttribute("class","bouton_demande w-100 btn btn-outline-primary");
+            boutons_demande[i].setAttribute("class","bouton_liste w-100 btn btn-outline-primary");
         }
     }
 }

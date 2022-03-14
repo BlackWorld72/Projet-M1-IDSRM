@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <?php require_once $_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/HTML/header.php' ?>
-        <script src="/Projet-M1-IDSRM/JS/gestion_demandes.js"></script>
+        <script src="/Projet-M1-IDSRM/JS/Utilisateur/gestion_demandes.js"></script>
         <script src="/Projet-M1-IDSRM/JS/Utilisateur/afficher_demandes.js"></script>
         <title>Consulter mes demandes</title>
     </head>
@@ -91,7 +91,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <script type="text/javascript">initialiser_affichage_demandes("<?php echo phpCAS::getUser(); ?>")</script>
+                            <script type="text/javascript">initialiser_affichage_demandes(<?php //echo phpCAS::getUser(); ?>)</script>
                         </div>
                     </div>
                 </div>
