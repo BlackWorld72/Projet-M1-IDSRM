@@ -18,12 +18,13 @@
     $description_projet = securiser($_POST["projet_description"]);
     $date_limite = $_POST["projet_datelimite"];
     $id_demande = $_POST["id_demande"];
+    $login_cas = $_POST["login_cas"];
 
     /* Verification de l'utilisateur - Securisation de la requete */
     $query_projets = 'SELECT login_cas FROM demande WHERE id_demande'.$id_demande.';';
 	  $projets = $connect->query($query_projets);
     $row = $projets->fetch_assoc(); 
-		if ($row['login_cas'] != $id_cas) {
+		if ($row['login_cas'] != $login_cas) {
         mysqli_close($connect);
         header('Location: ../voila.html');
 		}
