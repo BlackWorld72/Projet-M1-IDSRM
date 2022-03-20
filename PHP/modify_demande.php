@@ -13,20 +13,24 @@
 
     function securiser($value) { return escape_sql_wild(strip_tags(trim($value))); }
 
-    $action = $_POST['action']
+    foreach ($_POST as $param_name => $param_val) {
+      echo "Param: $param_name; Value: $param_val<br />\n";
+    }
+
+    $action = $_POST['action'];
     $nom_projet = securiser($_POST["projet_intitule"]);
     $description_projet = securiser($_POST["projet_description"]);
     $date_limite = $_POST["projet_datelimite"];
-    $id_demande = $_POST["id_demande"];
     $login_cas = $_POST["login_cas"];
+    $id_demande = $_POST["id_demande"];
 
     /* Verification de l'utilisateur - Securisation de la requete */
-    $query_projets = 'SELECT login_cas FROM demande WHERE id_demande'.$id_demande.';';
+    $query_projets = 'SELECT login_cas FROM demande WHERE id_demande='.$id_demande.';';
 	  $projets = $connect->query($query_projets);
     $row = $projets->fetch_assoc(); 
 		if ($row['login_cas'] != $login_cas) {
         mysqli_close($connect);
-        header('Location: ../voila.html');
+        header('Location: /Projet-M1-IDSRM/HTML/validation.php');
 		}
 
     /* Modification / Suppression */
@@ -40,6 +44,6 @@
     
     $projets = $connect->query($query_projets);
     mysqli_close($connect);
-    header('Location: ../voila.html');
+    header('Location: /Projet-M1-IDSRM/HTML/validation.php');
     exit;
 ?>
