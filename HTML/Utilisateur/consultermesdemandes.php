@@ -35,7 +35,7 @@
                                 <p class="text-center">Une erreur est survenue. Veuillez réessayer ultérieurement.</p>
                             </div>
                             <form id="form" enctype="multipart/form-data" action="/Projet-M1-IDSRM/PHP/modify_demande.php" method="POST">
-                                <input type="hidden" readonly id="login_cas" name="login_cas" value="s180970" required>
+                                <input type="hidden" readonly id="login_cas" name="login_cas" value="<?php echo phpCAS::getUser(); ?>" required>
                                 <input type="hidden" readonly id="id_demande" name="id_demande" value="" required>
                                 <div id="modify_block" class="container" style="visibility: hidden; display:none;">
                                     <div class="form-group col-sm-12">
@@ -121,7 +121,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <script type="text/javascript">initialiser_affichage_demandes("s180970")</script>
+                            <script type="text/javascript">initialiser_affichage_demandes("<?php echo phpCAS::getUser(); ?>")</script>
                         </div>
                     </div>
                 </div>
