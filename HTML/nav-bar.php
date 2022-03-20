@@ -10,18 +10,20 @@
     </div>
     <ul class="navbar">
         <?php
-            $user_type = ucfirst($_SESSION['user_type']);
+            //$user_type = ucfirst($_SESSION['user_type']);
+            $user_type = "Administrateur";
             switch($user_type){
                 case "Administrateur":
-                    $files = ["consulterlesdemandes.php", "consulterroles.php"];
+                    $files = ["listedesdemandes.php", "gestiondesroles.php", "faireunedemande.php"];
                     break;
                 case "Operateur":
-                    $files = ["consulterlesdemandes.php"];
+                    $files = ["listedesdemandes.php", "faireunedemande.php"];
                     break;
                 case "Utilisateur":
                     $files = ["faireunedemande.php", "prendreunrendezvous.php", "consultermesdemandes.php"];
                     break;
             }
+
             function getTitle($url) {
                 $page = file_get_contents($url);
                 $title = preg_match('/<title[^>]*>(.*?)<\/title>/ims', $page, $match) ? $match[1] : null;

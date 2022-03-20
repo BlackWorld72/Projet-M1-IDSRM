@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <?php require_once $_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/HTML/header.php' ?>
-        <title>Gerer les roles</title>
+        <title>Gestion des rôles</title>
    </head>
     <body>
         <?php include($_SERVER['DOCUMENT_ROOT'] ."/Projet-M1-IDSRM/HTML/nav-bar.php"); ?>

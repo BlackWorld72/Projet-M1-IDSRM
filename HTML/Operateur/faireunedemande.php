@@ -11,6 +11,6 @@
     <script src="/Projet-M1-IDSRM/JS/visualiser_fichier.js"></script>
 </head>
 <body>
-<?php include($_SERVER['DOCUMENT_ROOT'] ."/Projet-M1-IDSRM/HTML/faireunedemande.php"); ?>
+    <?php include($_SERVER['DOCUMENT_ROOT'] ."/Projet-M1-IDSRM/HTML/faireunedemande.php"); ?>
 </body>
 </html>

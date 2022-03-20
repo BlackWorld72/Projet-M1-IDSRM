@@ -76,6 +76,7 @@ ul.navbar {
     position: absolute;
     /*top: 9em;*/
     left: 2em;
+    display: inline-block;
 }
 
 ul.navbar li {
@@ -352,5 +353,18 @@ a:not([href]):not([class]), a:not([href]):not([class]):hover {
 }
 
 #description_role {
+    position: relative;
+}
+
+/* Prise de rdv - Utilisateur */
+#message_information_redaction_mail {
+    font-size: 20px;
+}
+
+.zone_redaction_mail {
+    padding-bottom: 15px;
+}
+
+#prise_rdv {
     position: relative;
 }

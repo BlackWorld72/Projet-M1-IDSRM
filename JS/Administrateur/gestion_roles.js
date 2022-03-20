@@ -217,7 +217,7 @@ function msbuttons() {
         btn.innerHTML = tabContent[i]
         btn.setAttribute("style","margin-left: 10px;")
         btn.onclick = function(e) {
-            let conf = confirm('Etes vous sûr de vouloir ' + tab[i] + ' cette demande ?')
+            let conf = confirm('Êtes vous sûr de vouloir ' + tab[i] + ' cette demande ?')
             if (conf) {
                 if (tab[i] == "modifier") {
                     modifyrole(e)
