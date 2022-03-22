@@ -23,7 +23,7 @@ function getDemandesAvecEtat(etat){
 
     // Affichage des boutons associés aux demandes
     for (let demande in demandesAvecEtat){
-        document.getElementById("liste_demandes").innerHTML += "<button id=\"" + demandesAvecEtat[demande].id + "\" class=\"bouton_demande w-100 btn btn-outline-primary\" type=\"button\" onclick=\"afficher_informations_demande('" + demandesAvecEtat[demande].id + "');\">" + demandesAvecEtat[demande].nom_projet + "</button>";
+        document.getElementById("liste_demandes").innerHTML += "<button id=\"" + demandesAvecEtat[demande].id + "\" class=\"bouton_liste w-100 btn btn-outline-primary\" type=\"button\" onclick=\"afficher_informations_demande('" + demandesAvecEtat[demande].id + "');\">" + demandesAvecEtat[demande].nom_projet + "</button>";
     }
 
     // Gestion des boutons "En attente", "En cours" et "Terminée"
@@ -71,32 +71,26 @@ function afficher_informations_demande(id_demande){
         document.getElementById('informations_demande').hidden = false;
 
         // On affiche les informations de la demande sur la partie droite
-        document.getElementById('id_demande').value = id_demande;
         document.getElementById('titre_projet').innerHTML = demande.nom_projet;
-        document.getElementById('intitule').value = demande.nom_projet;
         document.getElementById('description_projet').innerHTML = demande.description_projet;
-        document.getElementById("description").innerHTML = demande.description_projet; 
         //document.getElementById('nom_demandeur').innerHTML = demande.nom;
         //document.getElementById('prenom_demandeur').innerHTML = demande.prenom;
         //document.getElementById('email_demandeur').innerHTML = demande.mail;
-        document.getElementById('id_demande').value = id_demande;
         document.getElementById('date_limite').innerHTML = demande.date_limite;
-        document.getElementById("datelimite").value = demande.date_limite;
         document.getElementById('suivi').innerHTML = demande.suivi;
         document.getElementById('date_debut').innerHTML = demande.date_debut;
-        document.getElementById('date_fin').innerHTML = demande.date_fin; 
-        download_files(id_demande, document.getElementById("login_cas").value)  
+        document.getElementById('date_fin').innerHTML = demande.date_fin;
     } else {
         document.getElementById('message_erreur').hidden = false;
     }
 
     // Gestion des boutons "active" ou non
-    let boutons_demande = document.getElementsByClassName("bouton_demande");
+    let boutons_demande = document.getElementsByClassName("bouton_liste");
     for (let i = 0; i < boutons_demande.length ; i++){
         if (boutons_demande[i].id === demande.id){
-            boutons_demande[i].setAttribute("class","bouton_demande w-100 btn btn-outline-primary active");
+            boutons_demande[i].setAttribute("class","bouton_liste w-100 btn btn-outline-primary active");
         } else {
-            boutons_demande[i].setAttribute("class","bouton_demande w-100 btn btn-outline-primary");
+            boutons_demande[i].setAttribute("class","bouton_liste w-100 btn btn-outline-primary");
         }
     }
 }
@@ -129,5 +123,4 @@ function download_files(id_demande, login_cas) {
             }
         }
     });
-    
 }

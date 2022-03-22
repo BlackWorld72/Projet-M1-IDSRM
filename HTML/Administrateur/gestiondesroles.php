@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <?php require_once $_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/HTML/header.php' ?>
-        <title>Gerer les roles</title>
+        <title>Gestion des rôles</title>
    </head>
     <body>
         <?php include($_SERVER['DOCUMENT_ROOT'] ."/Projet-M1-IDSRM/HTML/nav-bar.php"); ?>
@@ -17,19 +17,22 @@
                         <div id="partie_gauche_demande" class="container col-sm-6">
                             <nav id="menu_demandes" class="navbar navbar-expand-lg nav nav-pills flex-column flex-sm-row">
                                 <a id="all" class="flex-sm-fill text-sm-center nav-link active" onclick='initRoles("all")'>Tous</a>
-                                <a id="ope" class="flex-sm-fill text-sm-center nav-link" onclick='getSpeRole("Opérateur","ope")'>Opérateur</a>
-                                <a id="admin" class="flex-sm-fill text-sm-center nav-link" onclick='getSpeRole("Administrateur","admin")'>Administrateur</a>
+                                <a id="ope" class="flex-sm-fill text-sm-center nav-link" onclick='getSpeRole("operateur","ope")'>Opérateur</a>
+                                <a id="admin" class="flex-sm-fill text-sm-center nav-link" onclick='getSpeRole("administrateur","admin")'>Administrateur</a>
                             </nav>
 
                             <div id="liste_demandes" class="d-grid gap-2 ">
                                 
                             </div>
                             <div class="d-grip gap-2"  style="margin-top: 15%;">
-                                <button class="w-100 btn btn-primary" onclick="renderAddRole()">Ajouter un nouvel utilisateur</button>
+                                <button id="btn_ajouter_role" class="w-100 btn btn-primary" onclick="renderAddRole()">Ajouter un nouvel utilisateur</button>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="container">
+                        <div id="description_role" class="col-sm-6">
+                            <div id="message_informatif">
+                                <p class="text-center">Veuillez appuyer sur une personne pour voir ses informations ou appuyer sur "Ajouter un nouvel utilisateur" pour créer un utilisateur avec un rôle "Administrateur" ou "Opérateur".</p>
+                            </div>
+                            <div id="informations_role" class="container" hidden>
                                 <div class="row">
                                     <form>
                                         <div id="blocNom" style="visibility: hidden; display: none;" class="col-sm-6">
@@ -63,6 +66,6 @@
                 </div>
             </div>
         </section>
-        <script type="text/javascript" src="/Projet-M1-IDSRM/JS/gestion_role.js"></script>
+        <script type="text/javascript" src="/Projet-M1-IDSRM/JS/Administrateur/gestion_roles.js"></script>
     </body>
 </html>

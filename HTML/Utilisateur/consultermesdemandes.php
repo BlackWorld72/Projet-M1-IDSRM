@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <?php require_once $_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/HTML/header.php' ?>
-        <script src="/Projet-M1-IDSRM/JS/gestion_demandes.js"></script>
+        <script src="/Projet-M1-IDSRM/JS/Utilisateur/gestion_demandes.js"></script>
         <script src="/Projet-M1-IDSRM/JS/Utilisateur/afficher_demandes.js"></script>
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
         <title>Consulter mes demandes</title>
@@ -58,7 +58,7 @@
                                     </div>
                                     <div class="row boutons_gestion_demande">
                                         <div class="col-sm-6 text-center">
-                                            <button id="btn_modify" type="submit" class="smaller-btn" name="action" onclick="return confirm('Etes vous sûr de modifier cette demande ?')" value="Update" style="background-color:#db4c3b;">Confirmer</button>
+                                            <button id="btn_modify" type="submit" class="smaller-btn" name="action" onclick="return confirm('Êtes vous sûr de modifier cette demande ?')" value="Update" style="background-color:#db4c3b;">Confirmer</button>
                                         </div>
                                         <div class="col-sm-6 text-center">
                                             <button id="btn_remove" type="button" class="smaller-btn" name="action" onclick="cancel_modify_demande()" value="Delete" style="background-color:#db4c3b;">Annuler</button>
