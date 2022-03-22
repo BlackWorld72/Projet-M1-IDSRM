@@ -5,6 +5,7 @@
         <?php require_once $_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/HTML/header.php' ?>
         <script src="/Projet-M1-IDSRM/JS/Utilisateur/gestion_demandes.js"></script>
         <script src="/Projet-M1-IDSRM/JS/Utilisateur/afficher_demandes.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
         <title>Consulter mes demandes</title>
     </head>
     <body>
@@ -33,65 +34,94 @@
                             <div id="message_erreur" hidden>
                                 <p class="text-center">Une erreur est survenue. Veuillez réessayer ultérieurement.</p>
                             </div>
-                            <div id="informations_demande" class="container" hidden>
-                                <h2 id="titre_projet" class="titre_cote_droit">
-                                    <!-- Nom de la demande -->
-                                </h2>
-                                <!-- /!\ Garder temporairement pour les pages Admin et operateur-->
-                                <!--<div class="row">
-                                    <div class="col align-self-start">
-                                        <p class="fs-5 info_demande" id="nom_demandeur">
-                                            Nom du demandeur
-                                        </p>
+                            <form id="form" enctype="multipart/form-data" action="/Projet-M1-IDSRM/PHP/modify_demande.php" method="POST">
+                                <input type="hidden" readonly id="login_cas" name="login_cas" value="<?php echo phpCAS::getUser(); ?>" required>
+                                <input type="hidden" readonly id="id_demande" name="id_demande" value="" required>
+                                <div id="modify_block" class="container" style="visibility: hidden; display:none;">
+                                    <div class="form-group col-sm-12">
+                                        <label for="intitule" class="form-label">Intitulé du projet</label>
+                                        <input type="text" class="form-control" id="intitule" name="projet_intitule" placeholder="Intitulé du projet"  required>
                                     </div>
-                                    <div class="col align-self-center">
-                                        <p class="fs-5 info_demande" id="prenom_demandeur">
-                                            Prénom du demandeur
-                                        </p>
+                                    <div class="col-sm-12">
+                                        <label for="description" class="form-label">Description du projet</label>
+                                        <textarea class="form-control" id="description" name="projet_description" placeholder="Description du projet" rows="6" required></textarea>
                                     </div>
-                                    <div class="col align-self-end">
-                                        <p class="fs-5 info_demande" id="email_demandeur">
-                                            Email du demandeur
-                                        </p>
+                                    <div class="col-sm-12">
+                                        <label for="fichiers" class="form-label">Plan(s)</label>
+                                        <input class="form-control" onchange="createSelectingFiles(this.files)" accept=".png, .jpeg, .jpg, .stl, .pdf" type="file" name="fichiers[]" id="fichiers" multiple>
                                     </div>
-                                </div>-->
-                                <!-- Description de la demande -->
-                                <div class="info_demande">
-                                    <textarea id="description_projet" style="resize:none" rows="15" class="border-secondary rounded border border-4 form-control" readonly>
-                                    </textarea>
-                                </div>
-                                <div class="row info_demande">
-                                    <div class="col align-self-start">
-                                        <button type="button" class="smaller-btn">
-                                        <span class="btn-label"><i class="fa fa-download"></i></span> Télécharger les fichiers</button>
+                                    <div class="row col-sm-12">
+                                        <label for="datelimite" class="col-sm-4 col-form-label">Date limite</label>
+                                        <div class="col-sm-6">
+                                            <input type="date" class="form-control" id="datelimite" name="projet_datelimite" required>
+                                        </div>
                                     </div>
-                                    <div class="col align-self-end">
-                                        <p class="fs-5 info_demande_importante">Date de début :
-                                            <a id="date_debut"><!-- Date de début de la demande --></a>
-                                        </p>
-                                        <p id="date_limite_info" class="fs-5 info_demande_importante">Date limite :
-                                            <a id="date_limite"><!-- Date limite de la demande --></a>
-                                        </p>
-                                        <p id="date_fin_info" class="fs-5 info_demande_importante">Date de fin :
-                                            <a id="date_fin"><!-- Date de fin de la demande --></a>
-                                        </p>
+                                    <div class="row boutons_gestion_demande">
+                                        <div class="col-sm-6 text-center">
+                                            <button id="btn_modify" type="submit" class="smaller-btn" name="action" onclick="return confirm('Êtes vous sûr de modifier cette demande ?')" value="Update" style="background-color:#db4c3b;">Confirmer</button>
+                                        </div>
+                                        <div class="col-sm-6 text-center">
+                                            <button id="btn_remove" type="button" class="smaller-btn" name="action" onclick="cancel_modify_demande()" value="Delete" style="background-color:#db4c3b;">Annuler</button>
+                                        </div>
                                     </div>
                                 </div>
-                                <p id="suivi_info" class="fs-5 info_demande_importante">Suivi de la pièce :
-                                    <a id="suivi"><!-- Suivi de la pièce en production --></a>
-                                </p>
-                                <div id="boutons_gestion_demande" class="row boutons_gestion_demande">
-                                    <div class="col-sm-6 text-center">
-                                        <button type="button" class="smaller-btn">
-                                            <span id="modifier_demande" class="btn-label"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span> Modifier la demande</button>
+                                <div id="informations_demande" class="container" hidden>
+                                    <h2 id="titre_projet" readonly class="titre_cote_droit">
+                                        <!-- Nom de la demande -->
+                                    </h2>
+                                    <!-- /!\ Garder temporairement pour les pages Admin et operateur-->
+                                    <!--<div class="row">
+                                        <div class="col align-self-start">
+                                            <p class="fs-5 info_demande" id="nom_demandeur">
+                                                Nom du demandeur
+                                            </p>
+                                        </div>
+                                        <div class="col align-self-center">
+                                            <p class="fs-5 info_demande" id="prenom_demandeur">
+                                                Prénom du demandeur
+                                            </p>
+                                        </div>
+                                        <div class="col align-self-end">
+                                            <p class="fs-5 info_demande" id="email_demandeur">
+                                                Email du demandeur
+                                            </p>
+                                        </div>
+                                    </div>-->
+                                    <!-- Description de la demande -->
+                                    <div class="info_demande">
+                                        <textarea id="description_projet" name="description_projet" style="resize:none" rows="15" class="border-secondary rounded border border-4 form-control" readonly>
+                                        </textarea>
                                     </div>
-                                    <div class="col-sm-6 text-center">
-                                        <button type="button" class="smaller-btn">
-                                            <span id="supprimer_demande" class="btn-label"><i class="fa fa-trash-o" aria-hidden="true"></i></span> Supprimer la demande</button>
+                                    <div class="row info_demande">
+                                        <div id="div_download_files" class="col align-self-start">
+                                            <a id="download_button" download="fichiers"><button id="btn_dl_files" type="button" class="smaller-btn"><span class="btn-label"><i class="fa fa-download"></i></span> Télécharger les fichiers</button></a>
+                                        </div>
+                                        <div class="col align-self-end">
+                                            <p class="fs-5 info_demande_importante">Date de début :
+                                                <a id="date_debut"><!-- Date de début de la demande --></a>
+                                            </p>
+                                            <p id="date_limite_info" class="fs-5 info_demande_importante">Date limite :
+                                                <a id="date_limite"><!-- Date limite de la demande --></a>
+                                            </p>
+                                            <p id="date_fin_info" class="fs-5 info_demande_importante">Date de fin :
+                                                <a id="date_fin"><!-- Date de fin de la demande --></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <p id="suivi_info" class="fs-5 info_demande_importante">Suivi de la pièce :
+                                        <a id="suivi"><!-- Suivi de la pièce en production --></a>
+                                    </p>
+                                    <div id="boutons_gestion_demande" class="row boutons_gestion_demande">
+                                        <div class="col-sm-6 text-center">
+                                            <button id="btn_modify" type="button" class="smaller-btn" name="action" onclick="modify_demande()" value="Update"><span id="modifier_demande" class="btn-label"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span> Modifier la demande</button>
+                                        </div>
+                                        <div class="col-sm-6 text-center">
+                                            <button id="btn_remove" type="submit" class="smaller-btn" name="action" onclick="return confirm('Etes vous sûr de supprimer cette demande ?')" value="Delete"><span id="supprimer_demande" class="btn-label"><i class="fa fa-trash-o" aria-hidden="true"></i></span> Supprimer la demande</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <script type="text/javascript">initialiser_affichage_demandes(<?php //echo phpCAS::getUser(); ?>)</script>
+                            </form>
+                            <script type="text/javascript">initialiser_affichage_demandes("<?php echo phpCAS::getUser(); ?>")</script>
                         </div>
                     </div>
                 </div>
