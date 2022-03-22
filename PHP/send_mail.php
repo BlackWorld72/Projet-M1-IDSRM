@@ -1,6 +1,8 @@
 <?php
 
-$mail = json_decode($_POST['extra'], true);
+if(!isset($mail)){
+    $mail = json_decode($_POST['extra'], true);
+}
 $sender = "ne-pas-repondre@idsrm.univ-lemans.fr";
 if( isset( $mail['sender'] ) ){
     $sender = $mail['sender'];
