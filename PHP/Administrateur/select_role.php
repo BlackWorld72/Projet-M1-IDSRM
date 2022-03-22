@@ -1,5 +1,5 @@
 <?php
-    include('../connect_bdd.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/PHP/connect_bdd.php');
 
     $query_roles = "SELECT * FROM role";
     $resultat_roles = $connect->query($query_roles);
