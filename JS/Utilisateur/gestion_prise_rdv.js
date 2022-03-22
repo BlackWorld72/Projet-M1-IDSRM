@@ -1,6 +1,20 @@
 let demandes = [];
 
 /**
+ * Send something to a given php file with POST method
+ * @param {string} thing_to_get - The name of the php file to get the data from, without "send_" and ".php".
+ * @param {string} extra - The extra parameter to send as php GET variable.
+ * @return nothing
+ */
+ function send_to_php(thing_to_send, extra = "null"){
+    fetch("/Projet-M1-IDSRM/PHP/send_"+thing_to_send+".php", {
+        method: 'POST',
+        headers: {'Content-Type':'application/x-www-form-urlencoded'},
+        body: 'extra='+JSON.stringify(extra)
+    });
+}
+
+/**
  * Initialisation de la page (récupération des demandes de l'utilisateur + affichage de la liste des demandes "En attente")
  */
 function initialiser_affichage_demandes(idDemandeur){
@@ -76,6 +90,11 @@ function afficher_prise_rdv(id_demande){
 function envoyer_mail_demande_rdv(id_demande) {
     let confirmation = confirm('Êtes vous sûr d\'envoyer ce mail pour la demande ' + get_projet_id(demandes, id_demande).nom_projet + ' ?');
     if (confirmation) {
-        // TODO
+        let mail = [];
+        mail['sender'] = get_projet_id(demandes, id_demande).mail;
+        mail['content'] = document.getElementById("rediger_mail").innerHTML;
+        mail['to'] = "administrateur";
+        mail['subject'] = "Demande de rendez-vous: "+get_projet_id(demandes, id_demande).nom_projet;
+        send_to_php("mail", mail);
     }
 }
