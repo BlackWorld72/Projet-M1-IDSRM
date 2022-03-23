@@ -368,3 +368,8 @@ a:not([href]):not([class]), a:not([href]):not([class]):hover {
 #prise_rdv {
     position: relative;
 }
+
+/* Page Liste des demandes Opérateur + Administrateur */
+#priorite {
+    color: red;
+}

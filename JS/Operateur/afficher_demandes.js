@@ -3,15 +3,15 @@ let demandes = [];
 /**
  * Initialisation de la page (récupération des demandes de l'utilisateur + affichage de la liste des demandes "En attente")
  */
-function initialiser_affichage_demandes(idDemandeur){
-    demandes = init_variable_liste_projets_par_user(idDemandeur);
-    //demandes = init_variable_liste_projets_par_user('s172746');       // test en local
-    getDemandesAvecEtat("En attente");
+function initialiser_affichage_demandes(){
+    demandes = init_variable_liste_projets();       // test en local
+    console.log("bonjoour", demandes);
+    getDemandesAvecEtat("En cours");
 }
 
 /**
  * Affichage de toutes les demandes de l'utilisateur à partir d'un état donné
- * @param etat - l'état sélectionné depuis l'interface utilisateur (valeurs : "En attente", "En cours", "Terminée")
+ * @param etat - l'état sélectionné depuis l'interface utilisateur (valeurs : "En cours", "Terminée")
  */
 function getDemandesAvecEtat(etat){
     let demandesAvecEtat = get_liste_projets_etat(demandes, etat);
@@ -20,6 +20,7 @@ function getDemandesAvecEtat(etat){
     document.getElementById('informations_demande').hidden = true;
     document.getElementById('message_informatif').hidden = false;
     document.getElementById('message_erreur').hidden = true;
+    document.getElementById('priorite').hidden = true;
 
     // Affichage des boutons associés aux demandes
     for (let demande in demandesAvecEtat){
@@ -28,29 +29,18 @@ function getDemandesAvecEtat(etat){
 
     // Gestion des boutons "En attente", "En cours" et "Terminée"
     switch (etat) {
-        case "En attente":
-            document.getElementById("demande_EnAttente").setAttribute("class","flex-sm-fill text-sm-center nav-link active");
-            document.getElementById("demande_EnCours").setAttribute("class","flex-sm-fill text-sm-center nav-link");
-            document.getElementById("demande_Terminee").setAttribute("class","flex-sm-fill text-sm-center nav-link");
-            document.getElementById('suivi_info').hidden = false;
-            document.getElementById('boutons_gestion_demande').hidden = false;
-            document.getElementById('date_limite_info').hidden = false;
-            document.getElementById('date_fin_info').hidden = true;
-            break;
         case "En cours":
-            document.getElementById("demande_EnAttente").setAttribute("class","flex-sm-fill text-sm-center nav-link");
             document.getElementById("demande_EnCours").setAttribute("class","flex-sm-fill text-sm-center nav-link active");
             document.getElementById("demande_Terminee").setAttribute("class","flex-sm-fill text-sm-center nav-link");
-            document.getElementById('suivi_info').hidden = false;
+            document.getElementById('bloc_suivi').hidden = false;
             document.getElementById('boutons_gestion_demande').hidden = true;
             document.getElementById('date_limite_info').hidden = false;
             document.getElementById('date_fin_info').hidden = true;
             break;
         case "Terminée":
-            document.getElementById("demande_EnAttente").setAttribute("class","flex-sm-fill text-sm-center nav-link");
             document.getElementById("demande_EnCours").setAttribute("class","flex-sm-fill text-sm-center nav-link");
             document.getElementById("demande_Terminee").setAttribute("class","flex-sm-fill text-sm-center nav-link active");
-            document.getElementById('suivi_info').hidden = true;
+            document.getElementById('bloc_suivi').hidden = true;
             document.getElementById('date_limite_info').hidden = true;
             document.getElementById('date_fin_info').hidden = false;
             break;
@@ -66,6 +56,7 @@ function afficher_informations_demande(id_demande){
 
     document.getElementById('message_informatif').hidden = true;
     document.getElementById('message_erreur').hidden = true;
+    document.getElementById('priorite').hidden = true;
 
     if (demande) {
         document.getElementById('informations_demande').hidden = false;
@@ -73,11 +64,18 @@ function afficher_informations_demande(id_demande){
         // On affiche les informations de la demande sur la partie droite
         document.getElementById('titre_projet').innerHTML = demande.nom_projet;
         document.getElementById('description_projet').innerHTML = demande.description_projet;
-        //document.getElementById('nom_demandeur').innerHTML = demande.nom;
-        //document.getElementById('prenom_demandeur').innerHTML = demande.prenom;
-        //document.getElementById('email_demandeur').innerHTML = demande.mail;
+        document.getElementById('nom_demandeur').innerHTML = demande.nom;
+        document.getElementById('prenom_demandeur').innerHTML = demande.prenom;
+        document.getElementById('email_demandeur').innerHTML = demande.mail;
         document.getElementById('date_limite').innerHTML = demande.date_limite;
-        document.getElementById('suivi').innerHTML = demande.suivi;
+        is_demande_urgente(demande.date_limite);
+        set_select_suivi_demande(demande.suivi);
+        let bouton_mettre_a_jour_suivi = document.getElementById("mettre_a_jour_suivi");
+
+        bouton_mettre_a_jour_suivi.onclick = function(e) {
+            mettre_a_jour_suivi_demande(id_demande);
+        }
+
         document.getElementById('date_debut').innerHTML = demande.date_debut;
         document.getElementById('date_fin').innerHTML = demande.date_fin;
     } else {
@@ -95,32 +93,53 @@ function afficher_informations_demande(id_demande){
     }
 }
 
-function cancel_modify_demande() {
-    document.getElementById("modify_block").setAttribute("style","visibility: hidden; display:none;")
-    document.getElementById("informations_demande").setAttribute("style","visibility: show; display:block;")
+function set_select_suivi_demande(suivi_demande) {
+    switch (suivi_demande) {
+        case "Rédaction du cahier des charges":
+            document.getElementById('suivi_info').options[0].selected = true;
+            break;
+        case "Étude et conception":
+            document.getElementById('suivi_info').options[1].selected = true;
+            break;
+        case "Réalisation et fabrication":
+            document.getElementById('suivi_info').options[2].selected = true;
+            break;
+        case "Montage":
+            document.getElementById('suivi_info').options[3].selected = true;
+            break;
+        case "Livraison":
+            document.getElementById('suivi_info').options[4].selected = true;
+            break;
+    }
 }
 
-function modify_demande() {
-    document.getElementById("modify_block").setAttribute("style","visibility: show; display:block;")
-    document.getElementById("informations_demande").setAttribute("style","visibility: hidden; display:none;")
+/**
+ * Vérifie s'il reste moins de 10 jours entre la date d'aujourd'hui et la date limite
+ * @param date_limite la date limite de la demande
+ */
+function is_demande_urgente(date_limite) {
+    date_limite = new Date(date_limite);
+    let current_date = Date.now();
+    let nb_jours_diff = Math.round((current_date - date_limite.getTime()) / (1000 * 3600 * 24));
+
+    if (nb_jours_diff <= 10 && nb_jours_diff > 0) {
+        document.getElementById('priorite').hidden = false;
+    }
 }
 
-function download_files(id_demande, login_cas) {
-    $.ajax({
-        url: '/Projet-M1-IDSRM/PHP/get_files.php',
-        type: 'POST',
-        data: {id_demande:id_demande, login_cas:login_cas},
-        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-        success: function(response) {
-            d = document.getElementById("download_button")
-            if (response != -1) {
-                document.getElementById("btn_dl_files").disabled = false;
-                d.setAttribute("href", response)
-            }
-            else {
-                document.getElementById("btn_dl_files").disabled = true;
-                d.setAttribute("href", "")
-            }
+/**
+ * Met à jour le suivi d'une demande et si le suivi à changer est "Terminée", l'état de la demande est aussi changé en "Terminée"
+ * @param id_demande l'identifiant de la demande
+ */
+function mettre_a_jour_suivi_demande(id_demande) {
+    let demande = get_projet_id(demandes, id_demande);
+    let nouveau_statut = document.getElementById('suivi_info').selectedOptions[0].innerHTML;
+    if (demande.suivi !== nouveau_statut) {
+        let confirmation = confirm('Êtes vous sûr de changer le statut "'+ demande.suivi + '" par "' + nouveau_statut + '" pour le projet "' + get_projet_id(demandes, id_demande).nom_projet + '" ?');
+        if (confirmation) {
+            modifier_suivi_demande(id_demande, nouveau_statut);
         }
-    });
+    } else {
+        confirm('Le nouveau statut doit être différent de l\'actuel ('+ demande.suivi + ') ');
+    }
 }
