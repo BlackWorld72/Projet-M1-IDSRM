@@ -62,7 +62,16 @@
                                         <div class="row col-sm-10">
                                             <label for="equipe_recherche" class="col-sm-6 col-form-label">Nom de l’équipe de recherche</label>
                                             <div class="col-sm-6">
-                                                <input type="text" class="form-control" id="equipe_recherche" name="projet_equipe_recherche" placeholder="Nom de l'équipe de recherche" required>
+                                                <select class="form-control" id="equipe_recherche" name="projet_equipe_recherche" required>
+                                                    <option value="" disabled selected></option>
+                                                    <option value="Matériaux">Matériaux</option>
+                                                    <option value="Transducteurs">Transducteurs</option>
+                                                    <option value="Guides">Guides</option>
+                                                    <option value="Structures">Structures</option>
+                                                    <option value="Enseignant">Enseignant</option>
+                                                    <option value="Etudiant">Etudiant</option>
+                                                    <option value="Autre">Autre</option>
+                                                </select>    
                                             </div>
                                         </div>
                                         <div class="row col-sm-10">
