@@ -41,9 +41,17 @@
         $projets = $connect->query($query_projets);
         $query_projets = 'DELETE FROM demande WHERE id_demande='.$id_demande.';';
     }
-    
+
+    $query_projets = 'SELECT mail FROM demande WHERE id_demande='.$id_demande.';';
+    $projets = $connect->query($query_projets);
+    $row = $projets->fetch_assoc(); 
     $projets = $connect->query($query_projets);
     mysqli_close($connect);
+
+    $mail['to'] = $row['mail'];
+    $mail['content'] = "Votre demande a été modifiée";
+    $mail['subject'] = "Demande modifiée: ".$nom_projet;
+
     header('Location: /Projet-M1-IDSRM/HTML/validation.php');
     exit;
 ?>
