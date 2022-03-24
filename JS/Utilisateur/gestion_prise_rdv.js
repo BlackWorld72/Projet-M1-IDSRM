@@ -6,11 +6,11 @@ let demandes = [];
  * @param {string} extra - The extra parameter to send as php GET variable.
  * @return nothing
  */
- function send_to_php(thing_to_send, extra = "null"){
+function send_to_php(thing_to_send, extra){
     fetch("/Projet-M1-IDSRM/PHP/send_"+thing_to_send+".php", {
         method: 'POST',
-        headers: {'Content-Type':'application/x-www-form-urlencoded'},
-        body: 'extra='+JSON.stringify(extra)
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify(extra) //&content="'+content+'"&subject="'+subject+'"'
     });
 }
 
@@ -90,11 +90,11 @@ function afficher_prise_rdv(id_demande){
 function envoyer_mail_demande_rdv(id_demande) {
     let confirmation = confirm('Êtes vous sûr d\'envoyer ce mail pour la demande ' + get_projet_id(demandes, id_demande).nom_projet + ' ?');
     if (confirmation) {
-        let mail = [];
-        mail['sender'] = get_projet_id(demandes, id_demande).mail;
-        mail['content'] = document.getElementById("rediger_mail").innerHTML;
-        mail['to'] = "administrateur";
-        mail['subject'] = "Demande de rendez-vous: "+get_projet_id(demandes, id_demande).nom_projet;
+        mail = [];
+        mail[0] = get_projet_id(demandes, id_demande).mail;
+        mail[1] = document.getElementById("rediger_mail").innerHTML;
+        mail[2] = "administrateur";
+        mail[3] = "Demande de rendez-vous : "+get_projet_id(demandes, id_demande).nom_projet;
         send_to_php("mail", mail);
     }
 }
