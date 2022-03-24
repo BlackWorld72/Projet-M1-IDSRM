@@ -1,7 +1,6 @@
 <?php
     include('connect_bdd.php');
-    print_r($_POST);
-    print_r($_FILES);
+
     function escape_sql_wild($s)
     /* escapes SQL pattern wildcards in s. */
     {

@@ -4,8 +4,7 @@ let demandes = [];
  * Initialisation de la page (récupération des demandes de l'utilisateur + affichage de la liste des demandes "En attente")
  */
 function initialiser_affichage_demandes(){
-    demandes = init_variable_liste_projets();       // test en local
-    console.log("bonjoour", demandes);
+    demandes = init_variable_liste_projets();
     getDemandesAvecEtat("En cours");
 }
 
@@ -33,7 +32,6 @@ function getDemandesAvecEtat(etat){
             document.getElementById("demande_EnCours").setAttribute("class","flex-sm-fill text-sm-center nav-link active");
             document.getElementById("demande_Terminee").setAttribute("class","flex-sm-fill text-sm-center nav-link");
             document.getElementById('bloc_suivi').hidden = false;
-            document.getElementById('boutons_gestion_demande').hidden = true;
             document.getElementById('date_limite_info').hidden = false;
             document.getElementById('date_fin_info').hidden = true;
             break;
@@ -135,7 +133,7 @@ function mettre_a_jour_suivi_demande(id_demande) {
     let demande = get_projet_id(demandes, id_demande);
     let nouveau_statut = document.getElementById('suivi_info').selectedOptions[0].innerHTML;
     if (demande.suivi !== nouveau_statut) {
-        let confirmation = confirm('Êtes vous sûr de changer le statut "'+ demande.suivi + '" par "' + nouveau_statut + '" pour le projet "' + get_projet_id(demandes, id_demande).nom_projet + '" ?');
+        let confirmation = confirm('Êtes vous sûr de changer le statut "'+ demande.suivi + '" par "' + nouveau_statut + '" pour la demande "' + demande.nom_projet + '" ?');
         if (confirmation) {
             modifier_suivi_demande(id_demande, nouveau_statut);
         }

@@ -76,21 +76,17 @@ function envoie_nouveau_projet(projet){
  * Envoie les informations nécessaires à la mise à jour du suvi d'un projet avec une méthode POST et recharge la page si status = 200
  * @param id_demande identifiant de la demande
  * @param nouveau_suivi_demande le nouveau statut à ajouter au projet
+ * @param nouvel_etat_demande l'état de la demande pour le cas de la validation (optionnel)
  */
-function modifier_suivi_demande(id_demande, nouveau_suivi_demande){
-    let params = 'id_demande=' + id_demande + '&suivi_demande=' + nouveau_suivi_demande;
-    /*if (type_requete === 'delete_role' && role == null) {
-        params = 'email=' + email;
-    } else {
-        params = 'email=' + email + "&role=" + role;
-    }*/
+function modifier_suivi_demande(id_demande, nouveau_suivi_demande, nouvel_etat_demande=""){
+    let params = 'id_demande=' + id_demande + '&suivi_demande=' + nouveau_suivi_demande + '&etat_demande=' + nouvel_etat_demande;
 
     fetch("/Projet-M1-IDSRM/PHP/modify_suivi_demande.php", {
         method: 'POST',
         headers: {'Content-Type':'application/x-www-form-urlencoded'},
         body: params
     }).then(function(response) {
-        if (response.ok && nouveau_suivi_demande === "Terminée") {
+        if (response.ok && (nouveau_suivi_demande === "Terminée" || nouvel_etat_demande === "En cours")) {
             location.reload();
         }
     })
@@ -103,7 +99,6 @@ function modifier_suivi_demande(id_demande, nouveau_suivi_demande){
  */
 function init_variable_liste_projets(){
     var projets = get_liste_projets();
-    console.log("test", projets);
     var liste_projets = [];
     for(var projet in projets){
         liste_projets.push(new Projet(projets[projet]));

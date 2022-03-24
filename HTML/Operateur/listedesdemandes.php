@@ -77,35 +77,25 @@
                                     </div>
                                 </div>
                                 <!-- Suivi de la pièce en production -->
-                                <div id="bloc_suivi" class="row col-sm-12">
-                                    <label for="suivi_info" class="col-sm-3 col-form-label">Suivi de la pièce :</label>
-                                    <div class="col-sm-5">
-                                        <select class="form-select" id="suivi_info" required>
+                                <div id="bloc_suivi" class="row col-sm-11">
+                                    <label for="suivi_info" class="info_demande_importante col-sm-3 col-form-label">Suivi de la pièce :</label>
+                                    <div class="col-sm-6">
+                                        <select class="form-select fs-5" id="suivi_info" required>
                                             <option value="redaction_cahier_charges">Rédaction du cahier des charges</option>
                                             <option value="etude_conception">Étude et conception</option>
                                             <option value="realisation_fabrication">Réalisation et fabrication</option>
                                             <option value="montage">Montage</option>
                                             <option value="livraison">Livraison</option>
-                                            <option value="livraison">Terminée</option>
+                                            <option value="terminee">Terminée</option>
                                         </select>
                                     </div>
-                                    <div class="col-sm-4 text-center">
+                                    <div class="col-sm-2 text-center">
                                         <button type="button" class="smaller-btn">
                                             <span id="mettre_a_jour_suivi" class="btn-label">Mettre à jour le statut</button>
                                     </div>
                                 </div>
                             </div>
-                            <div id="boutons_gestion_demande" class="row boutons_gestion_demande">
-                                <div class="col-sm-6 text-center">
-                                    <button type="button" class="smaller-btn">
-                                        <span id="modifier_demande" class="btn-label"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></span> Modifier la demande</button>
-                                </div>
-                                <div class="col-sm-6 text-center">
-                                    <button type="button" class="smaller-btn">
-                                        <span id="supprimer_demande" class="btn-label"><i class="fa fa-trash-o" aria-hidden="true"></i></span> Supprimer la demande</button>
-                                </div>
-                            </div>
-                            <script type="text/javascript">initialiser_affichage_demandes("<?php //echo phpCAS::getUser(); ?>")</script>
+                            <script type="text/javascript">initialiser_affichage_demandes()</script>
                         </div>
                     </div>
                 </div>

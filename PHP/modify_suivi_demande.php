@@ -24,11 +24,14 @@ function securiser($value){
 
 $id_demande = securiser($_POST['id_demande']);
 $suivi_demande = securiser($_POST['suivi_demande']);
+$etat_demande = securiser($_POST['etat_demande']);
 
-print($suivi_demande);
-print($id_demande);
+if ($etat_demande === "En cours") {
+    $query_roles = $connect->prepare("UPDATE demande SET etat_demande=?, suivi_demande=? WHERE id_demande=?;");
+    $query_roles->bind_param('sss', $etat_demande,$suivi_demande, $id_demande);
 
-if  ($suivi_demande === "Terminée") {
+    $query_roles->execute();
+} else if  ($suivi_demande === "Terminée") {
     $query_roles = $connect->prepare("UPDATE demande SET etat_demande=?, suivi_demande=? WHERE id_demande=?;");
     $query_roles->bind_param('sss', $suivi_demande,$suivi_demande, $id_demande);
 

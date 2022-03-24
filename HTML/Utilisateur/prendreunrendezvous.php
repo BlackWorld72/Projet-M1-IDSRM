@@ -47,14 +47,13 @@ Bien cordialement,
 
 </textarea>
                             </div>
-                            <div id="bouton_envoyer_prise_rdv" class="row bouton_envoyer_prise_rdv">
+                            <div class="row bouton_envoyer_prise_rdv">
                                 <div class="col-sm-12 text-center">
-                                    <button type="button" class="smaller-btn">
-                                        <span id="envoyer_prise_rdv" class="btn-label">Demander un rendez-vous</button>
+                                    <button id="envoyer_prise_rdv" type="button" class="smaller-btn">Demander un rendez-vous</button>
                                 </div>
                             </div>
                         </div>
-                        <script type="text/javascript">initialiser_affichage_demandes(<?php //echo phpCAS::getUser(); ?>)</script>
+                        <script type="text/javascript">initialiser_affichage_demandes(é<?php //echo phpCAS::getUser(); ?>"")</script>
                     </div>
                 </div>
             </div>

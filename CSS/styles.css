@@ -369,6 +369,10 @@ a:not([href]):not([class]), a:not([href]):not([class]):hover {
     position: relative;
 }
 
+.bouton_envoyer_prise_rdv {
+    padding: 20px 0 20px;
+}
+
 /* Page Liste des demandes Opérateur + Administrateur */
 #priorite {
     color: red;
