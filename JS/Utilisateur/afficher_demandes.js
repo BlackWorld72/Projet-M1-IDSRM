@@ -72,15 +72,21 @@ function afficher_informations_demande(id_demande){
         document.getElementById('informations_demande').hidden = false;
 
         // On affiche les informations de la demande sur la partie droite
+        document.getElementById('id_demande').value = id_demande;
         document.getElementById('titre_projet').innerHTML = demande.nom_projet;
+        document.getElementById('intitule').value = demande.nom_projet;
         document.getElementById('description_projet').innerHTML = demande.description_projet;
+        document.getElementById("description").innerHTML = demande.description_projet; 
         //document.getElementById('nom_demandeur').innerHTML = demande.nom;
         //document.getElementById('prenom_demandeur').innerHTML = demande.prenom;
         //document.getElementById('email_demandeur').innerHTML = demande.mail;
+        document.getElementById('id_demande').value = id_demande;
         document.getElementById('date_limite').innerHTML = demande.date_limite;
+        document.getElementById("datelimite").value = demande.date_limite;
         document.getElementById('suivi').innerHTML = demande.suivi;
         document.getElementById('date_debut').innerHTML = demande.date_debut;
-        document.getElementById('date_fin').innerHTML = demande.date_fin;
+        document.getElementById('date_fin').innerHTML = demande.date_fin; 
+        download_files(id_demande, document.getElementById("login_cas").value)  
     } else {
         document.getElementById('message_erreur').hidden = false;
     }

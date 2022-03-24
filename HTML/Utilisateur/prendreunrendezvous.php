@@ -53,7 +53,7 @@ Bien cordialement,
                                 </div>
                             </div>
                         </div>
-                        <script type="text/javascript">initialiser_affichage_demandes(é<?php //echo phpCAS::getUser(); ?>"")</script>
+                        <script type="text/javascript">initialiser_affichage_demandes("<?php echo phpCAS::getUser(); ?>")</script>
                     </div>
                 </div>
             </div>

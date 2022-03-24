@@ -27,15 +27,15 @@
                                 <div class="col-sm-6">
                                     <div class="row">
                                         <input type="hidden" readonly id="login_cas" name="login_cas" value="<?php echo phpCAS::getUser(); ?>" required>
-                                        <input type="hidden" readonly id="ufr" name="ufr" value="inconnue<?php echo phpCAS::getAttributes()['webCodeComposante']; ?>" required>
+                                        <input type="hidden" readonly id="ufr" name="ufr" value="inconnue<?php //echo phpCAS::getAttributes()['webCodeComposante']; ?>" required>
 
                                         <div class="col-sm-6">
                                             <label for="nom"  class="form-label">Nom</label>
-                                            <input type="text" readonly class="form-control" id="nom" name="user_nom" value="<?php echo explode(".", phpCAS::getAttributes()['mail'])[1]; ?>" required>
+                                            <input type="text" readonly class="form-control" id="nom" name="user_nom" value="<?php echo phpCAS::getAttributes()['Sn']; ?>" required>
                                         </div>
                                         <div class="col-sm-6">
                                             <label for="prenom" class="form-label">Prénom</label>
-                                            <input type="text" readonly class="form-control" id="prenom" name="user_prenom" value="<?php echo explode(".", phpCAS::getAttributes()['mail'])[0]; ?>" required>
+                                            <input type="text" readonly class="form-control" id="prenom" name="user_prenom" value="<?php echo phpCAS::getAttributes()['givenName']; ?>" required>
                                         </div>
                                         <div class="col-sm-12" >
                                             <label for="email" class="form-label">Email</label>
@@ -62,7 +62,16 @@
                                         <div class="row col-sm-10">
                                             <label for="equipe_recherche" class="col-sm-6 col-form-label">Nom de l’équipe de recherche</label>
                                             <div class="col-sm-6">
-                                                <input type="text" class="form-control" id="equipe_recherche" name="projet_equipe_recherche" placeholder="Nom de l'équipe de recherche" required>
+                                                <select class="form-control" id="equipe_recherche" name="projet_equipe_recherche" required>
+                                                    <option value="" disabled selected></option>
+                                                    <option value="Matériaux">Matériaux</option>
+                                                    <option value="Transducteurs">Transducteurs</option>
+                                                    <option value="Guides">Guides</option>
+                                                    <option value="Structures">Structures</option>
+                                                    <option value="Enseignant">Enseignant</option>
+                                                    <option value="Etudiant">Etudiant</option>
+                                                    <option value="Autre">Autre</option>
+                                                </select>    
                                             </div>
                                         </div>
                                         <div class="row col-sm-10">

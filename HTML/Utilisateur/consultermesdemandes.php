@@ -5,7 +5,7 @@
         <?php require_once $_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/HTML/header.php' ?>
         <script src="/Projet-M1-IDSRM/JS/gestion_demandes.js"></script>
         <script src="/Projet-M1-IDSRM/JS/Utilisateur/afficher_demandes.js"></script>
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+        <script type="text/javascript" src="/Projet-M1-IDSRM/JS/jquery-1.8.3.min.js"></script>
         <title>Consulter mes demandes</title>
     </head>
     <body>
@@ -121,7 +121,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <script type="text/javascript">initialiser_affichage_demandes("<?php echo phpCAS::getUser(); ?>")</script>
+                            <script type="text/javascript">initialiser_affichage_demandes('<?php echo phpCAS::getUser(); ?>')</script>
                         </div>
                     </div>
                 </div>
