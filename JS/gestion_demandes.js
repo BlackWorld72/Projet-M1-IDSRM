@@ -26,7 +26,7 @@
             result = xmlHttp.responseText;
         }
     }
-    xmlHttp.open("GET", "/Projet-M1-IDSRM/PHP/get_"+thing_to_get+".php?extra="+extra, false); // true for asynchronous 
+    xmlHttp.open("GET", "/Projet-M1-IDSRM/PHP/get_"+thing_to_get+".php?extra="+extra, false); // true for asynchronous
     xmlHttp.send(null);
     return JSON.parse(result);
 }
@@ -73,6 +73,27 @@ function envoie_nouveau_projet(projet){
 }
 
 /**
+ * Envoie les informations nécessaires à la mise à jour du suvi d'un projet avec une méthode POST et recharge la page si status = 200
+ * @param id_demande identifiant de la demande
+ * @param nouveau_suivi_demande le nouveau statut à ajouter au projet
+ * @param nouvel_etat_demande l'état de la demande pour le cas de la validation (optionnel)
+ */
+function modifier_suivi_demande(id_demande, nouveau_suivi_demande, nouvel_etat_demande=""){
+    let params = 'id_demande=' + id_demande + '&suivi_demande=' + nouveau_suivi_demande + '&etat_demande=' + nouvel_etat_demande;
+
+    fetch("/Projet-M1-IDSRM/PHP/modify_suivi_demande.php", {
+        method: 'POST',
+        headers: {'Content-Type':'application/x-www-form-urlencoded'},
+        body: params
+    }).then(function(response) {
+        if (response.ok && (nouveau_suivi_demande === "Terminée" || nouvel_etat_demande === "En cours")) {
+            location.reload();
+        }
+    })
+}
+
+
+/**
  * fonction qui récupère et range dans le tableau la liste des projets de tous les utilisateurs
  * Utile pour les admins et les operateurs
  */
@@ -89,7 +110,7 @@ function init_variable_liste_projets(){
  * fonction qui récupère et range dans le tableau la liste des projets d'un seul utilisateur
  * Utile pour les demandeurs
  */
- function init_variable_liste_projets(user){
+ function init_variable_liste_projets_par_user(user){
     var projetsUser = get_liste_projets_user(user);
     var liste_projets = [];
 

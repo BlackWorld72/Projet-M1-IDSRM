@@ -78,9 +78,8 @@
                                             <label for="prisedeRDV" class="col-sm-6 col-form-label">Souhaitez-vous un rendez-vous ?</label>
                                             <div class="col-sm-4">
                                                 <select class="form-select" id="prisedeRDV" required>
-                                                    <option selected></option>
                                                     <option value="O">Oui</option>
-                                                    <option value="N">Non</option>
+                                                    <option selected value="N">Non</option>
                                                 </select>
                                             </div>
                                         </div>

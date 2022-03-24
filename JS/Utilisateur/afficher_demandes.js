@@ -4,8 +4,8 @@ let demandes = [];
  * Initialisation de la page (récupération des demandes de l'utilisateur + affichage de la liste des demandes "En attente")
  */
 function initialiser_affichage_demandes(idDemandeur){
-    demandes = init_variable_liste_projets(idDemandeur);
-    //demandes = init_variable_liste_projets('s172746');       // test en local
+    demandes = init_variable_liste_projets_par_user(idDemandeur);
+    //demandes = init_variable_liste_projets_par_user('s172746');       // test en local
     getDemandesAvecEtat("En attente");
 }
 
@@ -51,6 +51,7 @@ function getDemandesAvecEtat(etat){
             document.getElementById("demande_EnCours").setAttribute("class","flex-sm-fill text-sm-center nav-link");
             document.getElementById("demande_Terminee").setAttribute("class","flex-sm-fill text-sm-center nav-link active");
             document.getElementById('suivi_info').hidden = true;
+            document.getElementById('boutons_gestion_demande').hidden = true;
             document.getElementById('date_limite_info').hidden = true;
             document.getElementById('date_fin_info').hidden = false;
             break;
@@ -62,7 +63,7 @@ function getDemandesAvecEtat(etat){
  * @param id_demande identifiant de la demande
  */
 function afficher_informations_demande(id_demande){
-    demande = get_projet_id(demandes, id_demande);
+    let demande = get_projet_id(demandes, id_demande);
 
     document.getElementById('message_informatif').hidden = true;
     document.getElementById('message_erreur').hidden = true;
