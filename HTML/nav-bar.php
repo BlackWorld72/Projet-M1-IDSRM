@@ -10,8 +10,7 @@
     </div>
     <ul class="navbar">
         <?php
-            //$user_type = ucfirst($_SESSION['user_type']);
-            $user_type = "Administrateur";
+            $user_type = ucfirst($_SESSION['user_type']);
             switch($user_type){
                 case "Administrateur":
                     $files = ["listedesdemandes.php", "gestiondesroles.php", "faireunedemande.php"];
