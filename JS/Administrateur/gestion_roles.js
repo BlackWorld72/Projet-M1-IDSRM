@@ -232,11 +232,13 @@ function setValues(id) {
     document.getElementById('message_informatif').hidden = true;
 
     activeRole = id
-    document.getElementById("email").value = roles[id].email
-    document.getElementById("email").readOnly = true
-    let index = 1
-    if (roles[id].role == "Opérateur") {
-        index = 2
+    if(id!=-1){
+        document.getElementById("email").value = roles[id].email
+        document.getElementById("email").readOnly = true
+        let index = 1
+        if (roles[id].role == "Opérateur") {
+            index = 2
+        }
     }
 
     // Gestion des boutons "active" ou non
@@ -256,4 +258,3 @@ function setValues(id) {
 /**** Initialisation ****/
 var roles = getAllRoles() 
 initRoles("all")
-//renderAddRole()
