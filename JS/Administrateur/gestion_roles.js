@@ -239,6 +239,8 @@ function setValues(id) {
         if (roles[id].role == "Opérateur") {
             index = 2
         }
+        document.getElementById("role").selectedIndex = index
+        msbuttons()
     }
 
     // Gestion des boutons "active" ou non
@@ -251,8 +253,7 @@ function setValues(id) {
         }
     }
     
-    document.getElementById("role").selectedIndex = index
-    msbuttons()
+
 }
 
 /**** Initialisation ****/
