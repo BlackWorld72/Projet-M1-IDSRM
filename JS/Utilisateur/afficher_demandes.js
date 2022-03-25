@@ -126,6 +126,7 @@ function download_files(id_demande, login_cas) {
             }
             else {
                 document.getElementById("btn_dl_files").disabled = true;
+                document.getElementById("btn_dl_files").innerHTML = "Aucun fichier"
                 d.setAttribute("href", "")
             }
         }
