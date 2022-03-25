@@ -129,7 +129,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="prise_rdv" class="col-sm-6">
+                        <div id="prise_rdv" class="col-sm-5">
                             <div id="zone_prise_rdv" class="container" hidden>
                                 <h2 id="titre_prise_rdv" class="titre_cote_droit">
                                     Prise de rendez-vous
