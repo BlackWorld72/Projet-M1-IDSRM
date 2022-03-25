@@ -50,7 +50,6 @@ function get_select_role(){
  * Permet d'afficher le panel de droite pour ajouter un nouvel utilisateur 
  */
 function renderAddRole() {
-    setValues(0)
     activeRole = -1
     document.getElementById("email").value = ""
     document.getElementById("email").readOnly = false
@@ -257,4 +256,4 @@ function setValues(id) {
 /**** Initialisation ****/
 var roles = getAllRoles() 
 initRoles("all")
-renderAddRole()
+//renderAddRole()
