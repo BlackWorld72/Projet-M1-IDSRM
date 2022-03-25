@@ -75,8 +75,12 @@ function afficher_informations_demande(id_demande){
         document.getElementById('id_demande').value = id_demande;
         document.getElementById('titre_projet').innerHTML = demande.nom_projet;
         document.getElementById('intitule').value = demande.nom_projet;
-        document.getElementById('description_projet').innerHTML = demande.description_projet;
-        document.getElementById("description").innerHTML = demande.description_projet; 
+        desc1 = document.getElementById('description_projet');
+        desc2 = document.getElementById('description');
+        desc1.innerHTML = demande.description_projet;
+        desc2.innerHTML = demande.description_projet; 
+        desc1.rows = countLines(desc1);
+        desc2.rows = countLines(desc2);
         //document.getElementById('nom_demandeur').innerHTML = demande.nom;
         //document.getElementById('prenom_demandeur').innerHTML = demande.prenom;
         //document.getElementById('email_demandeur').innerHTML = demande.mail;
@@ -132,3 +136,10 @@ function download_files(id_demande, login_cas) {
         }
     });
 }
+
+
+function countLines(theArea){
+    var theLines = theArea.value.replace((new RegExp(".{"+theArea.cols+"}","g")),"\n").split("\n");
+    while(theLines[theLines.length-1]=="") theLines.length--;
+    return theLines.length;
+  }

@@ -16,7 +16,7 @@
                         <h1><b>IDSRM</b></h1>
                     </div>
                     <div class="row formulaire">
-                        <div id="partie_gauche_demande" class="container col-sm-6">
+                        <div id="partie_gauche_demande" class="container col-sm-5">
                                 <nav id="menu_demandes" class="navbar navbar-expand-lg nav nav-pills flex-column flex-sm-row">
                                     <a id="demande_EnCours" class="flex-sm-fill text-sm-center nav-link active" onclick="getDemandesAvecEtat('En cours')">En cours</a>
                                     <a id="demande_Terminee" class="flex-sm-fill text-sm-center nav-link" onclick="getDemandesAvecEtat('Terminée')">Terminée</a>
@@ -25,7 +25,7 @@
                                     <!-- La liste des demandes-->
                                 </div>
                         </div>
-                        <div id="description_demande" class="col-sm-6">
+                        <div id="description_demande" class="col-sm-7">
                             <div id="message_informatif">
                                 <p class="text-center">Veuillez appuyer sur une demande de pièce pour voir sa description.</p>
                             </div>
@@ -89,10 +89,11 @@
                                             <option value="terminee">Terminée</option>
                                         </select>
                                     </div>
-                                    <div class="col-sm-2 text-center">
+                                    <!-- ce div fait déborder le bouton de l'écran
+                                     <div class="col-sm-2 text-center"> -->
                                         <button type="button" class="smaller-btn">
                                             <span id="mettre_a_jour_suivi" class="btn-label">Mettre à jour le statut</button>
-                                    </div>
+                                     <!-- </div> -->
                                 </div>
                             </div>
                             <script type="text/javascript">initialiser_affichage_demandes()</script>

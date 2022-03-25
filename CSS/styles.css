@@ -4,7 +4,7 @@
     color:red;
  }
 
-.container.col-sm-6{
+.container.col-sm-5{
     overflow-x: visible !important;
     overflow-y: scroll;
 }
@@ -34,6 +34,8 @@ section {
     border-right: 1px solid #333;
     height: 850px;
     margin-bottom: 25px;
+    margin-left:0;
+    margin-right:0;
 }
 
 @media screen and (max-width: 800px) {

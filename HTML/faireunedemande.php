@@ -26,20 +26,20 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <div class="row">
-                                        <input type="hidden" readonly id="login_cas" name="login_cas" value="<?php echo phpCAS::getUser(); ?>" required>
+                                        <input type="hidden" readonly id="login_cas" name="login_cas" value="<?php echo $_SESSION['idsrm_login_cas']; ?>" required>
                                         <input type="hidden" readonly id="ufr" name="ufr" value="inconnue<?php //echo phpCAS::getAttributes()['webCodeComposante']; ?>" required>
 
                                         <div class="col-sm-6">
                                             <label for="nom"  class="form-label control-label">Nom</label>
-                                            <input type="text" readonly class="form-control" id="nom" name="user_nom" value="<?php echo phpCAS::getAttributes()['Sn']; ?>" required>
+                                            <input type="text" readonly class="form-control" id="nom" name="user_nom" value="<?php echo $_SESSION['user_nom']; ?>" required>
                                         </div>
                                         <div class="col-sm-6">
                                             <label for="prenom" class="form-label control-label">Prénom</label>
-                                            <input type="text" readonly class="form-control" id="prenom" name="user_prenom" value="<?php echo phpCAS::getAttributes()['givenName']; ?>" required>
+                                            <input type="text" readonly class="form-control" id="prenom" name="user_prenom" value="<?php echo $_SESSION['user_prenom']; ?>" required>
                                         </div>
                                         <div class="col-sm-12" >
                                             <label for="email" class="form-label control-label">Email</label>
-                                            <input type="email" readonly class="form-control" id="email" name="user_mail" value="<?php echo phpCAS::getAttributes()['mail']; ?>" required>
+                                            <input type="email" readonly class="form-control" id="email" name="user_mail" value="<?php echo $_SESSION['user_mail']; ?>" required>
                                         </div>
                                         <div class="form-group col-sm-12">
                                             <label for="intitule" class="form-label control-label">Intitulé du projet</label>

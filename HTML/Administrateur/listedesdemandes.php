@@ -16,7 +16,7 @@
                         <h1><b>IDSRM</b></h1>
                     </div>
                     <div class="row formulaire">
-                        <div id="partie_gauche_demande" class="container col-sm-6">
+                        <div id="partie_gauche_demande" class="container col-sm-5">
                                 <nav id="menu_demandes" class="navbar navbar-expand-lg nav nav-pills flex-column flex-sm-row">
                                     <a id="demande_EnAttente" class="flex-sm-fill text-sm-center nav-link active" onclick="getDemandesAvecEtat('En attente')">En attente</a>
                                     <a id="demande_EnCours" class="flex-sm-fill text-sm-center nav-link" onclick="getDemandesAvecEtat('En cours')">En cours</a>
@@ -26,7 +26,7 @@
                                     <!-- La liste des demandes-->
                                 </div>
                         </div>
-                        <div id="description_demande" class="col-sm-6">
+                        <div id="description_demande" class="col-sm-7">
                             <div id="message_informatif">
                                 <p class="text-center">Veuillez appuyer sur une demande de pièce pour voir sa description.</p>
                             </div>
@@ -89,10 +89,10 @@
                                         <div class="col-sm-6">
                                             <p id="suivi_en_attente_valid" class="fs-5">En attente de validation</p>
                                         </div>
-                                        <div class="col-sm-2 text-center">
+                                        <!-- ce div fais déborder le bouton <div class="col-sm-2 text-center"> -->
                                             <button type="button" class="smaller-btn">
                                                 <span id="valider_piece" class="btn-label">Valider la demande</button>
-                                        </div>
+                                        <!--</div>-->
                                     </div>
                                     <div id="bloc_suivi_en_cours" class="row col-sm-11">
                                         <label for="suivi_select" class="info_demande_importante col-sm-3 col-form-label">Suivi de la pièce :</label>
@@ -106,7 +106,7 @@
                                                 <option value="terminee">Terminée</option>
                                             </select>
                                         </div>
-                                        <div class="col-sm-2 text-center">
+                                        <div class="col-sm-2 text-center"> 
                                             <button type="button" class="smaller-btn">
                                                 <span id="mettre_a_jour_suivi" class="btn-label">Mettre à jour le statut</button>
                                         </div>

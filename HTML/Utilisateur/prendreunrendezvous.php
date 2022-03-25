@@ -16,7 +16,7 @@
                     <h1><b>IDSRM</b></h1>
                 </div>
                 <div class="row formulaire">
-                    <div id="partie_gauche_demande" class="container col-sm-6">
+                    <div id="partie_gauche_demande" class="container col-sm-5">
                         <nav id="menu_demandes" class="navbar navbar-expand-lg nav nav-pills flex-column flex-sm-row">
                             <a id="demande_EnAttente" class="flex-sm-fill text-sm-center nav-link active" onclick="getDemandesAvecEtat('En attente')">En attente</a>
                             <a id="demande_EnCours" class="flex-sm-fill text-sm-center nav-link" onclick="getDemandesAvecEtat('En cours')">En cours</a>
@@ -25,7 +25,7 @@
                             <!-- La liste des demandes-->
                         </div>
                     </div>
-                    <div id="prise_rdv" class="col-sm-6">
+                    <div id="prise_rdv" class="col-sm-7">
                         <div id="message_informatif">
                             <p class="text-center">Veuillez appuyer sur une demande de pièce pour pouvoir envoyer un mail.</p>
                         </div>
@@ -53,7 +53,7 @@ Bien cordialement,
                                 </div>
                             </div>
                         </div>
-                        <script type="text/javascript">initialiser_affichage_demandes("<?php echo phpCAS::getUser(); ?>")</script>
+                        <script type="text/javascript">initialiser_affichage_demandes("<?php echo $_SESSION['idsrm_login_cas'] ?>")</script>
                     </div>
                 </div>
             </div>

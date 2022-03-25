@@ -82,7 +82,9 @@ function afficher_informations_demande(id_demande){
 
         // On affiche les informations de la demande sur la partie droite
         document.getElementById('titre_projet').innerHTML = demande.nom_projet;
-        document.getElementById('description_projet').innerHTML = demande.description_projet;
+        desc1 = document.getElementById('description_projet');
+        desc1.innerHTML = demande.description_projet;
+        desc1.rows = countLines(desc1);
         document.getElementById('nom_demandeur').innerHTML = demande.nom;
         document.getElementById('prenom_demandeur').innerHTML = demande.prenom;
         document.getElementById('email_demandeur').innerHTML = demande.mail;
@@ -277,3 +279,9 @@ function envoyer_mail_demande_rdv(id_demande) {
         enlever_prise_rdv();
     }
 }
+
+function countLines(theArea){
+    var theLines = theArea.value.replace((new RegExp(".{"+theArea.cols+"}","g")),"\n").split("\n");
+    while(theLines[theLines.length-1]=="") theLines.length--;
+    return theLines.length;
+  }

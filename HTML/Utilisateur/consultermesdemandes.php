@@ -17,7 +17,7 @@
                         <h1><b>IDSRM</b></h1>
                     </div>
                     <div class="row formulaire">
-                        <div id="partie_gauche_demande" class="container col-sm-6">
+                        <div id="partie_gauche_demande" class="container col-sm-5">
                                 <nav id="menu_demandes" class="navbar navbar-expand-lg nav nav-pills flex-column flex-sm-row">
                                     <a id="demande_EnAttente" class="flex-sm-fill text-sm-center nav-link active" onclick="getDemandesAvecEtat('En attente')">En attente</a>
                                     <a id="demande_EnCours" class="flex-sm-fill text-sm-center nav-link" onclick="getDemandesAvecEtat('En cours')">En cours</a>
@@ -27,7 +27,7 @@
                                     <!-- La liste des demandes-->
                                 </div>
                         </div>
-                        <div id="description_demande" class="col-sm-6">
+                        <div id="description_demande" class="col-sm-7">
                             <div id="message_informatif">
                                 <p class="text-center">Veuillez appuyer sur une demande de pièce pour voir sa description.</p>
                             </div>
@@ -35,7 +35,7 @@
                                 <p class="text-center">Une erreur est survenue. Veuillez réessayer ultérieurement.</p>
                             </div>
                             <form id="form" enctype="multipart/form-data" action="/Projet-M1-IDSRM/PHP/modify_demande.php" method="POST">
-                                <input type="hidden" readonly id="login_cas" name="login_cas" value="<?php echo phpCAS::getUser(); ?>" required>
+                                <input type="hidden" readonly id="login_cas" name="login_cas" value="<?php echo $_SESSION['idsrm_login_cas'] ?>" required>
                                 <input type="hidden" readonly id="id_demande" name="id_demande" value="" required>
                                 <div id="modify_block" class="container" style="visibility: hidden; display:none;">
                                     <div class="form-group col-sm-12">
@@ -89,7 +89,7 @@
                                     </div>-->
                                     <!-- Description de la demande -->
                                     <div class="info_demande">
-                                        <textarea id="description_projet" name="description_projet" style="resize:none" rows="15" class="border-secondary rounded border border-4 form-control" readonly>
+                                        <textarea id="description_projet" name="description_projet" style="resize:none" class="border-secondary rounded border border-4 form-control" readonly>
                                         </textarea>
                                     </div>
                                     <div class="row info_demande">
@@ -121,7 +121,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <script type="text/javascript">initialiser_affichage_demandes('<?php echo phpCAS::getUser(); ?>')</script>
+                            <script type="text/javascript">initialiser_affichage_demandes('<?php echo $_SESSION['idsrm_login_cas'] ?>')</script>
                         </div>
                     </div>
                 </div>
