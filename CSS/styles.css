@@ -1,12 +1,3 @@
-.required label {
-    font-weight: bold;
-}
-.required label:after {
-    color: #e32;
-    content: ' *';
-    display:inline;
-}
-
 .container.col-sm-6{
     overflow-x: visible !important;
     overflow-y: scroll;
