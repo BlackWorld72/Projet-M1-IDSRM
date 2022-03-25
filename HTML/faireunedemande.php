@@ -30,27 +30,27 @@
                                         <input type="hidden" readonly id="ufr" name="ufr" value="inconnue<?php //echo phpCAS::getAttributes()['webCodeComposante']; ?>" required>
 
                                         <div class="col-sm-6">
-                                            <label for="nom"  class="form-label">Nom</label>
+                                            <label for="nom"  class="form-label required">Nom</label>
                                             <input type="text" readonly class="form-control" id="nom" name="user_nom" value="<?php echo phpCAS::getAttributes()['Sn']; ?>" required>
                                         </div>
                                         <div class="col-sm-6">
-                                            <label for="prenom" class="form-label">Prénom</label>
+                                            <label for="prenom" class="form-label required">Prénom</label>
                                             <input type="text" readonly class="form-control" id="prenom" name="user_prenom" value="<?php echo phpCAS::getAttributes()['givenName']; ?>" required>
                                         </div>
                                         <div class="col-sm-12" >
-                                            <label for="email" class="form-label">Email</label>
+                                            <label for="email" class="form-label required">Email</label>
                                             <input type="email" readonly class="form-control" id="email" name="user_mail" value="<?php echo phpCAS::getAttributes()['mail']; ?>" required>
                                         </div>
                                         <div class="form-group col-sm-12">
-                                            <label for="intitule" class="form-label">Intitulé du projet</label>
+                                            <label for="intitule" class="form-label required">Intitulé du projet</label>
                                             <input type="text" class="form-control" id="intitule" name="projet_intitule" placeholder="Intitulé du projet"  required>
                                         </div>
                                         <div class="col-sm-12">
-                                            <label for="description" class="form-label">Description du projet</label>
+                                            <label for="description" class="form-label required">Description du projet</label>
                                             <textarea class="form-control" id="description" name="projet_description" placeholder="Description du projet" rows="6" required></textarea>
                                         </div>
                                         <div class="col-sm-12">
-                                            <label for="fichiers" class="form-label">Plan(s)</label>
+                                            <label for="fichiers" class="form-label required">Plan(s)</label>
                                             <input class="form-control" onchange="createSelectingFiles(this.files)" accept=".png, .jpeg, .jpg, .stl, .pdf" type="file" name="fichiers[]" id="fichiers" multiple>
                                         </div>
                                         <div class="row col-sm-12">
@@ -60,7 +60,7 @@
                                             </div>
                                         </div>
                                         <div class="row col-sm-10">
-                                            <label for="equipe_recherche" class="col-sm-6 col-form-label">Nom de l’équipe de recherche</label>
+                                            <label for="equipe_recherche" class="col-sm-6 col-form-label required">Nom de l’équipe de recherche</label>
                                             <div class="col-sm-6">
                                                 <select class="form-control" id="equipe_recherche" name="projet_equipe_recherche" required>
                                                     <option value="" disabled selected></option>
@@ -74,7 +74,7 @@
                                             </div>
                                         </div>
                                         <div class="row col-sm-10">
-                                            <label for="prisedeRDV" class="col-sm-6 col-form-label">Souhaitez-vous un rendez-vous ?</label>
+                                            <label for="prisedeRDV" class="col-sm-6 col-form-label required">Souhaitez-vous un rendez-vous ?</label>
                                             <div class="col-sm-4">
                                                 <select class="form-select" id="prisedeRDV" required>
                                                     <option value="O">Oui</option>
