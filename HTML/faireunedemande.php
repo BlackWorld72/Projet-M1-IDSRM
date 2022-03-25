@@ -56,7 +56,7 @@
                                         <div class="row col-sm-12">
                                             <label for="datelimite" class="col-sm-4 col-form-label">Date limite</label>
                                             <div class="col-sm-6">
-                                                <input type="date" class="form-control" id="datelimite" name="projet_datelimite" required>
+                                                <input type="date" min="<?php echo date('Y') . '-' . date('m') . '-' . date('d'); ?>" value="<?php echo date('Y')+1 . '-' . date('m') . '-' . date('d'); ?>" class="form-control" id="datelimite" name="projet_datelimite">
                                             </div>
                                         </div>
                                         <div class="row col-sm-10">
@@ -66,9 +66,8 @@
                                                     <option value="" disabled selected></option>
                                                     <option value="Matériaux">Matériaux</option>
                                                     <option value="Transducteurs">Transducteurs</option>
-                                                    <option value="Guides">Guides</option>
-                                                    <option value="Structures">Structures</option>
-                                                    <option value="Enseignant">Enseignant</option>
+                                                    <option value="Guides et Structures">Structures</option>
+                                                    <option value="Enseignement">Enseignant</option>
                                                     <option value="Etudiant">Etudiant</option>
                                                     <option value="Autre">Autre</option>
                                                 </select>    

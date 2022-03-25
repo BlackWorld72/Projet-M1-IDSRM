@@ -3,8 +3,6 @@
  */
 class Role {
     constructor(personne){
-        this.nom = personne.nom
-        this.prenom = personne.prenom
         this.email = personne.email
         this.role = personne.role
     }
@@ -52,12 +50,8 @@ function get_select_role(){
  * Permet d'afficher le panel de droite pour ajouter un nouvel utilisateur 
  */
 function renderAddRole() {
+    setValues(0)
     activeRole = -1
-
-    document.getElementById("nom").value = ""
-    document.getElementById("blocNom").setAttribute("style", "visibility: hidden; display: none;")
-    document.getElementById("blocPrenom").setAttribute("style", "visibility: hidden; display: none;")
-    document.getElementById("prenom").value = ""
     document.getElementById("email").value = ""
     document.getElementById("email").readOnly = false
 
@@ -104,7 +98,7 @@ function getAllRoles() {
     let liste_roles = get_select_role();
     let roles = [];
     for (let key in Object.keys(liste_roles)){
-        roles.push(new Role({nom: "Nom", prenom: "Prénom", email: liste_roles[key]['email'], role: liste_roles[key]['role']}));
+        roles.push(new Role({email: liste_roles[key]['email'], role: liste_roles[key]['role']}));
     }
 
     return roles;
@@ -119,7 +113,7 @@ function initRoles(id) {
     div.textContent = ""
     for (let i = 0 ; i < roles.length ; i++) {
         let btn = document.createElement("button")
-        btn.textContent = roles[i].nom + " " + roles[i].prenom + " - " + roles[i].role
+        btn.textContent = roles[i].email
         btn.setAttribute("class","bouton_liste w-100 btn btn-outline-primary ")
         btn.setAttribute("onclick", "setValues(" + i + ")")
         btn.setAttribute("id", i)
@@ -156,7 +150,7 @@ function getSpeRole(spe, id) {
         console.log(spe)
         if (roles[i].role === spe) {
             let btn = document.createElement("button")
-            btn.textContent = roles[i].nom + " " + roles[i].prenom + " - " + roles[i].role
+            btn.textContent =  + roles[i].email
             btn.setAttribute("class","bouton_liste w-100 btn btn-outline-primary")
             btn.setAttribute("onclick", "setValues(" + i + ")")
             btn.setAttribute("id", i)
@@ -239,12 +233,6 @@ function setValues(id) {
     document.getElementById('message_informatif').hidden = true;
 
     activeRole = id
-    document.getElementById("nom").value = roles[id].nom
-    document.getElementById("nom").readOnly = true
-    document.getElementById("blocNom").setAttribute("style", "visibility: show; display: block;")
-    document.getElementById("blocPrenom").setAttribute("style", "visibility: show; display: block;")
-    document.getElementById("prenom").value = roles[id].prenom
-    document.getElementById("prenom").readOnly = true
     document.getElementById("email").value = roles[id].email
     document.getElementById("email").readOnly = true
     let index = 1
@@ -256,9 +244,9 @@ function setValues(id) {
     let boutons_role = document.getElementsByClassName("bouton_liste");
     for (let i = 0; i < boutons_role.length ; i++){
         if (parseInt(boutons_role[i].id) === parseInt(id)){
-            boutons_role[i].setAttribute("class","bouton_liste w-100 btn btn-outline-primary active");
+            boutons_role[i].classList.add("active");
         } else {
-            boutons_role[i].setAttribute("class","bouton_liste w-100 btn btn-outline-primary");
+            boutons_role[i].classList.remove("active");
         }
     }
     

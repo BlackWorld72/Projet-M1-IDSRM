@@ -35,14 +35,6 @@
                             <div id="informations_role" class="container" hidden>
                                 <div class="row">
                                     <form>
-                                        <div id="blocNom" style="visibility: hidden; display: none;" class="col-sm-6">
-                                            <label for="nom"  class="form-label">Nom</label>
-                                            <input type="text" class="form-control" id="nom" name="user_nom" value="">
-                                        </div>
-                                        <div id="blocPrenom" style="visibility: hidden; display: none;" class="col-sm-6">
-                                            <label for="prenom" class="form-label">Prénom</label>
-                                            <input type="text" class="form-control" id="prenom" name="user_prenom" value="">
-                                        </div>
                                         <div class="col-sm-12" >
                                             <label for="email" class="form-label">Email</label>
                                             <input type="email" class="form-control" id="email" name="user_mail" value="" required>
