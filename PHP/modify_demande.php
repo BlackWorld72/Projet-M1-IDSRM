@@ -36,11 +36,15 @@
     /* Modification / Suppression */
     if ($action == 'Update') {
         $query_projets = 'UPDATE demande SET nom_projet="'.$nom_projet.'", description_projet="'.$description_projet.'", date_limite="'.$date_limite.'" WHERE id_demande='.$id_demande.';';
+        $projets = $connect->query($query_projets);
     } else if ($action == 'Delete') {
         $query_projets = 'DELETE FROM fichier WHERE id_demande='.$id_demande.';';
         $projets = $connect->query($query_projets);
         $query_projets = 'DELETE FROM demande WHERE id_demande='.$id_demande.';';
+        $projets = $connect->query($query_projets);
     }
+
+    file_put_contents("logs", $query_projets);
 
     $query_projets = 'SELECT mail FROM demande WHERE id_demande='.$id_demande.';';
     $projets = $connect->query($query_projets);

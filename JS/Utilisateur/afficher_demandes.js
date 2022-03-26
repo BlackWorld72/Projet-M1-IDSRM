@@ -85,8 +85,10 @@ function afficher_informations_demande(id_demande){
         //document.getElementById('prenom_demandeur').innerHTML = demande.prenom;
         //document.getElementById('email_demandeur').innerHTML = demande.mail;
         document.getElementById('id_demande').value = id_demande;
+        
         document.getElementById('date_limite').innerHTML = demande.date_limite;
-        document.getElementById("datelimite").value = demande.date_limite;
+        [day, month, year] = (demande.date_limite).split('/');
+        document.getElementById("datelimite").value = [year, month, day].join('-');;
         document.getElementById('suivi').innerHTML = demande.suivi;
         document.getElementById('date_debut').innerHTML = demande.date_debut;
         document.getElementById('date_fin').innerHTML = demande.date_fin; 
@@ -144,3 +146,17 @@ function countLines(theArea){
     while(theLines[theLines.length-1]=="") theLines.length--;
     return theLines.length;
   }
+
+  function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
