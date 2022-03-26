@@ -18,7 +18,7 @@ function send_to_php(thing_to_send, extra){
  * Initialisation de la page (récupération des demandes de l'utilisateur + affichage de la liste des demandes "En attente")
  */
 function initialiser_affichage_demandes(idDemandeur){
-    demandes = init_variable_liste_projets(idDemandeur);
+    demandes = init_variable_liste_projets_par_user(idDemandeur);
     //demandes = init_variable_liste_projets('s172746');       // test en local
     getDemandesAvecEtat("En attente");
 }

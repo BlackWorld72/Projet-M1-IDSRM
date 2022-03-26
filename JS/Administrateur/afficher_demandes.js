@@ -109,6 +109,7 @@ function afficher_informations_demande(id_demande){
 
         document.getElementById('date_debut').innerHTML = demande.date_debut;
         document.getElementById('date_fin').innerHTML = demande.date_fin;
+        download_files(id_demande, demande.login_cas)  
     } else {
         document.getElementById('message_erreur').hidden = false;
     }
@@ -165,10 +166,12 @@ function download_files(id_demande, login_cas) {
             d = document.getElementById("download_button")
             if (response != -1) {
                 document.getElementById("btn_dl_files").disabled = false;
+                document.getElementById("btn_dl_files").innerHTML = '<a id="download_button" download="fichiers.zip"><button id="btn_dl_files" type="button" class="smaller-btn"><span class="btn-label"><i class="fa fa-download"></i></span> Télécharger les fichiers</button></a>'
                 d.setAttribute("href", response)
             }
             else {
                 document.getElementById("btn_dl_files").disabled = true;
+                document.getElementById("btn_dl_files").innerHTML = "Aucun fichier"
                 d.setAttribute("href", "")
             }
         }

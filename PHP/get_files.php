@@ -15,23 +15,22 @@
     
     $query_projets = 'SELECT path FROM fichier WHERE id_demande='.$id_demande.';';
     $result_projets = $connect->query($query_projets);
-
+    
 	if (mysqli_num_rows($result_projets) == 0) {
 		echo -1;
 		exit;
 	}
-
+    
     $zip_name = $_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/upload_files/fichiers'.$id_demande.'.zip';
     $zip = new ZipArchive;
-	if ($zip->open($zip_name, ZipArchive::OVERWRITE) === TRUE) {
+	if ($zip->open($zip_name, ZIPARCHIVE::CREATE | ZIPARCHIVE::OVERWRITE ) === TRUE) {
         while ($row = mysqli_fetch_array($result_projets)) {
 			$file_name = explode("/", $row['path']);
 			$length = sizeof($file_name)-1;
-            $zip->addFile($_SERVER['DOCUMENT_ROOT'] .$row['path'], $file_name[$length]);
+            $zip->addFile($row['path'], $file_name[$length]);
         }
 		$zip->close();
 	}
-
 	echo '/Projet-M1-IDSRM/upload_files/fichiers'.$id_demande.'.zip';
     mysqli_close($connect);
     exit;

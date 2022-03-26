@@ -94,7 +94,7 @@
                                     </div>
                                     <div class="row info_demande">
                                         <div id="div_download_files" class="col align-self-start">
-                                            <a id="download_button" download="fichiers"><button id="btn_dl_files" type="button" class="smaller-btn"><span class="btn-label"><i class="fa fa-download"></i></span> Télécharger les fichiers</button></a>
+                                            <a id="download_button" download="fichiers.zip"><button id="btn_dl_files" type="button" class="smaller-btn"><span class="btn-label"><i class="fa fa-download"></i></span> Télécharger les fichiers</button></a>
                                         </div>
                                         <div class="col align-self-end">
                                             <p class="fs-5 info_demande_importante">Date de début :

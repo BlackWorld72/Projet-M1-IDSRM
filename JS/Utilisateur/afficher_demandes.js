@@ -126,6 +126,7 @@ function download_files(id_demande, login_cas) {
             d = document.getElementById("download_button")
             if (response != -1) {
                 document.getElementById("btn_dl_files").disabled = false;
+                document.getElementById("btn_dl_files").innerHTML = '<a id="download_button" download="fichiers.zip"><button id="btn_dl_files" type="button" class="smaller-btn"><span class="btn-label"><i class="fa fa-download"></i></span> Télécharger les fichiers</button></a>'
                 d.setAttribute("href", response)
             }
             else {

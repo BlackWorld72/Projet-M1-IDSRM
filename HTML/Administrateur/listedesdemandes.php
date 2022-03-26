@@ -5,6 +5,8 @@
         <?php require_once $_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/HTML/header.php' ?>
         <script src="/Projet-M1-IDSRM/JS/gestion_demandes.js"></script>
         <script src="/Projet-M1-IDSRM/JS/Administrateur/afficher_demandes.js"></script>
+        <script type="text/javascript" src="/Projet-M1-IDSRM/JS/jquery-1.8.3.min.js"></script>
+ 
         <title>Liste des demandes</title>
     </head>
     <body>
@@ -60,10 +62,9 @@
                                     </textarea>
                                 </div>
                                 <div class="row info_demande">
-                                    <div class="col align-self-start">
-                                        <button type="button" class="smaller-btn">
-                                        <span class="btn-label"><i class="fa fa-download"></i></span> Télécharger les fichiers</button>
-                                    </div>
+                                    <div id="div_download_files" class="col align-self-start">
+                                            <a id="download_button" download="fichiers.zip"><button id="btn_dl_files" type="button" class="smaller-btn"><span class="btn-label"><i class="fa fa-download"></i></span> Télécharger les fichiers</button></a>
+                                        </div>
                                     <div class="col align-self-end">
                                         <p class="fs-5 info_demande_importante">Date de début :
                                             <a id="date_debut"><!-- Date de début de la demande --></a>
