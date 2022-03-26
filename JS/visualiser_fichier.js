@@ -35,6 +35,7 @@ function createSelectingFiles(files) {
     inp.setAttribute("onChange", "onChangeSelectFiles()")
     inp.setAttribute("name", "selectFiles");
     inp.setAttribute("id", "selectFiles");
+    inp.setAttribute("class", "form-control");    
     for (let i = 0 ; i < files.length ; i++) {
         let opt = document.createElement('option')
         opt.textContent = String(files[i].name)
