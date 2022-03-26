@@ -1,1 +1,0 @@
-DELETE FROM demande WHERE id_demande=65;

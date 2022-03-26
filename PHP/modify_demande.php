@@ -44,8 +44,6 @@
         $projets = $connect->query($query_projets);
     }
 
-    file_put_contents("logs", $query_projets);
-
     $query_projets = 'SELECT mail FROM demande WHERE id_demande='.$id_demande.';';
     $projets = $connect->query($query_projets);
     $row = $projets->fetch_assoc(); 
