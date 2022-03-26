@@ -113,6 +113,7 @@ function initRoles(id) {
     for (let i = 0 ; i < roles.length ; i++) {
         let btn = document.createElement("button")
         btn.textContent = roles[i].email
+        console.log(roles[i].email)
         btn.setAttribute("class","bouton_liste w-100 btn btn-outline-primary ")
         btn.setAttribute("onclick", "setValues(" + i + ")")
         btn.setAttribute("id", i)
@@ -133,6 +134,7 @@ function updateBar(id) {
 
     document.getElementById('informations_role').hidden = true;
     document.getElementById('message_informatif').hidden = false;
+    
 }
 
 /**
@@ -145,11 +147,13 @@ function getSpeRole(spe, id) {
     updateBar(id)
     div.textContent = ""
     for (let i = 0 ; i < roles.length ; i++) {
-        console.log(roles[i].role)
-        console.log(spe)
+
         if (roles[i].role === spe) {
+            console.log(roles[i].email)
+            console.log(spe)
             let btn = document.createElement("button")
-            btn.textContent =  + roles[i].email
+            btn.textContent =  roles[i].email
+
             btn.setAttribute("class","bouton_liste w-100 btn btn-outline-primary")
             btn.setAttribute("onclick", "setValues(" + i + ")")
             btn.setAttribute("id", i)
