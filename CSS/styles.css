@@ -4,6 +4,10 @@
     color:red;
  }
 
+select.form-control {
+    -webkit-appearance: menulist;
+}
+
 .container.col-sm-5{
     overflow-x: visible !important;
     overflow-y: scroll;
