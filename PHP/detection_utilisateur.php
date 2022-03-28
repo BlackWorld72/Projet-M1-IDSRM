@@ -28,6 +28,6 @@ if(isset($result[0])){
 }
 mysqli_close($connect);
 
-//$_SESSION["user_type"] = "administrateur";
+//$_SESSION["user_type"] = "operateur";
 
 ?>

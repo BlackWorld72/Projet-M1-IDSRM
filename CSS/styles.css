@@ -31,16 +31,19 @@ section {
 }
 
 #menu_demandes{
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 1) 100%);
     flex-direction: unset !important;
 }
 
 #partie_gauche_demande{
+    padding-top: 0px;
     border-right: 1px solid #333;
-    height: 850px;
+    height: 85vh;
     margin-bottom: 25px;
     margin-left:0;
     margin-right:0;
 }
+
 
 @media screen and (max-width: 800px) {
     #partie_gauche_demande{

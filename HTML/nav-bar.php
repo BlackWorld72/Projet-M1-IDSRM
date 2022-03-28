@@ -19,7 +19,7 @@
                     $files = ["listedesdemandes.php", "faireunedemande.php"];
                     break;
                 case "Utilisateur":
-                    $files = ["faireunedemande.php", "prendreunrendezvous.php", "consultermesdemandes.php"];
+                    $files = ["faireunedemande.php", "consultermesdemandes.php"];
                     break;
             }
 
