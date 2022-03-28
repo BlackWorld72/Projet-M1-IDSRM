@@ -202,30 +202,18 @@
                                 </h2>
                                 <!-- Prise de rendez-vous -->
                                 <?php if(strcmp($_SESSION["user_type"], "utilisateur") == 0){
-                                        echo "<p id='message_information_redaction_mail'>Pour prendre un rendez-vous avec un administrateur responsable du suivi de votre pièce, veuillez rédiger votre mail ci-dessous.</p>
-                                        <div class='zone_redaction_mail'>
-                                                <textarea id='rediger_mail' style='resize:none' rows='18' class='border-secondary rounded border border-4 form-control'>Bonjour,
+                                        echo "<p id='message_information_redaction_mail'>Pour prendre un rendez-vous avec un administrateur responsable du suivi de votre pièce, veuillez rédiger votre mail ci-dessous.</p>";
                                         
-                                        Je souhaiterais ajouter de nouvelles informations pour la création de ma pièce. Serait-il possible de convenir ensemble d'un rendez-vous ?
-                                        
-                                        Bien cordialement,
-                                        
-                                        </textarea>
-                                        </div>";
                                     
                                     }else { //administrateur
-                                        echo "<p id='message_information_redaction_mail'>Pour prendre un rendez-vous avec le demandeur, veuillez rédiger votre mail ci-dessous.</p>
-                                        <div class='zone_redaction_mail'>
-                                        <textarea id='rediger_mail' style='resize:none' rows='18' class='border-secondary rounded border border-4 form-control'>Bonjour,
+                                        echo "<p id='message_information_redaction_mail'>Pour prendre un rendez-vous avec le demandeur, veuillez rédiger votre mail ci-dessous.</p>";
                                         
-                                        J'ai bien pris connaissance de votre projet, mais je souhaiterais convenir d'un rendez-vous avec vous pour clarifier certains points concernant la pièce à créer.
-                                        
-                                        Bien cordialement,
-                                        
-                                        </textarea>
-                                        </div>";
                                     }
                                     ?>    
+                                <div class='zone_redaction_mail'>
+                                    <textarea id='rediger_mail' style='resize:none' rows='18' class='border-secondary rounded border border-4 form-control'>
+                                    </textarea>
+                                </div>";
                                 <div id='boutons_gestion_demande' class='row boutons_gestion_demande'>
                                     <div class='col-sm-6 text-center'>
                                         <button id='annuler_prise_rdv' type='button' class='smaller-btn'>Annuler</button>
