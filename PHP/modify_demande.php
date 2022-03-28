@@ -29,8 +29,9 @@
 	  $projets = $connect->query($query_projets);
     $row = $projets->fetch_assoc(); 
 		if ($row['login_cas'] != $login_cas) {
-        mysqli_close($connect);
-        header('Location: /Projet-M1-IDSRM/HTML/validation.php');
+            mysqli_close($connect);
+            header('Location: /Projet-M1-IDSRM/HTML/validation.php');
+            exit();
 		}
 
     /* Modification / Suppression */

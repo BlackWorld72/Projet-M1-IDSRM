@@ -139,7 +139,7 @@
     <section class="validate">
         <div class="main-container">
             <h1>Votre demande a bien été enregistrée</h1>
-            <h2>Vous allez être redirigé dans <span id="counter">4</span> secondes</h2>
+            <h2>Vous allez être redirigé dans <span id="counter">3</span> secondes</h2>
             <div class="check-container">
                 <div class="check-background">
                     <svg viewBox="0 0 65 51" fill="none" >
