@@ -287,19 +287,31 @@ function set_select_suivi_demande(suivi_demande) {
  * Affichage de la prise de rdv
  */
  function  afficher_prise_rdv(prenom_nom_demandeur) {
+    document.getElementById('description_demande').classList.remove('col-sm-7');
+    document.getElementById('description_demande').classList.add('col-sm-6');
     document.getElementById("zone_prise_rdv").hidden = false;
     document.getElementById("partie_gauche_demande").hidden = true;
     document.getElementById('bloc_suivi').hidden = true;
     document.getElementById('boutons_gestion_demande').hidden = true;
     document.getElementById('demander_prise_rdv').hidden = true;
-    document.getElementById('description_demande').classList.remove('col-sm-7');
-    document.getElementById('description_demande').classList.add('col-sm-6');
-    document.getElementById("rediger_mail").innerHTML =
-        "Bonjour " + prenom_nom_demandeur[0] + " " + prenom_nom_demandeur[1] + ",\n" +
-        "\n" +
-        "J'ai bien pris connaissance de votre projet, mais je souhaiterais convenir d'un rendez-vous avec vous pour clarifier certains points concernant la pièce à créer.\n" +
-        "\n" +
-        "Bonne journée.";
+
+    if(user_type != "utilisateur"){
+        document.getElementById("rediger_mail").innerHTML =
+            "Bonjour " + prenom_nom_demandeur[0] + " " + prenom_nom_demandeur[1] + ",\n" +
+            "\n" +
+            "J'ai bien pris connaissance de votre projet, mais je souhaiterais convenir d'un rendez-vous avec vous pour clarifier certains points concernant la pièce à créer.\n" +
+            "\n" +
+            "Bonne journée.";
+    }else{
+        document.getElementById("rediger_mail").innerHTML =
+        "Bonjour,\n\n"+                                       
+        "Je souhaiterais ajouter de nouvelles informations pour la création de ma pièce. Serait-il possible de convenir ensemble d'un rendez-vous ?\n\n"+
+        "Bien cordialement, "+prenom_nom_demandeur[0] + " " + prenom_nom_demandeur[1];
+    }
+    desc1 = document.getElementById('description_projet');
+    desc2 = document.getElementById('description');
+    desc1.rows = countLines(desc1);
+    desc2.rows = countLines(desc2);
 }
 
 /**
@@ -313,6 +325,12 @@ function set_select_suivi_demande(suivi_demande) {
     document.getElementById('demander_prise_rdv').hidden = false;
     document.getElementById('description_demande').classList.remove('col-sm-6');
     document.getElementById('description_demande').classList.add('col-sm-7');
+    desc1 = document.getElementById('description_projet');
+    desc2 = document.getElementById('description');
+    desc1.innerHTML = demande.description_projet;
+    desc2.innerHTML = demande.description_projet; 
+    desc1.rows = countLines(desc1);
+    desc2.rows = countLines(desc2);
 }
 
 
@@ -381,13 +399,7 @@ function countLines(textarea) {
     if (result == 0) result = 1;
     return result;
 }
-/*
-function countLines(theArea){
-    var theLines = theArea.value.replace((new RegExp(".{"+theArea.cols+"}","g")),"\n").split("\n");
-    while(theLines[theLines.length-1]=="") theLines.length--;
-    return theLines.length;
-  }
-*/
+
   function formatDate(date) {
     var d = new Date(date),
         month = '' + (d.getMonth() + 1),
