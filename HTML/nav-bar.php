@@ -34,7 +34,7 @@
                 echo "<li><a href='/Projet-M1-IDSRM/HTML/$user_type/$page'>$title</a>";
             }
         ?>
-        <li><a href="?logout=">Déconnexion</a>
+        <li class="logout"><a href="?logout=">Déconnexion</a>
     </ul>
 </section>
 <script>
