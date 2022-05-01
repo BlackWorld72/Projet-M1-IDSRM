@@ -52,15 +52,15 @@
     $url = "/Projet-M1-IDSRM/PHP/send_mail.php";
     $content[0] = null;
     $content[1] = "Votre demande a été modifiée. Si vous n'êtes pas à l'origine de ces modifications, vous pouvez consulter celles-ci sur la plateforme demande-meca.";
-    $content[2] = "Demande modifiée: ".$nom_projet;
-    $content[3] = $mail_demandeur;  
+    $content[2] = $mail_demandeur;  
+    $content[3] = "Demande modifiée: ".$nom_projet;
+
     $content = json_encode($content);
 
     $curl = curl_init($url);
     curl_setopt($curl, CURLOPT_HEADER, false);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($curl, CURLOPT_HTTPHEADER,
-            array("Content-type: application/json"));
+    curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-type: application/json"));
     curl_setopt($curl, CURLOPT_POST, true);
     curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
 
