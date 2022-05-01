@@ -42,6 +42,7 @@
                                 <p class="text-center">Une erreur est survenue. Veuillez réessayer ultérieurement.</p>
                             </div>
                             <form id="form" enctype="multipart/form-data" action="/Projet-M1-IDSRM/PHP/modify_demande.php" method="POST">
+                                <input type="hidden" readonly id="mail_demande" name="mail_demande" value="" required>
                                 <input type="hidden" readonly id="login_cas" name="login_cas" value="<?php echo $_SESSION['idsrm_login_cas'] ?>" required>
                                 <input type="hidden" readonly id="id_demande" name="id_demande" value="" required>
                                 <div id="modify_block" class="container" style="visibility: hidden; display:none;">

@@ -23,6 +23,7 @@
     $date_limite = $_POST["projet_datelimite"];
     $login_cas = $_POST["login_cas"];
     $id_demande = $_POST["id_demande"];
+    $mail_demandeur = $_POST['mail_demande'];
 
     /* Verification de l'utilisateur - Securisation de la requete */
     $query_projets = 'SELECT login_cas FROM demande WHERE id_demande='.$id_demande.';';
@@ -45,15 +46,34 @@
         $projets = $connect->query($query_projets);
     }
 
-    $query_projets = 'SELECT mail FROM demande WHERE id_demande='.$id_demande.';';
-    $projets = $connect->query($query_projets);
-    $row = $projets->fetch_assoc(); 
-    $projets = $connect->query($query_projets);
     mysqli_close($connect);
 
-    $mail['to'] = $row['mail'];
-    $mail['content'] = "Votre demande a été modifiée";
-    $mail['subject'] = "Demande modifiée: ".$nom_projet;
+    //envoie d'un mail pour notifier l'utilisateur
+    $url = "/Projet-M1-IDSRM/PHP/send_mail.php";
+    $content[0] = null;
+    $content[1] = "Votre demande a été modifiée. Si vous n'êtes pas à l'origine de ces modifications, vous pouvez consulter celles-ci sur la plateforme demande-meca.";
+    $content[2] = "Demande modifiée: ".$nom_projet;
+    $content[3] = $mail_demandeur;  
+    $content = json_encode($content);
+
+    $curl = curl_init($url);
+    curl_setopt($curl, CURLOPT_HEADER, false);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_HTTPHEADER,
+            array("Content-type: application/json"));
+    curl_setopt($curl, CURLOPT_POST, true);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
+
+    $json_response = curl_exec($curl);
+    $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+
+    if ( $status != 201 ) {
+        die("Error: call to URL $url failed with status $status, response $json_response, curl_error " . curl_error($curl) . ", curl_errno " . curl_errno($curl));
+    }
+
+
+    curl_close($curl);
 
     header('Location: /Projet-M1-IDSRM/HTML/validation.php');
     exit;
