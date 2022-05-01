@@ -119,6 +119,7 @@ function afficher_informations_demande(id_demande){
 
         // On affiche les informations de la demande sur la partie droite
         document.getElementById('id_demande').value = id_demande;
+        document.getElementById('mail_demande').value = demande.mail;
         document.getElementById('titre_projet').innerHTML = demande.nom_projet;
         document.getElementById('intitule').value = demande.nom_projet;
         desc1 = document.getElementById('description_projet');
@@ -263,7 +264,7 @@ function set_select_suivi_demande(suivi_demande) {
     if (demande.suivi !== nouveau_statut) {
         let confirmation = confirm('Êtes vous sûr de changer le statut "'+ demande.suivi + '" par "' + nouveau_statut + '" pour la demande "' + get_projet_id(demandes, id_demande).nom_projet + '" ?');
         if (confirmation) {
-            modifier_suivi_demande(id_demande, nouveau_statut);
+            modifier_suivi_demande(id_demande, nouveau_statut, demande.mail);
         }
     } else {
         confirm('Le nouveau statut doit être différent de l\'actuel ('+ demande.suivi + ') ');
@@ -279,7 +280,7 @@ function set_select_suivi_demande(suivi_demande) {
     let demande = get_projet_id(demandes, id_demande);
     let confirmation = confirm('Êtes vous sûr de valider la demande "' + demande.nom_projet + '" ?');
     if (confirmation) {
-        modifier_suivi_demande(id_demande, "Rédaction du cahier des charges", "En cours");
+        modifier_suivi_demande(id_demande, "Rédaction du cahier des charges", demande.mail, "En cours");
     }
 }
 

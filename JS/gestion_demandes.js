@@ -77,9 +77,10 @@ function envoie_nouveau_projet(projet){
  * @param id_demande identifiant de la demande
  * @param nouveau_suivi_demande le nouveau statut à ajouter au projet
  * @param nouvel_etat_demande l'état de la demande pour le cas de la validation (optionnel)
+ * @param mail_demandeur le mail du demandeur pour envoie de notification par mail
  */
-function modifier_suivi_demande(id_demande, nouveau_suivi_demande, nouvel_etat_demande=""){
-    let params = 'id_demande=' + id_demande + '&suivi_demande=' + nouveau_suivi_demande + '&etat_demande=' + nouvel_etat_demande;
+function modifier_suivi_demande(id_demande, nouveau_suivi_demande, mail_demandeur, nouvel_etat_demande=""){
+    let params = 'id_demande=' + id_demande + '&suivi_demande=' + nouveau_suivi_demande + '&etat_demande=' + nouvel_etat_demande + '&mail_demandeur=' +mail_demandeur;
 
     fetch("/Projet-M1-IDSRM/PHP/modify_suivi_demande.php", {
         method: 'POST',
