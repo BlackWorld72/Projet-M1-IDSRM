@@ -45,6 +45,7 @@ $headers = 'From: '. $sender . "\r\n" .
     'X-Mailer: PHP/' . phpversion();
 
 $subject = '[IDSRM] - '.$mail['subject'];
+$subject = '=?utf-8?B?'.base64_encode($subject).'?=';
 $message = $content;
 
 if(is_array($to)){

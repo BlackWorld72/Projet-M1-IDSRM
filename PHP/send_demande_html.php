@@ -49,6 +49,36 @@
         $req = $connect->query($query_projets);
     }
     mysqli_close($connect);
+
+    $prisedeRDV = $_POST["prisedeRDV"];
+  //envoie d'un mail pour notifier l'utilisateur
+    $url = "http://altea.univ-lemans.fr/Projet-M1-IDSRM/PHP/send_mail.php";
+    $content[0] = null;
+    $content[1] = "Une nouvelle demande est en atente de validation sur la plateforme demande-méca!";
+    if(strcmp($prisedeRDV, "O") == 0){
+      $content[1] = $content[1]." L'utilisateur souhaite prendre un rendez-vous (son mail: ".$mail." ).";
+    }
+    $content[2] = "administrateur";  
+    $content[3] = "Nouvelle demande: ".$titre;
+
+    $content = json_encode($content);
+
+    $curl = curl_init($url);
+    curl_setopt($curl, CURLOPT_HEADER, false);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_HTTPHEADER, array("Content-type: application/json"));
+    curl_setopt($curl, CURLOPT_POST, true);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
+
+    $json_response = curl_exec($curl);
+    $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+
+
+
+    curl_close($curl);
+
+
     header('Location: /Projet-M1-IDSRM/HTML/validation.php');
     exit;
 ?>

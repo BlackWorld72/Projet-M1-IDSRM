@@ -76,7 +76,7 @@
                                         <div class="row col-sm-10">
                                             <label for="prisedeRDV" class="col-sm-6 col-form-label control-label">Souhaitez-vous un rendez-vous ?</label>
                                             <div class="col-sm-4">
-                                                <select class="form-select" id="prisedeRDV" required>
+                                                <select class="form-select" name="prisedeRDV" id="prisedeRDV" required>
                                                     <option value="O">Oui</option>
                                                     <option selected value="N">Non</option>
                                                 </select>
