@@ -1,5 +1,6 @@
 <?php
-
+//si l'utilisateur n'est pas authentifié il ne peux pas faire ça
+if(!isset($_SESSION['idsrm_login_cas'])) return false;
 
 $m = json_decode(file_get_contents('php://input'), true);
 $mail['sender'] = $m[0];
@@ -56,5 +57,8 @@ if(is_array($to)){
 else{
     mail($to, $subject, $message, $headers);
 }
+
+//log utile en cas de spam de mails, dans /var/log/syslog
+syslog(1, "L'utilisateur ".$_SESSION['idsrm_login_cas']." est responsable de l'envoie d'un mail.");
 
 ?>

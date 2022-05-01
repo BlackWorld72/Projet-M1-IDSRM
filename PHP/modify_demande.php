@@ -1,6 +1,7 @@
 <?php
     include('connect_bdd.php');
-
+    //si l'utilisateur n'est pas authentifié il ne peux pas faire ça
+    if(!isset($_SESSION['idsrm_login_cas'])) return false;
     function escape_sql_wild($s) /* escapes SQL pattern wildcards in s. */ {
       $result = array();
       foreach(str_split($s) as $ch)
@@ -25,6 +26,9 @@
     $id_demande = $_POST["id_demande"];
     $mail_demandeur = $_POST['mail_demande'];
 
+    //Si l'utilisateur n'est ni l'auteur de la demande, ni un admin, il ne peux pas modifier la demande
+    if(strcmp($_SESSION['idsrm_login_cas'], $login_cas) !=0 && strcmp("administrateur", $_SESSION["user_type"])!=0) return false;
+    
     /* Verification de l'utilisateur - Securisation de la requete */
     $query_projets = 'SELECT login_cas FROM demande WHERE id_demande='.$id_demande.';';
 	  $projets = $connect->query($query_projets);

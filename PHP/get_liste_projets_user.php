@@ -1,5 +1,6 @@
 <?php
     include('connect_bdd.php');
+    if(!isset($_SESSION['idsrm_login_cas'])) return false;
     $user = $_GET['extra'];
     $query_projets = 'SELECT * FROM demande WHERE login_cas="'.$user.'";';
     $result_projets = $connect->query($query_projets);

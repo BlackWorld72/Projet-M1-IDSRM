@@ -56,7 +56,7 @@
                                     </div>
                                     <div class="col-sm-12">
                                         <label for="fichiers" class="form-label">Plan(s)</label>
-                                        <input class="form-control" onchange="createSelectingFiles(this.files)" accept=".png, .jpeg, .jpg, .stl, .pdf" type="file" name="fichiers[]" id="fichiers" multiple>
+                                        <input class="form-control" onchange="createSelectingFiles(this.files)" accept=".txt, .png, .jpeg, .jpg, .stl, .pdf, .ai, .gif, .bmp, .dxf, .svf, .f3d, .sldprt, .obj, .dwg, step, .doc, .docx, .csv, .xls, .xlsx, .ppt, .pptx, .odt, .ods" type="file" name="fichiers[]" id="fichiers" multiple>
                                     </div>
                                     <div class="row col-sm-12">
                                         <label for="datelimite" class="col-sm-4 col-form-label">Date limite</label>

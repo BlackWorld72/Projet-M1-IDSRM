@@ -1,6 +1,6 @@
 <?php
     include('connect_bdd.php');
-    
+    if(!isset($_SESSION['idsrm_login_cas'])) return false;
     $query_projets = 'SELECT * FROM demande;';
     $result_projets = $connect->query($query_projets);
     $projets = [];

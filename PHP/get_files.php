@@ -2,7 +2,7 @@
 	include('connect_bdd.php');
 	$id_demande = $_POST['id_demande'];
     $login_cas = $_POST['login_cas'];
-
+    if(!isset($_SESSION['idsrm_login_cas'])) return false;
     /* Verification de l'utilisateur - Securisation de la requete */
     $query_projets = 'SELECT login_cas FROM demande WHERE id_demande='.$id_demande.';';
 	$projets = $connect->query($query_projets);

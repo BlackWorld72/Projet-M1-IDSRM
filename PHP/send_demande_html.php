@@ -21,6 +21,8 @@
         return escape_sql_wild(strip_tags(trim($value)));
     }
     $login = securiser($_POST["login_cas"]);
+    //si l'utilisateur n'est pas enregistré ou n'est pas l'auteur de la demande, il ne peux pas en créer une
+    if(!isset($_SESSION['idsrm_login_cas']) || strcmp($_SESSION['idsrm_login_cas'], $login_cas) !=0) return false;
     $nom = securiser($_POST["user_nom"]);
     $prenom = securiser($_POST["user_prenom"]);
     $mail = securiser($_POST["user_mail"]);
