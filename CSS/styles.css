@@ -249,7 +249,9 @@ input, textarea {
 
 .formulaire label,
 .formulaire input,
-.formulaire textarea {
+.formulaire textarea,
+.formulaire p,
+.formulaire select{
     font-size: 20px;
 }
 
