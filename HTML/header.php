@@ -1,11 +1,11 @@
     <meta name="viewport" content="width=device-width"/>
     <!-- Connexion CAS et détection de l'utilisateur -> redirection si utilisateur sur age interdite -->
     <?php 
-        require_once($_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/PHP/detection_utilisateur.php');
+        /*require_once($_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/PHP/detection_utilisateur.php');
         $url = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
         if(!strpos($url, ucfirst($_SESSION["user_type"])) && !strpos($url, "validation.php")){
             header('Location: /Projet-M1-IDSRM/index.php');
-        }
+        }*/
     ?>
     <!-- Bootstrap 5 CSS -->
     <link rel="stylesheet" href="/Projet-M1-IDSRM/CSS/bootstrap.min.css">
