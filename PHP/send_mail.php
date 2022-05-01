@@ -4,8 +4,9 @@
 $m = json_decode(file_get_contents('php://input'), true);
 $mail['sender'] = $m[0];
 $mail['content'] = $m[1];
-$mail['subject'] = $m[3];
 $mail['to'] = $m[2];
+$mail['subject'] = $m[3];
+
 
 if(!isset($mail)){
     $mail = json_decode($_POST['extra'], true);
