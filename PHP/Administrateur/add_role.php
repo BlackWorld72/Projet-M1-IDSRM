@@ -1,6 +1,6 @@
 <?php
     include('../connect_bdd.php');
-
+    if(strcmp("administrateur", $_SESSION["user_type"])!=0) return false;
     function escape_sql_wild($s)
         /* escapes SQL pattern wildcards in s. */
     {

@@ -23,6 +23,25 @@
     $login = securiser($_POST["login_cas"]);
     //si l'utilisateur n'est pas enregistré ou n'est pas l'auteur de la demande, il ne peux pas en créer une
     if(!isset($_SESSION['idsrm_login_cas']) || strcmp($_SESSION['idsrm_login_cas'], $login_cas) !=0) return false;
+    
+    //si utilisateur pas dans la base, on le crée
+    $stmt = $connect->prepare("SELECT id_cas FROM personne WHERE id_cas = :username");
+    $stmt->execute(['username' => $login]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    //si la requête du nom d'utilisateur n'a pas de résultat/a un résultat vide
+    if (!isset($user) || empty($user)){
+        //création de l'utilisateur dans la base
+        $nom = securiser($_POST["user_nom"]);
+        $prenom = securiser($_POST["user_prenom"]);
+        $mail = securiser($_POST["user_mail"]);
+        $equipe_rech = securiser($_POST["projet_equipe_recherche"]);
+        $ufr = securiser($_POST["ufr"]);
+        $query_projets = $connect->prepare("INSERT INTO personne VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, DEFAULT, ?, ?)");
+        $query_projets->bind_param('ssssssssssss', $login,$nom,$prenom,$mail,$equipe_rech);
+        $query_projets->execute();
+    }
+    
+    //création de la demande dans la base
     $nom = securiser($_POST["user_nom"]);
     $prenom = securiser($_POST["user_prenom"]);
     $mail = securiser($_POST["user_mail"]);
@@ -35,9 +54,10 @@
     $etat = "En attente";
     $date_debut = date("Y-m-d"); //aujourd'hui
     $query_projets = $connect->prepare("INSERT INTO demande VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, DEFAULT, ?, ?)");
-    $query_projets->bind_param('ssssssssssss', $login,$nom,$prenom,$mail,$equipe_rech,$ufr,$titre,$description,$date_lim,$suivi,$date_debut,$etat);
+    $query_projets->bind_param('ssssssssssss', $login,$titre,$description,$date_lim,$suivi,$date_debut,$etat);
     $query_projets->execute();
     $id = $connect->insert_id;
+
    
     $uploads_dir = $_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/upload_files';
     $countfiles = count($_FILES["fichiers"]["name"]);
@@ -52,8 +72,9 @@
     }
     mysqli_close($connect);
 
+    //envoie d'un mail pour notifier les admins qu'une nouvelle demande est faite
+    //création du tableau contenant les infos du mail
     $prisedeRDV = $_POST["prisedeRDV"];
-  //envoie d'un mail pour notifier l'utilisateur
     $url = "http://altea.univ-lemans.fr/Projet-M1-IDSRM/PHP/send_mail.php";
     $content[0] = null;
     $content[1] = "Une nouvelle demande est en atente de validation sur la plateforme demande-méca!";
@@ -65,6 +86,7 @@
 
     $content = json_encode($content);
 
+    //envoie d'une requête à la page php qui envoie les mails, avec les infos du mail
     $curl = curl_init($url);
     curl_setopt($curl, CURLOPT_HEADER, false);
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
