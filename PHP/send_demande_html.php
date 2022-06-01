@@ -22,22 +22,24 @@
     }
     $login = securiser($_POST["login_cas"]);
     //si l'utilisateur n'est pas enregistré ou n'est pas l'auteur de la demande, il ne peux pas en créer une
-    if(!isset($_SESSION['idsrm_login_cas']) || strcmp($_SESSION['idsrm_login_cas'], $login_cas) !=0) return false;
+    if(!isset($_SESSION['idsrm_login_cas']) || strcmp($_SESSION['idsrm_login_cas'], $login) !=0) return false;
     
     //si utilisateur pas dans la base, on le crée
-    $stmt = $connect->prepare("SELECT id_cas FROM personne WHERE id_cas = :username");
-    $stmt->execute(['username' => $login]);
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    $query_projets = $connect->prepare("SELECT count(1) FROM `personne` WHERE `id_cas` = ?");
+    $query_projets->bind_param('s', $login);
+    $query_projets->bind_result($found);
+    $query_projets->execute();
+    $query_projets->store_result();
     //si la requête du nom d'utilisateur n'a pas de résultat/a un résultat vide
-    if (!isset($user) || empty($user)){
+    if ($found){
         //création de l'utilisateur dans la base
         $nom = securiser($_POST["user_nom"]);
         $prenom = securiser($_POST["user_prenom"]);
         $mail = securiser($_POST["user_mail"]);
         $equipe_rech = securiser($_POST["projet_equipe_recherche"]);
         $ufr = securiser($_POST["ufr"]);
-        $query_projets = $connect->prepare("INSERT INTO personne VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, DEFAULT, ?, ?)");
-        $query_projets->bind_param('ssssssssssss', $login,$nom,$prenom,$mail,$equipe_rech);
+        $query_projets = $connect->prepare("INSERT INTO personne VALUES (?, ?, ?, ?, ?)");
+        $query_projets->bind_param('sssss', $login,$nom,$prenom,$mail,$equipe_rech);
         $query_projets->execute();
     }
     
@@ -53,8 +55,8 @@
     $suivi = "En attente de validation";
     $etat = "En attente";
     $date_debut = date("Y-m-d"); //aujourd'hui
-    $query_projets = $connect->prepare("INSERT INTO demande VALUES (DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, DEFAULT, ?, ?)");
-    $query_projets->bind_param('ssssssssssss', $login,$titre,$description,$date_lim,$suivi,$date_debut,$etat);
+    $query_projets = $connect->prepare("INSERT INTO demande VALUES (DEFAULT, ?, ?, ?, ?, ?, DEFAULT, ?, ?)");
+    $query_projets->bind_param('sssssss', $login,$titre,$description,$date_lim,$suivi,$date_debut,$etat);
     $query_projets->execute();
     $id = $connect->insert_id;
 
@@ -96,10 +98,6 @@
 
     $json_response = curl_exec($curl);
     $status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
-
-
-
-
     curl_close($curl);
 
 

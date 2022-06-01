@@ -4,7 +4,7 @@
     
     $user = $_GET['extra'];
     $query_projets = 'SELECT * FROM demande WHERE login_cas="'.$user.'";';
-    $query_user = 'SELECT * FROM personne WHERE login_cas="'.$user.'";';
+    $query_user = 'SELECT * FROM personne WHERE id_cas="'.$user.'";';
     $result_projets = $connect->query($query_projets);
     $result_user = $connect->query($query_user);
     $row_user = mysqli_fetch_array($result_user);

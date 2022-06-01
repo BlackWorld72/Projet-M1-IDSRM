@@ -6,5 +6,7 @@
   $server = 'localhost';
   $connect = mysqli_connect($server, $user, $pwd, $database) or die("probleme de connexion dans la base de donnee $server");
   $connect->set_charset("utf8");
-  session_start();
+  if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+  }
 ?>
