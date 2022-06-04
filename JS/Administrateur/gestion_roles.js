@@ -26,7 +26,15 @@ function send_requete_role(type_requete, email, role = null){
         method: 'POST',
         headers: {'Content-Type':'application/x-www-form-urlencoded'},
         body: params
-    });
+    }).then((response) => {
+            if (response.ok) {
+                document.getElementById("success").hidden = false;
+            } else {
+                document.getElementById("error_add_user").hidden = false;
+            }
+        }
+    ).catch((err) => console.error("Une erreur est survenue.", err));
+
 }
 
 /**
@@ -39,6 +47,11 @@ function get_select_role(){
     xmlHttp.onreadystatechange = function() {
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
             result = xmlHttp.responseText;
+        }
+
+        if (xmlHttp.status === 404 || xmlHttp.status === 500) {
+            document.getElementById("errors").hidden = false;
+            result = null;
         }
     }
     xmlHttp.open("GET", "/Projet-M1-IDSRM/PHP/Administrateur/select_role.php", false); // true for asynchronous
@@ -96,8 +109,10 @@ function getFirstNameLastNameFromEmail(email) {
 function getAllRoles() {
     let liste_roles = get_select_role();
     let roles = [];
-    for (let key in Object.keys(liste_roles)){
-        roles.push(new Role({email: liste_roles[key]['email'], role: liste_roles[key]['role']}));
+    if (liste_roles !== null) {
+        for (let key in Object.keys(liste_roles)){
+            roles.push(new Role({email: liste_roles[key]['email'], role: liste_roles[key]['role']}));
+        }
     }
 
     return roles;
