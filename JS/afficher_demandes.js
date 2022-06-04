@@ -6,12 +6,24 @@ let demandes = [];
 function initialiser_affichage_demandes(idDemandeur){
     demandes = init_variable_liste_projets_par_user(idDemandeur);
     //demandes = init_variable_liste_projets_par_user('s172746');       // test en local
-    getDemandesAvecEtat("En attente");
+
+    if (demandes.length === 0) {
+        document.getElementById("message_liste_vide").hidden = false;
+        document.getElementById("message_informatif").hidden = true;
+    } else {
+        getDemandesAvecEtat("En attente");
+    }
 }
 
 function initialiser_affichage_toutes_demandes(){
     demandes = init_variable_liste_projets();
-    getDemandesAvecEtat("En cours");
+
+    if (demandes.length === 0) {
+        document.getElementById("message_liste_vide").hidden = false;
+        document.getElementById("message_informatif").hidden = true;
+    } else {
+        getDemandesAvecEtat("En cours");
+    }
 }
 
 /**

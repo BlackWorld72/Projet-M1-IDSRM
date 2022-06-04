@@ -9,7 +9,11 @@
     ?>
     <!-- Bootstrap 5 CSS -->
     <link rel="stylesheet" href="/Projet-M1-IDSRM/CSS/bootstrap.min.css">
+    <!-- Bootstratp 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Font awesome 6 -->
     <link rel="stylesheet" href="/Projet-M1-IDSRM/CSS/font-awesome/css/font-awesome.min.css">
     <!-- Styles custom -->
     <link rel="stylesheet" href="/Projet-M1-IDSRM/CSS/styles.css">
+    <!-- Ajax jquery 1.8 -->
+    <script type="text/javascript" src="/Projet-M1-IDSRM/JS/jquery-1.8.3.min.js"></script>
