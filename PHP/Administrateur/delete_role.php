@@ -1,4 +1,6 @@
 <?php
+    require_once($_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/PHP/detection_utilisateur.php');
+        
     include('../connect_bdd.php');
     if(strcmp("administrateur", $_SESSION["user_type"])!=0) return false;
     function escape_sql_wild($s)

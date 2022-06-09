@@ -1,6 +1,8 @@
 <?php
+    require_once($_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/PHP/detection_utilisateur.php');
+        
     include('connect_bdd.php');
-    if(!isset($_SESSION['idsrm_login_cas'])) return false;
+    if(!isset($_SESSION['idsrm_login_cas']) || strcmp("utilisateur", $_SESSION["user_type"])==0) return false;
     $query_projets = 'SELECT * FROM demande;';
     $result_projets = $connect->query($query_projets);
     $projets = [];

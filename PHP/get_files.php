@@ -1,4 +1,6 @@
 <?php
+    require_once($_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/PHP/detection_utilisateur.php');
+        
 	include('connect_bdd.php');
 	$id_demande = $_POST['id_demande'];
     $login_cas = $_POST['login_cas'];

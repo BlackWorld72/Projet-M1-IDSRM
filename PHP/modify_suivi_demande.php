@@ -1,10 +1,12 @@
 <?php
+    require_once($_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/PHP/detection_utilisateur.php');
+        
     include('connect_bdd.php');
 
     //si l'utilisateur n'est pas authentifié il ne peux pas faire ça
     if(!isset($_SESSION['idsrm_login_cas'])) return false;
     //si l'utilisateur n'est ni un admin ni un opérateur il ne peux pas modifier un suivis
-    if(strcmp("administrateur", $_SESSION["user_type"])!=0 && strcmp("operateur", $_SESSION["user_type"])!=0) return false;
+    if(strcmp("utilisateur", $_SESSION["user_type"])==0) return false;
     function escape_sql_wild($s)
         /* escapes SQL pattern wildcards in s. */
     {
