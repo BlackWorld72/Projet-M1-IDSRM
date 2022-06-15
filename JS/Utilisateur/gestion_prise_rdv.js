@@ -7,7 +7,7 @@ let demandes = [];
  * @return nothing
  */
 function send_to_php(thing_to_send, extra){
-    fetch("/Projet-M1-IDSRM/PHP/send_"+thing_to_send+".php", {
+    fetch("/PHP/send_"+thing_to_send+".php", {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify(extra) //&content="'+content+'"&subject="'+subject+'"'

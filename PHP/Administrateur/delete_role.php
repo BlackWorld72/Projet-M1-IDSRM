@@ -1,5 +1,5 @@
 <?php
-    require_once($_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/PHP/detection_utilisateur.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] .'/PHP/detection_utilisateur.php');
         
     include('../connect_bdd.php');
     if(strcmp("administrateur", $_SESSION["user_type"])!=0) return false;
@@ -32,5 +32,5 @@
     $query_roles->execute();
 
     mysqli_close($connect);
-    header('Location: /Projet-M1-IDSRM/HTML/validation.php');
+    header('Location: /HTML/validation.php');
     exit;

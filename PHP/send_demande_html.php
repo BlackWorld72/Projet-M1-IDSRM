@@ -1,5 +1,5 @@
 <?php
-    require_once($_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/PHP/detection_utilisateur.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] .'/PHP/detection_utilisateur.php');
         
     include('connect_bdd.php');
 
@@ -63,7 +63,7 @@
     $id = $connect->insert_id;
 
    
-    $uploads_dir = $_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/upload_files';
+    $uploads_dir = $_SERVER['DOCUMENT_ROOT'] .'/upload_files';
     $countfiles = count($_FILES["fichiers"]["name"]);
     for($i=0;$i<$countfiles;$i++){
         $tmp_name = $_FILES["fichiers"]["tmp_name"][$i];
@@ -79,7 +79,7 @@
     //envoie d'un mail pour notifier les admins qu'une nouvelle demande est faite
     //création du tableau contenant les infos du mail
     $prisedeRDV = $_POST["prisedeRDV"];
-    $url = "http://".$_SERVER['HTTP_HOST']."/Projet-M1-IDSRM/PHP/send_mail.php";
+    $url = "http://".$_SERVER['HTTP_HOST']."/PHP/send_mail.php";
     $content[0] = null;
     $content[1] = "Une nouvelle demande est en atente de validation sur la plateforme demande-méca!";
     if(strcmp($prisedeRDV, "O") == 0){
@@ -103,6 +103,6 @@
     curl_close($curl);
 
 
-    header('Location: /Projet-M1-IDSRM/HTML/validation.php');
+    header('Location: /HTML/validation.php');
     exit;
 ?>

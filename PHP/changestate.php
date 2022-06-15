@@ -1,5 +1,5 @@
 <?php
-    require_once($_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/PHP/detection_utilisateur.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] .'/PHP/detection_utilisateur.php');
         
     include('connect_bdd.php');
     //si l'utilisateur n'est pas authentifié il ne peux pas faire ça

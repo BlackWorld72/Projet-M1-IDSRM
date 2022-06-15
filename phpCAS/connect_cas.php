@@ -15,7 +15,7 @@
  */
 
 // Load the settings from the central config file
-require_once $_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/phpCAS/configCas.php';
+require_once $_SERVER['DOCUMENT_ROOT'] .'/phpCAS/configCas.php';
 // Load the CAS lib
 require_once $phpcas_path . 'CAS.php';
 

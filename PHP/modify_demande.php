@@ -1,5 +1,5 @@
 <?php
-    require_once($_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/PHP/detection_utilisateur.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] .'/PHP/detection_utilisateur.php');
         
     include('connect_bdd.php');
     //si l'utilisateur n'est pas authentifié il ne peux pas faire ça
@@ -37,7 +37,7 @@
     $row = $projets->fetch_assoc(); 
 		if ($row['login_cas'] != $login_cas) {
             mysqli_close($connect);
-            header('Location: /Projet-M1-IDSRM/HTML/validation.php');
+            header('Location: /HTML/validation.php');
             exit();
 		}
 
@@ -55,7 +55,7 @@
     mysqli_close($connect);
 
     //envoie d'un mail pour notifier l'utilisateur
-    $url = "http://altea.univ-lemans.fr/Projet-M1-IDSRM/PHP/send_mail.php";
+    $url = "http://altea.univ-lemans.fr/PHP/send_mail.php";
     $content[0] = null;
     $content[1] = "Votre demande a été modifiée. Si vous n'êtes pas à l'origine de ces modifications, vous pouvez consulter celles-ci sur la plateforme demande-meca.";
     $content[2] = $mail_demandeur;  
@@ -81,6 +81,6 @@
 
     curl_close($curl);
 
-    header('Location: /Projet-M1-IDSRM/HTML/validation.php');
+    header('Location: /HTML/validation.php');
     exit;
 ?>

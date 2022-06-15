@@ -22,7 +22,7 @@ function send_requete_role(type_requete, email, role = null){
         params = 'email=' + email + "&role=" + role;
     }
 
-    fetch("/Projet-M1-IDSRM/PHP/Administrateur/" + type_requete + ".php", {
+    fetch("/PHP/Administrateur/" + type_requete + ".php", {
         method: 'POST',
         headers: {'Content-Type':'application/x-www-form-urlencoded'},
         body: params
@@ -41,7 +41,7 @@ function get_select_role(){
             result = xmlHttp.responseText;
         }
     }
-    xmlHttp.open("GET", "/Projet-M1-IDSRM/PHP/Administrateur/select_role.php", false); // true for asynchronous
+    xmlHttp.open("GET", "/PHP/Administrateur/select_role.php", false); // true for asynchronous
     xmlHttp.send(null);
     return JSON.parse(result);
 }

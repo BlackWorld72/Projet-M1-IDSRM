@@ -1,5 +1,5 @@
 <?php
-    require_once($_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/PHP/detection_utilisateur.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] .'/PHP/detection_utilisateur.php');
         
 	include('connect_bdd.php');
 	$id_demande = $_POST['id_demande'];
@@ -20,7 +20,7 @@
 		echo -1;
 		exit;
 	}
-    $zip_name = $_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/upload_files/fichiers'.$id_demande.'.zip';
+    $zip_name = $_SERVER['DOCUMENT_ROOT'] .'/upload_files/fichiers'.$id_demande.'.zip';
     $zip = new ZipArchive;
 	if ($zip->open($zip_name, ZIPARCHIVE::CREATE | ZIPARCHIVE::OVERWRITE ) === TRUE) {
         while ($row = mysqli_fetch_array($result_projets)) {
@@ -31,6 +31,6 @@
 		$zip->close();
 	}
 	mysqli_close($connect);
-	echo '/Projet-M1-IDSRM/upload_files/fichiers'.$id_demande.'.zip';
+	echo '/upload_files/fichiers'.$id_demande.'.zip';
     exit;
 ?>
