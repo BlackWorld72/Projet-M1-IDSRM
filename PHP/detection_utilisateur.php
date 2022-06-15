@@ -1,7 +1,7 @@
 <?php
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST');
-header("Access-Control-Allow-Headers: X-Requested-With");
+  if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+  }
 //AVEC CAS
 require_once $_SERVER['DOCUMENT_ROOT'] .'/phpCAS/connect_cas.php'; 
 $_SESSION['idsrm_login_cas'] = phpCAS::getUser();

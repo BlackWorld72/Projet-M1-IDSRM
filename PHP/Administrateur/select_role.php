@@ -1,8 +1,4 @@
 <?php
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST');
-header("Access-Control-Allow-Headers: X-Requested-With");
-    require_once('../detection_utilisateur.php');
         
     require_once($_SERVER['DOCUMENT_ROOT'] .'/PHP/connect_bdd.php');
     if(strcmp("administrateur", $_SESSION["user_type"])!=0) return false;

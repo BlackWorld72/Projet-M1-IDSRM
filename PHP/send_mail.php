@@ -1,9 +1,7 @@
 <?php
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST');
-header("Access-Control-Allow-Headers: X-Requested-With");
-require_once('detection_utilisateur.php');
-        
+   if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+  }       
 //si l'utilisateur n'est pas authentifié il ne peux pas faire ça
 if(!isset($_SESSION['idsrm_login_cas'])) return false;
 
