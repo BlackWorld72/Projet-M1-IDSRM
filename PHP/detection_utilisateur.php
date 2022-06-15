@@ -1,8 +1,6 @@
 <?php
 header('Access-Control-Allow-Origin: *');
-
 header('Access-Control-Allow-Methods: GET, POST');
-
 header("Access-Control-Allow-Headers: X-Requested-With");
 //AVEC CAS
 require_once $_SERVER['DOCUMENT_ROOT'] .'/phpCAS/connect_cas.php'; 
@@ -19,7 +17,6 @@ $_SESSION['user_prenom'] = "Valentin";
 $_SESSION['user_nom'] = "Girod";
 $_SESSION['user_mail'] = "valentin.girod.etu@univ-lemans.fr";
 */
-
 
 //gestion du type d'utilisateur
 require_once($_SERVER['DOCUMENT_ROOT'] .'/PHP/connect_bdd.php');
