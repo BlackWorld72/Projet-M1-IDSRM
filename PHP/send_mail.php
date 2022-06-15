@@ -1,5 +1,5 @@
 <?php
-require_once($_SERVER['DOCUMENT_ROOT'] .'/PHP/detection_utilisateur.php');
+require_once('detection_utilisateur.php');
         
 //si l'utilisateur n'est pas authentifié il ne peux pas faire ça
 if(!isset($_SESSION['idsrm_login_cas'])) return false;

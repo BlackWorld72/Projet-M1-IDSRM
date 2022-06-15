@@ -1,5 +1,5 @@
 <?php
-    require_once($_SERVER['DOCUMENT_ROOT'] .'/PHP/detection_utilisateur.php');
+    require_once('../detection_utilisateur.php');
         
     require_once($_SERVER['DOCUMENT_ROOT'] .'/PHP/connect_bdd.php');
     if(strcmp("administrateur", $_SESSION["user_type"])!=0) return false;

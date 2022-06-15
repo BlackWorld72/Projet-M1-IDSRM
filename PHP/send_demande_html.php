@@ -1,5 +1,5 @@
 <?php
-    require_once($_SERVER['DOCUMENT_ROOT'] .'/PHP/detection_utilisateur.php');
+    require_once('detection_utilisateur.php');
         
     include('connect_bdd.php');
 

@@ -1,5 +1,10 @@
 <?php
-    require_once($_SERVER['DOCUMENT_ROOT'] .'/PHP/detection_utilisateur.php');
+header('Access-Control-Allow-Origin: *');
+
+header('Access-Control-Allow-Methods: GET, POST');
+
+header("Access-Control-Allow-Headers: X-Requested-With");
+    require_once('detection_utilisateur.php');
         
     include('connect_bdd.php');
     //si l'user n'est pas connecté ou essaie de prendre les projets d'un autre user

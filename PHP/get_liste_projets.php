@@ -1,5 +1,6 @@
 <?php
-    require_once($_SERVER['DOCUMENT_ROOT'] .'/PHP/detection_utilisateur.php');
+
+    require_once('detection_utilisateur.php');
         
     include('connect_bdd.php');
     if(!isset($_SESSION['idsrm_login_cas']) || strcmp("utilisateur", $_SESSION["user_type"])==0) return false;
