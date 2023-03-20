@@ -33,7 +33,7 @@ function initialiser_affichage_toutes_demandes(){
  * @return nothing
  */
  function send_to_php(thing_to_send, extra){
-    fetch("/Projet-M1-IDSRM/PHP/send_"+thing_to_send+".php", {
+    fetch("/PHP/send_"+thing_to_send+".php", {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify(extra) //&content="'+content+'"&subject="'+subject+'"'
@@ -211,7 +211,7 @@ function modify_demande() {
 
 function download_files(id_demande, login_cas) {
     $.ajax({
-        url: '/Projet-M1-IDSRM/PHP/get_files.php',
+        url: '/PHP/get_files.php',
         type: 'POST',
         data: {id_demande:id_demande, login_cas:login_cas},
         contentType: 'application/x-www-form-urlencoded; charset=UTF-8',

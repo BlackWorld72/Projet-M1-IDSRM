@@ -1,7 +1,9 @@
 <?php
+        
     include('connect_bdd.php');
-    if(!isset($_SESSION['idsrm_login_cas'])) return false;
-    
+    //si l'user n'est pas connecté ou essaie de prendre les projets d'un autre user
+    if(!isset($_SESSION['idsrm_login_cas']) || strcmp($_SESSION['idsrm_login_cas'], $_GET['extra']) !=0) return false;
+
     $user = $_GET['extra'];
     $query_projets = 'SELECT * FROM demande WHERE login_cas="'.$user.'";';
     $query_user = 'SELECT * FROM personne WHERE id_cas="'.$user.'";';

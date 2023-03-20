@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
    <meta charset="UTF-8">
-   <?php require_once($_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/HTML/header.php'); ?>
+   <?php require_once($_SERVER['DOCUMENT_ROOT'] .'/HTML/header.php'); ?>
 
     <style>
 
@@ -155,7 +155,7 @@
 function countdown() {
     var i = document.getElementById('counter');
     if (parseInt(i.innerHTML)<=0) {
-        location.href = '/Projet-M1-IDSRM/HTML/Utilisateur/consultermesdemandes.php';
+        location.href = '/HTML/Utilisateur/consultermesdemandes.php';
     }
 if (parseInt(i.innerHTML)!=0) {
     i.innerHTML = parseInt(i.innerHTML)-1;

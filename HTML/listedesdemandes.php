@@ -2,13 +2,14 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <?php require_once $_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/HTML/header.php' ?>
-        <script src="/Projet-M1-IDSRM/JS/gestion_demandes.js"></script>
-        <script src="/Projet-M1-IDSRM/JS/afficher_demandes.js"></script>
+        <?php require_once $_SERVER['DOCUMENT_ROOT'] .'/HTML/header.php' ?>
+        <script src="/JS/gestion_demandes.js"></script>
+        <script src="/JS/afficher_demandes.js"></script>
+        <script type="text/javascript" src="/JS/jquery-1.8.3.min.js"></script>
         <title>Consulter mes demandes</title>
     </head>
     <body>
-        <?php include($_SERVER['DOCUMENT_ROOT'] ."/Projet-M1-IDSRM/HTML/nav-bar.php");
+        <?php include($_SERVER['DOCUMENT_ROOT'] ."/HTML/nav-bar.php");
             echo '<script> user_type = "'.$_SESSION["user_type"].'";</script>';
             ?>
         <section>
@@ -51,7 +52,7 @@
                             <div id="message_erreur" hidden>
                                 <p class="text-center">Une erreur est survenue. Veuillez réessayer ultérieurement.</p>
                             </div>
-                            <form id="form" enctype="multipart/form-data" action="/Projet-M1-IDSRM/PHP/modify_demande.php" method="POST">
+                            <form id="form" enctype="multipart/form-data" action="/PHP/modify_demande.php" method="POST">
                                 <input type="hidden" readonly id="mail_demande" name="mail_demande" value="" required>
                                 <input type="hidden" readonly id="login_cas" name="login_cas" value="<?php echo $_SESSION['idsrm_login_cas'] ?>" required>
                                 <input type="hidden" readonly id="id_demande" name="id_demande" value="" required>

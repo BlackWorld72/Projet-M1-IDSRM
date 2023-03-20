@@ -31,7 +31,7 @@
 
             foreach ($files as $page) {
                 $title = getTitle(__DIR__.'/'.$user_type.'/'.$page);
-                echo "<li><a href='/Projet-M1-IDSRM/HTML/$user_type/$page'>$title</a>";
+                echo "<li><a href='/HTML/$user_type/$page'>$title</a>";
             }
         ?>
         <li class="logout"><a href="?logout=">Déconnexion</a>

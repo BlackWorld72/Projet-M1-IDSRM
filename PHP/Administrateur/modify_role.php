@@ -1,4 +1,5 @@
 <?php
+        
     include('../connect_bdd.php');
     if(strcmp("administrateur", $_SESSION["user_type"])!=0) return false;
     function escape_sql_wild($s)
@@ -32,5 +33,5 @@
     $query_roles->execute();
 
     mysqli_close($connect);
-    header('Location: /Projet-M1-IDSRM/HTML/validation.php');
+    header('Location: /HTML/validation.php');
     exit;

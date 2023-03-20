@@ -1,7 +1,9 @@
 <?php
-
+  if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+  }
 //AVEC CAS
-require_once $_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/phpCAS/connect_cas.php'; 
+require_once $_SERVER['DOCUMENT_ROOT'] .'/phpCAS/connect_cas.php'; 
 $_SESSION['idsrm_login_cas'] = phpCAS::getUser();
 $_SESSION['user_prenom'] = phpCAS::getAttributes()['givenName'];
 $_SESSION['user_nom'] = phpCAS::getAttributes()['Sn'];
@@ -16,9 +18,8 @@ $_SESSION['user_nom'] = "Girod";
 $_SESSION['user_mail'] = "valentin.girod.etu@univ-lemans.fr";
 */
 
-
 //gestion du type d'utilisateur
-require_once($_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/PHP/connect_bdd.php');
+require_once($_SERVER['DOCUMENT_ROOT'] .'/PHP/connect_bdd.php');
 
 $query_role = 'SELECT role FROM role WHERE email="'.$_SESSION['user_mail'].'"';
 $result = mysqli_fetch_array($connect->query($query_role));

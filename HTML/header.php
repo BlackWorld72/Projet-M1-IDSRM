@@ -1,19 +1,15 @@
     <meta name="viewport" content="width=device-width"/>
     <!-- Connexion CAS et détection de l'utilisateur -> redirection si utilisateur sur age interdite -->
     <?php 
-        require_once($_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/PHP/detection_utilisateur.php');
+        require_once($_SERVER['DOCUMENT_ROOT'] .'/PHP/detection_utilisateur.php');
         $url = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
         if(!strpos($url, ucfirst($_SESSION["user_type"])) && !strpos($url, "validation.php")){
-            header('Location: /Projet-M1-IDSRM/index.php');
+            header('Location: /index.php');
         }
     ?>
     <!-- Bootstrap 5 CSS -->
-    <link rel="stylesheet" href="/Projet-M1-IDSRM/CSS/bootstrap.min.css">
-    <!-- Bootstratp 5 JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/CSS/bootstrap.min.css">
     <!-- Font awesome 6 -->
-    <link rel="stylesheet" href="/Projet-M1-IDSRM/CSS/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/CSS/font-awesome/css/font-awesome.min.css">
     <!-- Styles custom -->
     <link rel="stylesheet" href="/Projet-M1-IDSRM/CSS/styles.css">
-    <!-- Ajax jquery 1.8 -->
-    <script type="text/javascript" src="/Projet-M1-IDSRM/JS/jquery-1.8.3.min.js"></script>

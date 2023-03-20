@@ -2,7 +2,7 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <?php require_once $_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/HTML/header.php' ?>
+        <?php require_once $_SERVER['DOCUMENT_ROOT'] .'/HTML/header.php' ?>
 
         <title>Consulter mes demandes</title>
    </head>

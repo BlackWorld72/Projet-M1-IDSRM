@@ -1,4 +1,7 @@
 <?php
+   if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+  }       
 //si l'utilisateur n'est pas authentifié il ne peux pas faire ça
 if(!isset($_SESSION['idsrm_login_cas'])) return false;
 

@@ -15,7 +15,7 @@
  */
 
 // Load the settings from the central config file
-require_once $_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/phpCAS/configCas.php';
+require_once $_SERVER['DOCUMENT_ROOT'] .'/phpCAS/configCas.php';
 // Load the CAS lib
 require_once $phpcas_path . 'CAS.php';
 
@@ -25,7 +25,7 @@ phpCAS::setLogger();
 phpCAS::setVerbose(true);
 
 // Initialize phpCAS
-phpCAS::client(CAS_VERSION_2_0, $cas_host, $cas_port, $cas_context);
+phpCAS::client(CAS_VERSION_2_0, $cas_host, $cas_port, $cas_context, false);
 
 // For production use set the CA certificate that is the issuer of the cert
 // on the CAS server and uncomment the line below

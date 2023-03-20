@@ -2,11 +2,11 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <?php require_once $_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/HTML/header.php' ?>
+        <?php require_once $_SERVER['DOCUMENT_ROOT'] .'/HTML/header.php' ?>
         <title>Gestion des rôles</title>
    </head>
     <body>
-        <?php include($_SERVER['DOCUMENT_ROOT'] ."/Projet-M1-IDSRM/HTML/nav-bar.php"); ?>
+        <?php include($_SERVER['DOCUMENT_ROOT'] ."/HTML/nav-bar.php"); ?>
         <section>
             <div class="pageDroite">
                 <div class="contenuPageDroite">
@@ -82,6 +82,6 @@
                 </div>
             </div>
         </section>
-        <script type="text/javascript" src="/Projet-M1-IDSRM/JS/Administrateur/gestion_roles.js"></script>
+        <script type="text/javascript" src="/JS/Administrateur/gestion_roles.js"></script>
     </body>
 </html>

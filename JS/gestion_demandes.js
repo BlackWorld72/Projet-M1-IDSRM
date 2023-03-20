@@ -5,7 +5,7 @@
  * @return nothing
  */
  function send_to_php(thing_to_send, extra = "null"){
-    fetch("/Projet-M1-IDSRM/PHP/send_"+thing_to_send+".php", {
+    fetch("/PHP/send_"+thing_to_send+".php", {
         method: 'POST',
         headers: {'Content-Type':'application/x-www-form-urlencoded'},
         body: 'extra='+JSON.stringify(extra)
@@ -29,7 +29,7 @@
             result = null;
         }
     }
-    xmlHttp.open("GET", "/Projet-M1-IDSRM/PHP/get_"+thing_to_get+".php?extra="+extra, false); // true for asynchronous
+    xmlHttp.open("GET", "/PHP/get_"+thing_to_get+".php?extra="+extra, false); // true for asynchronous
     xmlHttp.send(null);
     return JSON.parse(result);
 }
@@ -85,7 +85,7 @@ function envoie_nouveau_projet(projet){
 function modifier_suivi_demande(id_demande, nouveau_suivi_demande, mail_demandeur, nouvel_etat_demande=""){
     let params = 'id_demande=' + id_demande + '&suivi_demande=' + nouveau_suivi_demande + '&etat_demande=' + nouvel_etat_demande + '&mail_demandeur=' +mail_demandeur;
 
-    fetch("/Projet-M1-IDSRM/PHP/modify_suivi_demande.php", {
+    fetch("/PHP/modify_suivi_demande.php", {
         method: 'POST',
         headers: {'Content-Type':'application/x-www-form-urlencoded'},
         body: params

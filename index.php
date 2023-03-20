@@ -1,5 +1,5 @@
 <?php
-    require_once($_SERVER['DOCUMENT_ROOT'] .'/Projet-M1-IDSRM/PHP/detection_utilisateur.php');
+    require_once($_SERVER['DOCUMENT_ROOT'] .'/PHP/detection_utilisateur.php');
 
     if(strcmp("administrateur", $_SESSION["user_type"])==0){
         $lien = "Administrateur/listedesdemandes.php";
