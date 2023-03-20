@@ -19,6 +19,14 @@
                         <h1><b>IDSRM</b></h1>
                     </div>
                     <div class="row formulaire">
+                        <div id="errors" class="row" hidden>
+                            <div class="col-sm-5">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    Une erreur liée à la base de données est survenue, veuillez réessayer ultérieuement.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            </div>
+                        </div>
                         <div id="partie_gauche_demande" class="container col-sm-5">
                             <nav id="menu_demandes" class="sticky-top bg-white navbar navbar-expand-lg nav nav-pills flex-column flex-sm-row">
                                 <a id="demande_EnAttente" class="flex-sm-fill text-sm-center nav-link active" onclick="getDemandesAvecEtat('En attente')">En attente</a>
@@ -32,6 +40,9 @@
                             </nav>
                             <div id="liste_demandes" class="d-grid gap-2 ">
                                 <!-- La liste des demandes-->
+                                <div id="message_liste_vide">
+                                    <p class="text-center">Vous n'avez pas encore de demande.</p>
+                                </div>
                             </div>
                         </div>
                         <div id="description_demande" class="col-sm-7">
@@ -77,7 +88,6 @@
                                     <h2 id="titre_projet" readonly class="titre_cote_droit">
                                         <!-- Nom de la demande -->
                                     </h2>
-                                    <!-- /!\ Garder temporairement pour les pages Admin et operateur-->
                                     <div id="identite_demandeur" class="row">
                                         <div class="col-sm-3">
                                             <p class="fs-5 info_demande" id="prenom_demandeur">
@@ -182,8 +192,8 @@
                                     </div>
                                 </div>
                             </form>
-                            <?php 
-                                if(strcmp($_SESSION["user_type"], "utilisateur") == 0){
+                            <?php
+                            if(strcmp($_SESSION["user_type"], "utilisateur") == 0){
                                     echo '<script type="text/javascript">initialiser_affichage_demandes("' . $_SESSION['idsrm_login_cas'] . '")</script>';
                                 }else{
                                     echo '<script type="text/javascript">initialiser_affichage_toutes_demandes()</script>';
@@ -191,8 +201,6 @@
                                 if(strcmp($_SESSION["user_type"], "administrateur") == 0){
                                     echo '<script type="text/javascript">getDemandesAvecEtat("En attente");</script>';
                                 }
-                                
-                                
                                 ?>
                         </div>
                         <!-- TODO: rendre les textes configurables -->

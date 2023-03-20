@@ -12,4 +12,4 @@
     <!-- Font awesome 6 -->
     <link rel="stylesheet" href="/CSS/font-awesome/css/font-awesome.min.css">
     <!-- Styles custom -->
-    <link rel="stylesheet" href="/CSS/styles.css">
+    <link rel="stylesheet" href="/Projet-M1-IDSRM/CSS/styles.css">

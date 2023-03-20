@@ -25,6 +25,9 @@
         if (xmlHttp.readyState == 4 && xmlHttp.status == 200){
             result = xmlHttp.responseText;
         }
+        if (xmlHttp.status === 404 || xmlHttp.status === 500) {
+            result = null;
+        }
     }
     xmlHttp.open("GET", "/PHP/get_"+thing_to_get+".php?extra="+extra, false); // true for asynchronous
     xmlHttp.send(null);
@@ -101,6 +104,11 @@ function modifier_suivi_demande(id_demande, nouveau_suivi_demande, mail_demandeu
 function init_variable_liste_projets(){
     var projets = get_liste_projets();
     var liste_projets = [];
+
+    if (projets === null) {
+        document.getElementById("errors").hidden = false;
+    }
+
     for(var projet in projets){
         liste_projets.push(new Projet(projets[projet]));
     }
@@ -114,6 +122,10 @@ function init_variable_liste_projets(){
  function init_variable_liste_projets_par_user(user){
     var projetsUser = get_liste_projets_user(user);
     var liste_projets = [];
+
+    if (projetsUser === null) {
+        document.getElementById("errors").hidden = false;
+    }
 
     for(var projet in projetsUser){
         liste_projets.push(new Projet(projetsUser[projet]));

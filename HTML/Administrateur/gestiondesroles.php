@@ -14,6 +14,30 @@
                         <h1><b>IDSRM</b></h1>
                     </div>
                     <div class="row formulaire">
+                        <div id="success" class="row" hidden>
+                            <div class="col-sm-6">
+                                <div class="alert alert-succes alert-dismissible fade show" role="alert">
+                                    L'utilisateur a bien été ajouté à la base de données.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="error_add_user" class="row" hidden>
+                            <div class="col-sm-6">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    Une erreur liée à la base de données est survenue, veuillez réessayer ultérieuement. L'utilisateur n'a pas pu être ajouté.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="errors" class="row" hidden>
+                            <div class="col-sm-6">
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    Une erreur liée à la base de données est survenue, veuillez réessayer ultérieuement. Impossible de charger les utilisateurs.
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            </div>
+                        </div>
                         <div id="partie_gauche_demande" class="container col-sm-6">
                             <nav id="menu_demandes" class="navbar navbar-expand-lg nav nav-pills flex-column flex-sm-row">
                                 <a id="all" class="flex-sm-fill text-sm-center nav-link active" onclick='initRoles("all")'>Tous</a>
